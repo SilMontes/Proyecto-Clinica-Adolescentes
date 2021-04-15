@@ -8,9 +8,19 @@ $beige: #F1FAEE;
 position: relative;
 }
 
-/*footer*/
+/*Navbar, Kimberly */
+.menu{
+    text-align: center;
+    margin: 20px;
+    color: $beige;
+}
 
-footer{
+.navbar{
+    background-color: $light;
+color: $yellow;
+}
+
+.footer{
     padding-top: 30px;
 }
 
