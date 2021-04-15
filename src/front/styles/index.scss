@@ -1,4 +1,42 @@
+/*Kimberly*/ 
+$yellow:  #FFD23F;
+$blue: #1D3557 ;
+$light: #457B9D;
+$beige: #F1FAEE;
+
+* {
+position: relative;
+}
+
+/*footer*/
+
+footer{
+    padding-top: 30px;
+}
+
 i{
-    margin: 10px;
-    font-size: 24px;
+    font-size: 27px;
+    margin: 12px;
+    left: 32%;
+text-align: center;
+color: $blue;
+
+}
+
+.titfoo{
+    color: $blue
+}
+.col-3, .footer {
+background-color: $yellow;
+}
+
+.abajo{
+    color: $light;
+}
+
+.todos{
+    color: $beige; 
+    margin: 0px;
+    padding-left: 80px;
+    padding-top: 160px; 
 }
