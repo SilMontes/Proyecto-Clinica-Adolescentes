@@ -13,12 +13,33 @@ position: relative;
     text-align: center;
     margin: 20px;
     color: $beige;
+
 }
 
+.titulo{
+ float: right;
+ margin-top: 30px;
+ text-align: center;
+     background-color: $blue;
+    color: $beige;
+   padding: 16px;
+}
+
+//*.card-header{}
+
+.general{
+    margin: 120px 80px 120px 80px ;
+}
 .navbar{
     background-color: $light;
 color: $yellow;
 }
+
+.especialista{
+    width: 180px;
+    height: 180px;
+}
+/*foot*/
 
 .footer{
     padding-top: 30px;
@@ -50,3 +71,33 @@ background-color: $yellow;
     padding-left: 80px;
     padding-top: 160px; 
 }
+
+/*boton whatsapp*/
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color: white;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+.float:hover {
+	text-decoration: none;
+	color: #25d366;
+  background-color:#fff;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+i .fab{
+    size: 20px;
+}
+
