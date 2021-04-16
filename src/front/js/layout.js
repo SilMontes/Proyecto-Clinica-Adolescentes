@@ -14,6 +14,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Login } from "./pages/login";
 import { Registro } from "./pages/registro";
+import { EmailCambiarContraseña } from "./pages/email-cambiar-contraseña";
+import { PaginaExpertos } from "./pages/paginaExpertos";
 
 //create your first component
 const Layout = () => {
@@ -35,6 +37,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/registro">
 							<Registro />
+						</Route>
+						<Route exact path="/emailcambiarcontraseña">
+							<EmailCambiarContraseña />
+						</Route>
+						<Route exact path="/paginaexpertos">
+							<PaginaExpertos />
 						</Route>
 						<Route exact path="/derechos">
 							<Derechos />

@@ -217,9 +217,9 @@ $color_grey_dark_experto: #a2a2a2;
 .experto-card {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
+  margin: 2rem auto;
   box-shadow: 0 3px 7px -1px rgba(#000, .1);
-  margin-bottom: 1.6%;
+  margin-bottom: 3.6%;
   background: $color_white_experto;
   line-height: 1.4;
   font-family: sans-serif;
@@ -337,10 +337,16 @@ $color_grey_dark_experto: #a2a2a2;
   }
 }
 .filtradoBusquedaExpertos{
-    background: #1e5945;
     justify-content: center;
 }
 .filtradoBusquedaBtn{
     color: #40f2fe;
     background: #cdcdcd;
+    font-size: 20px;
+    padding: 0px 10px;
+   
+}
+.filtradoBusquedaBtn i{
+    margin:0;
+    left:0%;
 }
