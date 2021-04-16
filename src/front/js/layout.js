@@ -12,6 +12,8 @@ import { Orientacion } from "./pages/orientacion";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Login } from "./pages/login";
+import { Registro } from "./pages/registro";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +29,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/registro">
+							<Registro />
 						</Route>
 						<Route exact path="/derechos">
 							<Derechos />
