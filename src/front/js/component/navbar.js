@@ -5,16 +5,16 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">Clínica de Adolescentes</span>
+				<span className=" clinic navbar-brand mb-0 h1">Clínica de Adolescentes</span>
 			</Link>
 
 			<div className="float-right d-flex flex-row ml-auto">
 				<Link to="/demo">
 					<p className="enter">Iniciar Sección</p>
 				</Link>
-				<p> - </p>
+				<p className="linea"> - </p>
 				<Link to="/demo">
-					<p className=" enter ">Registrarse</p>
+					<p className=" regi ">Registrarse</p>
 				</Link>
 			</div>
 			<div className=" menu col-12 mr-auto">
