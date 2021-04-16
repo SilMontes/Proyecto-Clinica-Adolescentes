@@ -19,10 +19,6 @@ export const Registro = () => {
 						</div>
 						<button type="submit">Ingresar</button>
 					</form>
-					<div className="formfooter">
-						<span>¿Olvidó su contraseña</span>
-						<span>¿Aún no tiene una cuenta? ¡Registrese!</span>
-					</div>
 				</div>
 			</div>
 		</div>
