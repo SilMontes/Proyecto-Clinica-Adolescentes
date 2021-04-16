@@ -27,7 +27,7 @@ export const Navbar = () => {
 				<Link className="menu" href="#link">
 					Expertos
 				</Link>
-				<Link className="menu" href="#link">
+				<Link className="menu" href="../reporta">
 					Reportar
 				</Link>
 			</div>
