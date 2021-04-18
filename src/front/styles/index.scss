@@ -1,13 +1,100 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 /*Kimberly*/ 
 $yellow:  #FFD23F;
 $blue: #1D3557 ;
 $light: #457B9D;
 $beige: #F1FAEE;
 
+
 * {
 position: relative;
 }
 
+
+Link{
+    font-family: 'Nunito', sans-serif;
+}
+
+/*Navbar, Kimberly */
+.menu{
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin: 20px;
+    color: $beige;
+
+}
+.clinic{
+color: $yellow;
+margin-left: 7px;
+}
+
+.linea{
+    margin: 7px;
+}
+
+.enter{
+    color: $beige;
+    margin: 7px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.regi{
+    margin: 7px;
+color: $blue;
+font-family: 'Poppins', sans-serif;
+}
+
+//*.card-especialista kimberly*/ 
+
+.general{
+    margin: 120px 80px 120px 80px ;
+-webkit-box-shadow: 0 8px 6px -6px $blue;
+	   -moz-box-shadow: 0 8px 6px -6px  $blue;
+	        box-shadow: 0 8px 6px -6px  $blue;
+}
+.navbar{
+    background-color: $light;
+color: $yellow;
+}
+.card-header{
+    font-family: 'Poppins', sans-serif;
+    background-color: $light;
+    color: $beige;
+}
+.titulo{
+ float: center;
+ margin-top: 30px;
+ font-family: 'Poppins', sans-serif;
+ padding: 30px;
+ text-align: center;
+     background-color: $blue;
+    color: $yellow;
+   border-radius: 20px;
+   position: absolute;
+}
+
+.especialista{
+    width: 292px;
+    display: block;
+    justify-content: center;
+}
+
+.expertos{
+ width: 1371px;
+height: 1647px;
+}
+
+/*reporta*/
+.reporta{
+font-family: 'Poppins', sans-serif;
+}
+
+/*foot*/
+
+.footer{
 /*footer*/
 
 footer{
@@ -40,6 +127,36 @@ background-color: $yellow;
     padding-left: 80px;
     padding-top: 160px; 
 }
+
+/*boton whatsapp*/
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color: white;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+.float:hover {
+	text-decoration: none;
+	color: #25d366;
+  background-color:#fff;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+i .fab{
+    size: 20px;
+}
+
 //colores página expertos (Silvia)
 $color_white_experto: #fff;
 $color_prime_experto: #1D3557;

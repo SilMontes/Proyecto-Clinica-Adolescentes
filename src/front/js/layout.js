@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Derechos } from "./pages/derechos";
 import { Single } from "./pages/single";
+
 import injectContext from "./store/appContext";
 import { HomePage } from "./pages/homePage";
 import { Orientacion } from "./pages/orientacion";
@@ -29,7 +30,7 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
+						<Route exact path="/reporta">
 							<Home />
 						</Route>
 						<Route exact path="/login">
@@ -50,7 +51,7 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/single/:theid">
+						<Route exact path="/single">
 							<Single />
 						</Route>
 						<Route exact path="/orientacion">
