@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import "../../styles/index.scss";
 
-export const reportar = () => {
-	const { store, actions } = useContext(Context);
-
+export const Reporta = () => {
 	return (
 		<div className="container">
 			<div className="row">
@@ -17,18 +14,22 @@ export const reportar = () => {
 						En este servicio Llámenos: 2295-3000
 					</p>
 
-					<button  type="button" >Llámenos</button>
+					<button type="button">Llámenos</button>
 				</div>
 
-				<div className="form-group"> 
-                    <form>
-                         <label for="comment">Mensaje:</label>
-                         <textarea className="form-control" rows="5" id="comment"></textarea>
-                         <button type="submit" className="btn btn-primary">Cancel</button>
-                         <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+				<div className="form-group">
+					<form>
+						<label htmlFor="comment">Mensaje:</label>
+						<textarea className="form-control" rows="5" id="comment" />
+						<button type="submit" className="btn btn-primary">
+							Cancel
+						</button>
+						<button type="submit" className="btn btn-primary">
+							Submit
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
-        </div>
 	);
 };

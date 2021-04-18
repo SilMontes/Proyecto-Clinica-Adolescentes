@@ -2,22 +2,19 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Derechos } from "./pages/derechos";
-import { Single } from "./pages/single";
-
 import injectContext from "./store/appContext";
-import { HomePage } from "./pages/homePage";
-import { Orientacion } from "./pages/orientacion";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Login } from "./pages/login";
+import { InicioSesion } from "./pages/inicio-sesion";
 import { Registro } from "./pages/registro";
+import { HomePage } from "./pages/homePage";
+import { Orientacion } from "./pages/orientacion";
+import { Derechos } from "./pages/derechos";
+import { InformacionEspecialista } from "./pages/informacion-especialista";
 import { EmailCambiarContraseña } from "./pages/email-cambiar-contraseña";
 import { PaginaExpertos } from "./pages/paginaExpertos";
-
+import { Reporta } from "./pages/reporta";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -30,35 +27,32 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/reporta">
-							<Home />
+						<Route exact path="/">
+							<HomePage />
 						</Route>
-						<Route exact path="/login">
-							<Login />
+						<Route exact path="/iniciosesion">
+							<InicioSesion />
 						</Route>
 						<Route exact path="/registro">
 							<Registro />
 						</Route>
-						<Route exact path="/emailcambiarcontraseña">
-							<EmailCambiarContraseña />
+						<Route exact path="/reporta">
+							<Reporta />
 						</Route>
-						<Route exact path="/paginaexpertos">
+						<Route exact path="/especialista">
+							<InformacionEspecialista />
+						</Route>
+						<Route exact path="/expertos">
 							<PaginaExpertos />
 						</Route>
 						<Route exact path="/derechos">
 							<Derechos />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single">
-							<Single />
-						</Route>
 						<Route exact path="/orientacion">
 							<Orientacion />
 						</Route>
-						<Route exact path="/homePage">
-							<HomePage />
+						<Route exact path="/emailcambiarcontraseña">
+							<EmailCambiarContraseña />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

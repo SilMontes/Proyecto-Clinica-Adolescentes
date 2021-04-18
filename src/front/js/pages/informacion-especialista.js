@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import "../../styles/index.scss";
 
-export const Home = () => {
-	const { store, actions } = useContext(Context);
-
+export const InformacionEspecialista = () => {
 	return (
 		<div className=" expertos container">
 			<div className="row">
