@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -11,6 +12,7 @@ $beige: #F1FAEE;
 * {
 position: relative;
 }
+
 
 Link{
     font-family: 'Nunito', sans-serif;
@@ -93,6 +95,9 @@ font-family: 'Poppins', sans-serif;
 /*foot*/
 
 .footer{
+/*footer*/
+
+footer{
     padding-top: 30px;
 }
 
@@ -152,3 +157,313 @@ i .fab{
     size: 20px;
 }
 
+//colores página expertos (Silvia)
+$color_white_experto: #fff;
+$color_prime_experto: #1D3557;
+$color_grey_experto: #e2e2e2;
+$color_grey_dark_experto: #a2a2a2;
+
+/////////// Estilos Login y registro (Silvia) /////////////////// 
+.containerLoginSignUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+.mainLoginSignUp {
+    max-width: 500px;
+    width: 100%;
+}
+
+.titleFormloginRegister {
+    font-size: 250%;
+    color:#bbe1fa;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-register-formcontainer {
+    width: 100%;
+    padding: 50px 30px;
+    background-color: #1D3557;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    box-sizing: border-box;
+}
+
+.login-register-formcontainer input {
+    font-family: 'Overpass', sans-serif;
+    font-size: 120%;
+    color: #1b262c;
+    
+    display: block;
+    width: 100%;
+    height: 40px;
+    
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+    
+    box-sizing: border-box;
+    
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+.login-register-formcontainer input::placeholder {
+    font-family: 'Overpass', sans-serif;
+    color: #c3c3c3;
+}
+
+.login-register-formcontainer button {
+    font-family: 'Overpass', sans-serif;
+    font-size: 140%;
+    color:#1d3557;
+    font-weight: bolder;
+    width: 100%;
+    height: 60px;
+    border: none;
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    background-color: #bbe1fa;
+    
+    margin-top: 10px;
+}
+
+.login-register-formcontainer button:hover {
+    background-color: #0f4c75;
+    color:#bbe1fa;
+}
+
+.formfooter {
+    font-size: 100%;
+    text-align: center;    
+    margin-top: 15px;
+}
+
+.formfooter span {
+    display: block;
+    text-decoration: none;
+    color: yellow;
+    margin-bottom: 3px;
+}
+
+.formfooter span:hover {
+    color: #bbe1fa;
+}
+
+///////////// Estilos cambiar contraseña (Silvia) /////////////////
+.formpassword{
+    width: 500px;
+    background-color: #1D3557;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+}
+.btnCambiarContraseña{
+    text-decoration: none;
+    border:none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #0016b0;
+    background-color: #f1faee;
+    border-radius: 6px;
+}
+.btnCambiarContraseña:hover{
+    background-color: #c3c3c3;
+    color:rgb(8, 18, 88 );
+    border:none;
+}
+.changepasswordcontainer{
+    margin:0;
+    padding:0;
+    background-size: cover;
+    height: auto;
+    
+}
+
+.boxcambiarcontraseña h4{
+    margin: 0 0 30px;
+    padding: 0%;
+    color: whitesmoke;
+    text-align: center;
+}
+.boxcambiarcontraseña p{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #ffd23f; 
+}
+.boxcambiarcontraseña .inputBox{
+    position: relative;
+}
+.boxcambiarcontraseña .inputBox input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    background: transparent;
+    text-align: center;
+}
+
+//-----------  Expertos (Silvia)-------------------------------
+
+.experto-card {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 3.6%;
+  background: $color_white_experto;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  
+  .photocontainer {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+  .photo-experto {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+ 
+  .descriptionexperto {
+    padding: 1rem;
+    background: $color_white_experto;
+    position: relative;
+    z-index: 1;
+    h1,
+    h2 {
+      font-family: Poppins, sans-serif;
+    }
+    h1 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1.7rem;
+      color:#3f888f;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color_grey_dark_experto;
+      margin-top: 5px;
+    }
+    .read-more-experto {
+      text-align: right;
+      button {
+        color: white;
+        padding: 10px;
+        font-size: 15px;
+        border: none;
+        background-color: $color_prime_experto;
+        display: inline-block;
+        position: relative;
+        &:after {
+          content: "\f061";
+          font-family: FontAwesome;
+          margin-left: -10px;
+          opacity: 0;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s;
+        }
+
+        &:hover:after {
+          margin-left: 5px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  p {
+    position: relative;
+    margin: 1rem 0 0;
+    &:first-of-type {
+      margin-top: 1.25rem;
+      &:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: #1e5945;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px;
+      }
+    }
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
+@media (min-width: 640px) {
+    flex-direction: row;
+    max-width: 700px;
+    .photocontainer {
+      flex-basis: 40%;
+      height: auto;
+    }
+    .descriptionexperto {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+    
+  }
+}
+.filtradoBusquedaExpertos{
+    justify-content: center;
+}
+.filtradoBusquedaBtn{
+    color: #40f2fe;
+    background: #cdcdcd;
+    font-size: 20px;
+    padding: 0px 10px;
+   
+}
+.filtradoBusquedaBtn i{
+    margin:0;
+    left:0%;
+}
