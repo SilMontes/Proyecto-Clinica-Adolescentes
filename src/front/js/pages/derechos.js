@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
-import { Container, Button, Card } from "react-bootstrap";
+import React from "react";
+import { Button, Card } from "react-bootstrap";
 
 // import "../../styles/demo.scss";
 
