@@ -285,11 +285,24 @@ $color_grey_dark_experto: #a2a2a2;
     font-weight: 600;
     font-size: 20px;
     color: #0016b0;
-    background-color: #f1faee;
+    background-color: #bbe1fa;
+    border-radius: 6px;
+    margin-left: 5px;
+}
+///------------------ botón regresar a inicio de sesión (Silvia)---
+.btnIrInicioSesión{
+    text-decoration: none;
+    border:none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #0016b0;
+    background-color: #9c9c9c;
     border-radius: 6px;
 }
-.btnCambiarContraseña:hover{
-    background-color: #c3c3c3;
+
+.btnIrInicioSesión:hover, .btnCambiarContraseña:hover{
+    background-color: $yellow;
     color:rgb(8, 18, 88 );
     border:none;
 }
