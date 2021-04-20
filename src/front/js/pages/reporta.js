@@ -15,7 +15,7 @@ export const Reporta = () => {
 					</p>
 
 					<div className="col-12  d-flex align-items-center justify-content-center">
-						<button type="button" className="btn btn-primary">
+						<button type="button" className=" call btn rounded-pill">
 							Llámenos
 						</button>
 					</div>
@@ -27,10 +27,10 @@ export const Reporta = () => {
 							Envia un Mensaje:
 						</label>
 						<textarea className="form-control" rows="5" id="comment" />
-						<button type="Reset" className=" cancel btn btn-primary">
+						<button type="Reset" className="cancel rounded-pill btn ">
 							Cancelar
 						</button>
-						<button type="submit" className=" submit btn btn-primary">
+						<button type="submit" className="submit rounded-pill btn ">
 							Enviar
 						</button>
 					</form>

@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { CardHomePage } from "../component/cardHomePage";
 import { Carousel } from "../component/carousel";
 import "../../styles/homePageStyle.scss";
@@ -9,28 +10,28 @@ export const HomePage = () => {
 		<div>
 			<div className="colCarousel">
 				<Row>
-					<Col>
+					<Col md={{ span: 6, offset: 3 }}>
 						<Carousel />
 					</Col>
 				</Row>
 			</div>
-			<h2>Conozca a los expertos en el tema</h2>
-			<div className="colCardHomePage">
+			<h2>Conozca sobre las Especialidades</h2>
+			<Container>
 				<Row>
-					<Col>
+					<Col sm={3}>
 						<CardHomePage />
 					</Col>
-					<Col>
+					<Col sm={3}>
 						<CardHomePage />
 					</Col>
-					<Col>
+					<Col sm={3}>
 						<CardHomePage />
 					</Col>
-					<Col>
+					<Col sm={3}>
 						<CardHomePage />
 					</Col>
 				</Row>
-			</div>
+			</Container>
 		</div>
 	);
 };
