@@ -2,27 +2,27 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../styles/cardHomePage.scss";
+import propTypes from "prop-types";
 
-export const CardHomePage = () => {
+export const CardHomePage = props => {
 	return (
 		<div className="card bg-body rounded" style={{ width: "17rem" }}>
-			<img
-				style={{ width: "100%", height: "12rem" }}
-				src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9ycyUyMHByYWN0aWNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-				className="card-img-top"
-				alt="..."
-			/>
+			<img style={{ width: "100%", height: "12rem" }} src={props.url} className="card-img-top" alt="..." />
 			<div className="card-body text-center">
-				<h5 className="card-title">PSICOLOGÍA</h5>
-				<p className="card-text">
-					Ciencia social y una disciplina académica enfocadas en el análisis y la comprensión de la conducta
-					humana y de los procesos mentales experimentados por individuos y por grupos sociales durante
-					momentos y situaciones determinadas.
-				</p>
+				<h5 className="card-title">{props.name}</h5>
+				<p className="card-text">{props.info}</p>
 				<Link to="/expertos">
 					<button className="btn btn-lg text-white rounded-pill">Búsqueda</button>
 				</Link>
 			</div>
 		</div>
 	);
+};
+
+// validar props
+
+CardHomePage.propTypes = {
+	url: propTypes.string,
+	name: propTypes.string,
+	info: propTypes.string
 };
