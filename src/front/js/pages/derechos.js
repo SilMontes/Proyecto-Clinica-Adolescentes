@@ -6,8 +6,8 @@ import { Button, Card, Link } from "react-bootstrap";
 export const Derechos = () => {
 	return (
 		<div className="container">
-			<Card className="derechos" border="secondary">
-				<Card.Header>
+			<Card className="derechos" style={{ background: "#FFD23F" }}>
+				<Card.Header style={{ background: "#FFD23F" }}>
 					<strong>CONVENCIÓN SOBRE LOS DERECHOS DEL NIÑO</strong>
 				</Card.Header>
 				<Card.Body>
@@ -15,7 +15,7 @@ export const Derechos = () => {
 				</Card.Body>
 			</Card>
 			<br />
-			<Card>
+			<Card className="shadow p-3">
 				<Card.Header>
 					<strong>DERECHOS A LA SUPERVIVENCIA Y EL DESARROLLO</strong>
 				</Card.Header>
@@ -37,7 +37,7 @@ export const Derechos = () => {
 				</Button>{" "}
 			</Card>
 			<br />
-			<Card border="secondary">
+			<Card className="shadow p-3">
 				<Card.Header>
 					<strong>DERECHOS A LA PROTECCION</strong>
 				</Card.Header>
@@ -55,7 +55,7 @@ export const Derechos = () => {
 				</Button>{" "}
 			</Card>
 			<br />
-			<Card border="secondary">
+			<Card className="shadow p-3">
 				<Card.Header>
 					<strong>DERECHOS A LA PARTICIPACION</strong>
 				</Card.Header>
@@ -76,7 +76,7 @@ export const Derechos = () => {
 				</Button>{" "}
 			</Card>
 			<br />
-			<Card border="secondary">
+			<Card className="shadow p-3">
 				<Card.Header>
 					<strong>ENLACES</strong>
 				</Card.Header>

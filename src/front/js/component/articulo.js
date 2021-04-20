@@ -9,7 +9,7 @@ export const Articulo = () => {
 				<h5 className="card-title">Card title</h5>
 				<p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 				<Link to="/demo">
-					<button className="btn btn-lg text-white rounded-pill">Mas Info</button>
+					<button className="btn  text-white rounded-pill">Mas Info</button>
 				</Link>
 			</div>
 		</div>

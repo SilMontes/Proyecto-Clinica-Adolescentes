@@ -7,28 +7,29 @@ export const Orientacion = () => {
 	return (
 		<div className="orientacionArticulos">
 			<Row>
-				<Col>
+				<Col xs={4}>
 					<Articulo />
 				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<Articulo />
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<Articulo />
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<Articulo />
-				</Col>
-			</Row>
 
-			<Row>
-				<Col />
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
 			</Row>
 		</div>
 	);

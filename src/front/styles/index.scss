@@ -143,7 +143,7 @@ color: $blue;
 .titfoo{
     color: $blue
 }
-.col-3, .footer {
+.footer {
 background-color: $yellow;
 }
 
@@ -456,6 +456,7 @@ $color_grey_dark_experto: #a2a2a2;
     }
   }
   p {
+    font-family: 'Nunito', sans-serif;
     position: relative;
     margin: 1rem 0 0;
     &:first-of-type {
@@ -518,7 +519,7 @@ $color_grey_dark_experto: #a2a2a2;
 /*Orientacion*/ /*Emily*/
 
 .orientacionArticulos{
-  margin-left: 300px;
+  margin-left: 150px;
   margin-bottom: 20px;
 }
 
@@ -526,7 +527,7 @@ $color_grey_dark_experto: #a2a2a2;
     font-family: 'Poppins', sans-serif;
     background-color: white;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 .btn{
@@ -551,19 +552,4 @@ $color_grey_dark_experto: #a2a2a2;
 .btn{
     border-radius: 20px;
     width: 220px;
-}
-
-
-a:hover{
-    color: $yellow;
-}
-
-.Card.link{
-    background-color: white;
-}
-
-.a .Card.link {text-align: center;
-}
-.Card .derechos{
-    background-color: $yellow;
 }
