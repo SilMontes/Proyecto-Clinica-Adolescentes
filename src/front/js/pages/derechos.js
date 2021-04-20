@@ -80,11 +80,13 @@ export const Derechos = () => {
 				<Card.Header>
 					<strong>ENLACES</strong>
 				</Card.Header>
-				<Card.Link a href="https://www.voicesofyouth.org/es/">
+				<Card.Link a href="https://www.voicesofyouth.org/es/" target="_blank">
 					La Juventud Opina
 				</Card.Link>{" "}
 				<br />
-				<Card.Link href="https://pani.go.cr/">Patronato Nacional de la Infancia Costa Rica</Card.Link>{" "}
+				<Card.Link href="https://pani.go.cr/" target="_blank">
+					Patronato Nacional de la Infancia Costa Rica
+				</Card.Link>{" "}
 			</Card>
 			<br />
 		</div>

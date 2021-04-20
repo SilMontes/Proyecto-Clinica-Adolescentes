@@ -13,9 +13,9 @@ export const Footer = () => (
 				</div>
 				<div className="footer ol-4">
 					<h4 className=" titfoo text-center">Clinica de Adolescentes</h4>
-					<i className="fab fa-facebook-f" />
-					<i className="fab fa-instagram" />
-					<i className="fab fa-youtube" />
+					<i className="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/PANICR/" />
+					<i className="fab fa-instagram" target="_blank" href="" />
+					<i className="fab fa-youtube" target="_blank" href="/>
 				</div>
 				<div className="footer col-4">
 					<p className="todos text-right">Todos los derechos estan reservados</p>

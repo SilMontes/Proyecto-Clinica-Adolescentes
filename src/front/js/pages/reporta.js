@@ -14,22 +14,24 @@ export const Reporta = () => {
 						En este servicio Llámenos: 2295-3000
 					</p>
 
-					<button type="button" className="btn btn-primary">
-						Llámenos
-					</button>
+					<div className="col-12  d-flex align-items-center justify-content-center">
+						<button type="button" className="btn btn-primary">
+							Llámenos
+						</button>
+					</div>
 				</div>
 
-				<div className=" formulario form-group">
+				<div className=" col-6 formulario form-group">
 					<form>
 						<label className="mensaje" htmlFor="comment">
 							Envia un Mensaje:
 						</label>
 						<textarea className="form-control" rows="5" id="comment" />
-						<button type="submit" className="btn btn-primary">
-							Cancel
+						<button type="Reset" className=" cancel btn btn-primary">
+							Cancelar
 						</button>
-						<button type="submit" className="btn btn-primary">
-							Submit
+						<button type="submit" className=" submit btn btn-primary">
+							Enviar
 						</button>
 					</form>
 				</div>

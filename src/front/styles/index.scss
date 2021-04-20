@@ -95,6 +95,7 @@ height: 1647px;
 font-family: 'Poppins', sans-serif;
 }
 
+
 .formulario{
 background-color: $light;
 border-radius: 30px;
@@ -109,6 +110,16 @@ margin-bottom: 80px;
 .mensaje{
      font-family: 'Nunito', sans-serif;
     color: $beige;
+}
+
+.cancel{
+    padding: 6px;
+    background-color: $yellow;
+    margin: 20px;
+}
+
+ .submit{
+    margin: 20px;
 }
 
 /*foot*//*kim*/
@@ -549,9 +560,10 @@ a:hover{
 
 .Card.link{
     background-color: white;
-
 }
 
+.a .Card.link {text-align: center;
+}
 .Card .derechos{
     background-color: $yellow;
 }
