@@ -6,7 +6,7 @@ export const Reporta = () => {
 		<div className="container">
 			<div className="row">
 				<div>
-					<h1 className="reporta">Reportá</h1>
+					<h1 className="reporta d-flex justify-content-center">Reportá</h1>
 
 					<p className="text-center">
 						Denuncie situaciones de Violencia, acoso u abuso sexuales al Servicio de Emergencia. Desde este
@@ -14,12 +14,16 @@ export const Reporta = () => {
 						En este servicio Llámenos: 2295-3000
 					</p>
 
-					<button type="button">Llámenos</button>
+					<button type="button" className="btn btn-primary">
+						Llámenos
+					</button>
 				</div>
 
 				<div className="form-group">
 					<form>
-						<label htmlFor="comment">Mensaje:</label>
+						<label className="mensaje" htmlFor="comment">
+							Envia un Mensaje:
+						</label>
 						<textarea className="form-control" rows="5" id="comment" />
 						<button type="submit" className="btn btn-primary">
 							Cancel

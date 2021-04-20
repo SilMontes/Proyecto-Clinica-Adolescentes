@@ -6,6 +6,7 @@ export const Navbar = () => {
 		<nav className="navbar mb-3">
 			<Link to="/">
 				<span className=" clinic navbar-brand mb-0 h1">Clínica de Adolescentes</span>
+				<img src="/img/Icono.png" alt="icono" />
 			</Link>
 
 			<div className="float-right d-flex flex-row ml-auto">

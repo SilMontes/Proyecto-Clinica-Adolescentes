@@ -8,6 +8,9 @@ $blue: #1D3557 ;
 $light: #457B9D;
 $beige: #F1FAEE;
 
+.container, .colCarousel , .React.Fragment {
+    margin-top: 40px;
+}
 
 * {
 position: relative;
@@ -87,19 +90,35 @@ color: $yellow;
 height: 1647px;
 }
 
-/*reporta*/
+/*reporta*//*kimberly*/
 .reporta{
 font-family: 'Poppins', sans-serif;
 }
 
-/*foot*/
+.form-group{
 
-.footer{
-/*footer*/
-
-footer{
-    padding-top: 30px;
+background-color: $light;
+border-radius: 30px;
+padding: 20px;
+text-align: left;
+margin: auto;
+margin-top: 180px ;
+margin-bottom: 80px;
 }
+
+
+.mensaje{
+     font-family: 'Nunito', sans-serif;
+    color: $beige;
+}
+
+/*foot*//*kim*/
+footer{
+    background-color: $yellow;
+    margin: 0%;
+
+}
+
 
 i{
     font-size: 27px;
@@ -109,6 +128,7 @@ text-align: center;
 color: $blue;
 
 }
+
 
 .titfoo{
     color: $blue
@@ -127,7 +147,8 @@ background-color: $yellow;
     padding-left: 80px;
     padding-top: 160px; 
 }
-}
+
+
 /*boton whatsapp*/
 .float{
 	position:fixed;
@@ -479,4 +500,56 @@ $color_grey_dark_experto: #a2a2a2;
 .filtradoBusquedaBtn i{
     margin:0;
     left:0%;
+}
+
+/*Orientacion*/ /*Emily*/
+
+.orientacionArticulos{
+  margin-left: 300px;
+  margin-bottom: 20px;
+}
+
+.card{
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.btn{
+    font-family: 'Nunito', sans-serif;
+}
+
+
+/*Derechos*/
+
+.derechos{
+     font-family: 'Poppins', sans-serif;
+     background-color: $yellow;
+     color: black;
+}
+
+.card-header{
+    background-color: white;
+    color: black;
+
+}
+
+.btn{
+    border-radius: 20px;
+    width: 220px;
+}
+
+
+a:hover{
+    color: $yellow;
+}
+
+.Card.link{
+    background-color: white;
+
+}
+
+.Card .derechos{
+    background-color: $yellow;
 }
