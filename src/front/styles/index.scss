@@ -105,16 +105,18 @@ i{
     font-size: 27px;
     margin: 12px;
     left: 32%;
-text-align: center;
-color: $blue;
-
+    text-align: center;
+    color: $blue;
+    
 }
 
 .titfoo{
-    color: $blue
+    color: $blue;
+    padding-top: 10px; 
 }
-.col-3, .footer {
-background-color: $yellow;
+.col-4, .footer {
+    background-color: $yellow;
+    padding-left: 30px;
 }
 
 .abajo{
@@ -124,8 +126,7 @@ background-color: $yellow;
 .todos{
     color: $beige; 
     margin: 0px;
-    padding-left: 80px;
-    padding-top: 160px; 
+    padding-top: 180px; 
 }
 }
 /*boton whatsapp*/
