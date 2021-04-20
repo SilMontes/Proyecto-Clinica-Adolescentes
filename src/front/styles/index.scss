@@ -95,8 +95,7 @@ height: 1647px;
 font-family: 'Poppins', sans-serif;
 }
 
-.form-group{
-
+.formulario{
 background-color: $light;
 border-radius: 30px;
 padding: 20px;
@@ -197,6 +196,9 @@ $color_grey_dark_experto: #a2a2a2;
     height: 100%;
 }
 
+.experto{
+    padding: auto;
+}
 .mainLoginSignUp {
     max-width: 500px;
     width: 100%;

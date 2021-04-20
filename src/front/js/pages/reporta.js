@@ -19,7 +19,7 @@ export const Reporta = () => {
 					</button>
 				</div>
 
-				<div className="form-group">
+				<div className=" formulario form-group">
 					<form>
 						<label className="mensaje" htmlFor="comment">
 							Envia un Mensaje:
