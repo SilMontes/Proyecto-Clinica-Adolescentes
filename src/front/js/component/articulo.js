@@ -1,18 +1,23 @@
 import React from "react";
-import "../../styles/articuloStyle.scss";
-import { Link } from "react-router-dom";
+import propTypes from "prop-types";
 
-export const Articulo = () => {
+export const Articulo = props => {
 	return (
-		<div className="card rounded-start shadow-lg p-3 mb-5 bg-body rounded">
-			<h5 className="card-header">Featured</h5>
-			<div className="card-body">
-				<h5 className="card-title">Special title treatment</h5>
-				<p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<Link to="/demo">
-					<button className="btn btn-lg text-white rounded-pill">Learn</button>
-				</Link>
+		<div className="card bg-body rounded" style={{ width: "17rem", height: "16rem" }}>
+			<img
+				style={{ width: "100%", height: "12rem" }}
+				src={props.url}
+				className="card-img-top"
+				alt="Imagen faltante"
+			/>
+			<div className="card-body text-center">
+				<h5 className="card-title">{props.name}</h5>
 			</div>
 		</div>
 	);
+};
+
+Articulo.propTypes = {
+	url: propTypes.string,
+	name: propTypes.string
 };

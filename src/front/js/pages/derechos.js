@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-// import "../../styles/demo.scss";
-
 export const Derechos = () => {
 	return (
 		<div className="container">
@@ -77,9 +75,16 @@ export const Derechos = () => {
 				<Button variant="link" style={{ background: "rgb(192, 201, 190)" }}>
 					<a href="https://www.voicesofyouth.org/es/">La Juventud Opina</a>
 				</Button>{" "}
-				<br />
 				<Button variant="link" style={{ background: "rgb(192, 201, 190)" }}>
 					<a href="https://pani.go.cr/">Patronato Nacional de la Infancia Costa Rica</a>
+				</Button>{" "}
+				<Button variant="link" style={{ background: "rgb(192, 201, 190)" }}>
+					<a href="https://www.apa.org/centrodeapoyo/sexual/">Orientación sexual e identidad de género</a>
+				</Button>{" "}
+				<Button variant="link" style={{ background: "rgb(192, 201, 190)" }}>
+					<a href="https://www.ministeriodesalud.go.cr/index.php/centro-de-informacion/derechos-humanos">
+						Ministerio de Salud Costa Rica
+					</a>
 				</Button>{" "}
 			</Card>
 			<br />

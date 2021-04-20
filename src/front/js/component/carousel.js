@@ -28,35 +28,35 @@ export const Carousel = () => {
 			<div className="carousel-inner">
 				<div className="carousel-item active">
 					<img
-						src="https://images.unsplash.com/photo-1470955233021-2c79a52e5034?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+						src="https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVlbmFnZXJzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 						className="d-block w-100"
 						alt="..."
 					/>
 					<div className="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first slide.</p>
+						<h5>Amistad</h5>
+						<p>Algún texto representativo del contenido del primer slide.</p>
 					</div>
 				</div>
 				<div className="carousel-item">
 					<img
-						src="https://images.unsplash.com/photo-1470955233021-2c79a52e5034?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+						src="https://images.unsplash.com/photo-1560821818-69db8b3989fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHRlZW5hZ2Vyc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 						className="d-block w-100"
 						alt="..."
 					/>
 					<div className="carousel-caption d-none d-md-block">
-						<h5>Second slide label</h5>
-						<p>Some representative placeholder content for the second slide.</p>
+						<h5>Relaciones</h5>
+						<p>Algún texto representativo del contenido del segundo slide.</p>
 					</div>
 				</div>
 				<div className="carousel-item">
 					<img
-						src="https://lafuerzanoticias.files.wordpress.com/2018/10/mustafar-tall.jpg?w=1536&h=768&crop=1"
+						src="https://images.unsplash.com/photo-1478061653917-455ba7f4a541?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDN8fGZhbWlseSUyMHRvZ2V0aGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 						className="d-block w-100"
 						alt="..."
 					/>
 					<div className="carousel-caption d-none d-md-block">
-						<h5>Third slide label</h5>
-						<p>Some representative placeholder content for the third slide.</p>
+						<h5>Familia</h5>
+						<p>Algún texto representativo del contenido del tercer slide.</p>
 					</div>
 				</div>
 			</div>

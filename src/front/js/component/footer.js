@@ -16,10 +16,12 @@ export const Footer = () => (
 				<i className="fab fa-facebook-f" />
 				<i className="fab fa-instagram" />
 				<i className="fab fa-youtube" />
+				<br />
+				<br />
+				<p className="text-center">©2021 Derechos Reservados.</p>
+				<p className="text-center">Hecho por 3m1h Lab Creativo.</p>
 			</div>
-			<div className="col-4">
-				<p className="todos text-right">Derechos Reservados</p>
-			</div>
+			<div className="col-4" />
 		</div>
 	</footer>
 );
