@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, CardDeck } from "react-bootstrap";
 import { Articulo } from "../component/articulo";
 import "../../styles/orientacion.scss";
 
@@ -15,21 +15,23 @@ export const Orientacion = () => {
 					</div>
 				</Col>
 			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
-					<Articulo />
-				</Col>
-			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
-					<Articulo />
-				</Col>
-			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
-					<Articulo />
-				</Col>
-			</Row>
+			{/* <CardDeck> */}
+			{/* <Row mb="auto" className="orientacionArticulos"> */}
+			{/* <Col xs lg="3" md={{ span: 6, offset: 2 }}> */}
+			<Articulo />
+			{/* </Col> */}
+			{/* </Row> */}
+			{/* <Row mb="auto" className="orientacionArticulos"> */}
+			{/* <Col xs lg="3" md={{ span: 6, offset: 2 }}> */}
+			{/* <Articulo /> */}
+			{/* </Col> */}
+			{/* </Row> */}
+			{/* <Row mb="auto" className="orientacionArticulos"> */}
+			{/* <Col xs lg="3" md={{ span: 6, offset: 2 }}> */}
+			{/* <Articulo /> */}
+			{/* </Col> */}
+			{/* </Row> */}
+			{/* </CardDeck> */}
 		</div>
 	);
 };
