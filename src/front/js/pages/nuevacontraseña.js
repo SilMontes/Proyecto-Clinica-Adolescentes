@@ -1,5 +1,7 @@
 import React from "react";
 import { BotonIrInicioSesion } from "../component/boton-regresar-inicio-sesion";
+import "../../styles/index.scss";
+
 export const NuevaContraseña = () => {
 	return (
 		<div className="changepasswordcontainer container-fluid vh-100 d-flex align-items-center justify-content-center p-5">

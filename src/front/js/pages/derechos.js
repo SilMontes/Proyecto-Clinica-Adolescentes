@@ -1,12 +1,11 @@
 import React from "react";
 import { Button, Card, Link } from "react-bootstrap";
-
-// import "../../styles/demo.scss";
+import "../../styles/index.scss";
 
 export const Derechos = () => {
 	return (
 		<div className="container">
-			<Card className="derechos">
+			<Card className="derechos" style={{ background: "#FFD23F" }}>
 				<Card.Header>
 					<strong>CONVENCIÓN SOBRE LOS DERECHOS DEL NIÑO</strong>
 				</Card.Header>

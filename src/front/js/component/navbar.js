@@ -5,8 +5,12 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
-				<span className=" clinic navbar-brand mb-0 h1">Clínica de Adolescentes</span>
-				<img src="/img/Icono.png" alt="icono" />
+				<span className="tracking-in-expand  navbar-brand mb-0 h1">Clínica de Adolescentes</span>
+				<img
+					className="heartbeat"
+					src="/workspace/Proyecto-Clinica-Adolescentes/src/front/img/Icono.png"
+					alt="icono"
+				/>
 			</Link>
 
 			<div className="float-right d-flex flex-row ml-auto">
