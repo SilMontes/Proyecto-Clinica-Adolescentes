@@ -15,11 +15,8 @@ import smtplib
 
 api = Blueprint('api', __name__)
 
-api.config["JWT_SECRET_KEY"] = "super-secret"  # TOKEN
-jwt = JWTManager(app)  #TOKEN 
-
 #-----------------------------------------------
-@api.before_first_request
+@api.before_app_first_request
 def agregar_especialistas():
     especialistas=[
     {'nombre':'Alejandro Villalobos',
