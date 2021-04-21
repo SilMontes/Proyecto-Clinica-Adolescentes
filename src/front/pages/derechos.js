@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Link } from "react-bootstrap";
-import "../../styles/index.scss";
+import "../styles/index.scss";
 
 export const Derechos = () => {
 	return (

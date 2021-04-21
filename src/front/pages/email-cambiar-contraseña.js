@@ -3,7 +3,6 @@ import React from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
 import "../styles/index.scss";
 
-
 export const EmailCambiarContraseña = () => {
 	return (
 		<div className="slide-top container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
