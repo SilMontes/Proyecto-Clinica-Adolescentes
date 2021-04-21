@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Articulo } from "../component/articulo";
-import "../../styles/orientacion.scss";
+import { Articulo } from "../js/component/articulo";
+import "../styles/orientacion.scss";
 
 export const Orientacion = () => {
 	return (

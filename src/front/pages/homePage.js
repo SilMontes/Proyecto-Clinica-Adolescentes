@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { CardHomePage } from "../component/cardHomePage";
-import { Carousel } from "../component/carousel";
-import "../../styles/homePageStyle.scss";
+import { CardHomePage } from "../js/component/cardHomePage";
+import { Carousel } from "../js/component/carousel";
+import "../styles/homePageStyle.scss";
 
 export const HomePage = () => {
 	let namePsico = "PSICOLOGÍA";

@@ -1,5 +1,5 @@
 import React from "react";
-import { CardExpertos } from "../component/card-expertos";
+import { CardExpertos } from "../js/component/card-expertos";
 import { Form, Col, Container, InputGroup } from "react-bootstrap";
 export const PaginaExpertos = () => {
 	return (
