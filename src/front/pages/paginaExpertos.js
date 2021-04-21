@@ -3,8 +3,8 @@ import { CardExpertos } from "../js/component/card-expertos";
 import { Form, Col, Container, InputGroup } from "react-bootstrap";
 export const PaginaExpertos = () => {
 	return (
-		<React.Fragment>
-			<div className="row justify-content-center">
+		<Container>
+			<div className="row justify-content-center mb-3">
 				<Form
 					className="col-10 col-lg-8 justify-content-center"
 					style={{ background: "#0f4c75", marginLeft: "0" }}>
@@ -34,9 +34,15 @@ export const PaginaExpertos = () => {
 					</Form.Row>
 				</Form>
 			</div>
-			<Container>
+			<Container fluid className="m-0 row justify-content-center align-items-center">
+				<CardExpertos />
+				<CardExpertos />
+				<CardExpertos />
+				<CardExpertos />
+				<CardExpertos />
+				<CardExpertos />
 				<CardExpertos />
 			</Container>
-		</React.Fragment>
+		</Container>
 	);
 };
