@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/index.scss";
+import "../styles/index.scss";
 import { Link } from "react-router-dom";
 
 export const Articulo = () => {
