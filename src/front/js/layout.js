@@ -16,7 +16,7 @@ import { EmailCambiarContraseña } from "./pages/email-cambiar-contraseña";
 import { PaginaExpertos } from "./pages/paginaExpertos";
 import { Reporta } from "./pages/reporta";
 import { NuevaContraseña } from "./pages/nuevacontraseña";
-import { CodigoCambiarContraseña } from "./pages/codigo-cambiar-contraseña";
+import { CodigoCambiarContraseña } from "./pages/Codigo-cambiar-contraseña";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
