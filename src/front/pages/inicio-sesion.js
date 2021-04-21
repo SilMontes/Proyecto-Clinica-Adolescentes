@@ -8,8 +8,8 @@ export const InicioSesion = () => {
 				<div className="login-register-formcontainer">
 					<div className="titleFormloginRegister">Bienvenido</div>
 					<form className="loginregisterform">
-						<input type="text" name="username" placeholder="Ingrese su nombre de usuario" />
-						<input type="password" name="loginpassword" placeholder="Ingrese su contraseña" />
+						<input type="text" name="email" placeholder="Ingrese su nombre de usuario" />
+						<input type="password" name="password" placeholder="Ingrese su contraseña" />
 						<button type="submit">Ingresar</button>
 					</form>
 					<div className="formfooter">

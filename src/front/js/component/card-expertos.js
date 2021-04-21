@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import "../../styles/card-expertos.scss";
-export const CardExpertos = () => {
+import propTypes from "prop-types";
+export const CardExpertos = (props) => {
 	return (
 		<React.Fragment>
 			<Col xs={12} md={6} lg={4} className="mt-3">
@@ -27,4 +28,11 @@ export const CardExpertos = () => {
 			</Col>
 		</React.Fragment>
 	);
+};
+CardExpertos.propTypes = {
+	nombre: propTypes.string,
+	especialidad: propTypes.string,
+    imagen: propTypes.string,
+    detalles:propTypes.string,
+    ubicacion:propTypes.string
 };
