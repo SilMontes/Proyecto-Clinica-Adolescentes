@@ -1,28 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Col } from "react-bootstrap";
+import "../../styles/card-expertos.scss";
 export const CardExpertos = () => {
 	return (
 		<React.Fragment>
-			<div className="experto-card">
-				<div className="photocontainer">
-					<div className="photo-experto" />
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfCDIA77zO5QDN1sPSvIUBZbuFU_-hmMOpLQ&usqp=CAU" />
-				</div>
-				<div className="descriptionexperto">
-					<h1>Lorem ipsum dolor sit amet</h1>
-					<h2>Lorem ipsum dolor sit amet</h2>
-					<p>
-						{" "}
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati
-						enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.
-					</p>
-					<p className="read-more-experto">
-						<Link to="#">
-							<button>Más información</button>
+			<Col xs={12} md={6} lg={4} className="mt-3">
+				<div
+					className="imagen-especialista-container spring-fever"
+					style={{
+						backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS54OFF1LVAHxAwDYPFZucxdxHi_RwvuV4rRQ&usqp=CAU")`
+					}}>
+					<div className="nombre-especialidad">
+						<h3>Nombre Cada Experto</h3>
+						<div className="especilidad-expertos">Especialidad</div>
+					</div>
+					<div className="detalles-experto">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Ut enim ad minim...
+						<Link to="#" className="read-more-experto row justify-content-center">
+							<button className="col-6">Más información</button>
 						</Link>
-					</p>
+					</div>
+					<div className="color-overlay" />
 				</div>
-			</div>
+			</Col>
 		</React.Fragment>
 	);
 };

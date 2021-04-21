@@ -1,6 +1,7 @@
 import React from "react";
-import { BotonIrInicioSesion } from "../component/boton-regresar-inicio-sesion";
-import "../../styles/index.scss";
+
+import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
+import "../styles/index.scss";
 
 export const NuevaContraseña = () => {
 	return (

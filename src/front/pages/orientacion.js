@@ -1,7 +1,8 @@
 import React from "react";
+
 import { Row, Col, Modal } from "react-bootstrap";
-import { Articulo } from "../component/articulo";
-import "../../styles/index.scss";
+import { Articulo } from "../js/component/articulo";
+import "../styles/orientacion.scss";
 import ReactPlayer from "react-player/youtube";
 
 export const Orientacion = () => {
