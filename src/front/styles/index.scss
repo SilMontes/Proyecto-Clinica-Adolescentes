@@ -9,10 +9,17 @@ $light: #457B9D;
 $beige: #F1FAEE;
 
 
+.container, .colCarousel , .React.Fragment {
+    margin-top: 40px;
+}
+
 * {
 position: relative;
 }
 
+p{
+    font-family: 'Nunito', sans-serif;
+}
 
 Link{
     font-family: 'Nunito', sans-serif;
@@ -26,10 +33,115 @@ Link{
     color: $beige;
 
 }
-.clinic{
+.tracking-in-expand{
 color: $yellow;
 margin-left: 7px;
+
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*icono*/ /*kimberly*/
+.heartbeat {
+	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+	        animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+
 
 .linea{
     margin: 7px;
@@ -55,15 +167,18 @@ font-family: 'Poppins', sans-serif;
 	   -moz-box-shadow: 0 8px 6px -6px  $blue;
 	        box-shadow: 0 8px 6px -6px  $blue;
 }
+
 .navbar{
     background-color: $light;
 color: $yellow;
 }
+
 .card-header{
     font-family: 'Poppins', sans-serif;
     background-color: $light;
     color: $beige;
 }
+
 .titulo{
  float: center;
  margin-top: 30px;
@@ -87,19 +202,45 @@ color: $yellow;
 height: 1647px;
 }
 
-/*reporta*/
+/*reporta*//*kimberly*/
 .reporta{
 font-family: 'Poppins', sans-serif;
 }
 
-/*foot*/
-
-.footer{
-/*footer*/
-
-footer{
-    padding-top: 30px;
+.formulario{
+background-color: $light;
+border-radius: 30px;
+padding: 20px;
+text-align: left;
+margin: auto;
+margin-top: 180px ;
+margin-bottom: 80px;
 }
+
+
+.mensaje{
+     font-family: 'Nunito', sans-serif;
+    color: $beige;
+}
+
+.cancel{
+    padding: 6px;
+    margin: 20px;
+    color: $beige;
+    background: $yellow;
+}
+
+ .submit, .call {
+    margin: 20px;
+    color: $beige;
+}
+
+/*foot*//*kim*/
+footer{
+    background-color: $yellow;
+    margin: 0%;
+}
+
 
 i{
     font-size: 27px;
@@ -107,16 +248,15 @@ i{
     left: 32%;
     text-align: center;
     color: $blue;
-    
 }
 
 .titfoo{
     color: $blue;
     padding-top: 10px; 
 }
-.col-4, .footer {
-    background-color: $yellow;
-    padding-left: 30px;
+
+.footer {
+background-color: $yellow;
 }
 
 .abajo{
@@ -128,8 +268,9 @@ i{
     margin: 0px;
     padding-top: 180px; 
 }
-}
+
 /*boton whatsapp*/
+
 .float{
 	position:fixed;
 	width:60px;
@@ -144,6 +285,7 @@ i{
 	box-shadow: 2px 2px 3px #999;
   z-index:100;
 }
+
 .float:hover {
 	text-decoration: none;
 	color: #25d366;
@@ -157,6 +299,43 @@ i{
 i .fab{
     size: 20px;
 }
+
+/*Orientacion*/ /*Emily*/
+
+.orientacionArticulos{
+  margin-left: 150px;
+  margin-bottom: 20px;
+}
+
+.card{
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.btn{
+    font-family: 'Nunito', sans-serif;
+}
+
+
+/*Derechos*/
+
+.derechos{
+     font-family: 'Poppins', sans-serif;
+     background-color: $yellow;
+     color: black;
+}
+
+.btn-link{
+    border-radius: 20px;
+}
+
+.card-header{
+    background: none;
+    color: $light;
+}
+
 
 //colores página expertos (Silvia)
 $color_white_experto: #fff;
@@ -177,6 +356,9 @@ $color_grey_dark_experto: #a2a2a2;
     height: 100%;
 }
 
+.experto{
+    padding: auto;
+}
 .mainLoginSignUp {
     max-width: 500px;
     width: 100%;
@@ -271,6 +453,33 @@ $color_grey_dark_experto: #a2a2a2;
 }
 
 ///////////// Estilos cambiar contraseña (Silvia) /////////////////
+
+.slide-top {
+	-webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
 .formpassword{
     width: 500px;
     background-color: #1D3557;
@@ -279,6 +488,7 @@ $color_grey_dark_experto: #a2a2a2;
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
 }
+
 .btnCambiarContraseña{
     text-decoration: none;
     border:none;
@@ -304,7 +514,7 @@ $color_grey_dark_experto: #a2a2a2;
 
 .btnIrInicioSesión:hover, .btnCambiarContraseña:hover{
     background-color: $yellow;
-    color:rgb(8, 18, 88 );
+    color: $blue;
     border:none;
 }
 .changepasswordcontainer{
@@ -342,8 +552,7 @@ $color_grey_dark_experto: #a2a2a2;
     background: transparent;
     text-align: center;
 }
-
-//-----------  Pagina Expertos (Silvia)-------------------------------
+//expertos
 .filtradoBusquedaExpertos{
     justify-content: center;
 }

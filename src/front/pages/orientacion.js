@@ -1,32 +1,35 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+
+import { Row, Col, Modal } from "react-bootstrap";
 import { Articulo } from "../js/component/articulo";
 import "../styles/orientacion.scss";
+import ReactPlayer from "react-player/youtube";
 
 export const Orientacion = () => {
 	return (
-		<div>
-			<Row mb="auto">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
-					<div>
-						<div style={{ border: "1px solid blue" }} autoComplete="true">
-							<div className="gcse-search" />
-						</div>
-					</div>
-				</Col>
-			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
+		<div className="orientacionArticulos">
+			<Row>
+				<Col xs={4}>
 					<Articulo />
 				</Col>
-			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
+
+				<Col xs={4}>
 					<Articulo />
 				</Col>
-			</Row>
-			<Row mb="auto" className="orientacionArticulos">
-				<Col xs lg="8" md={{ span: 6, offset: 2 }}>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
+					<Articulo />
+				</Col>
+
+				<Col xs={4}>
 					<Articulo />
 				</Col>
 			</Row>

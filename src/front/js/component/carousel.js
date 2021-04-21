@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/index.scss";
 
 export const Carousel = () => {
 	return (
@@ -60,6 +61,7 @@ export const Carousel = () => {
 					</div>
 				</div>
 			</div>
+
 			<button
 				className="carousel-control-prev"
 				type="button"
