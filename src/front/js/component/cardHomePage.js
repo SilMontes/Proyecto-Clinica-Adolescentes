@@ -24,8 +24,6 @@ export const CardHomePage = props => {
 	);
 };
 
-// validar props
-
 CardHomePage.propTypes = {
 	url: propTypes.string,
 	name: propTypes.string,
