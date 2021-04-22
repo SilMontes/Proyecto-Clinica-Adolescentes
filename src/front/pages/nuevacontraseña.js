@@ -1,21 +1,76 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
+import { Context } from "../js/store/appContext";
+import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2";
 export const NuevaContraseña = () => {
+	const { store, actions } = useContext(Context);
+	const [errorSmallMessage, setErrorSmallMessage] = useState(false);
+	useEffect(() => {
+		store.redirect = false;
+	}, []);
+	useEffect(
+		() => {
+			if (store.nuevaContraseñaDatos.nuevaContraseña != store.nuevaContraseñaDatos.confirmarNuevaContraseña) {
+				setErrorSmallMessage(true);
+			} else if (
+				store.nuevaContraseñaDatos.nuevaContraseña === store.nuevaContraseñaDatos.confirmarNuevaContraseña
+			) {
+				setErrorSmallMessage(false);
+			}
+		},
+		[store.nuevaContraseñaDatos.nuevaContraseña, store.nuevaContraseñaDatos.confirmarNuevaContraseña]
+	);
+	useEffect(
+		() => {
+			if (store.erroresNuevaContraseña != "") {
+				Swal.fire({
+					text: store.erroresNuevaContraseña,
+					iconHtml: "❗",
+					timer: 3000,
+					confirmButtonText: "Entendido"
+				});
+			}
+		},
+		[store.erroresNuevaContraseña]
+	);
+
 	return (
 		<div className="changepasswordcontainer container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
 			<div className="formpassword container my-5 rounded p-4">
 				<div className="boxcambiarcontraseña">
 					<h4>Restablecer la contraseña</h4>
-					<small style={{ color: "#bbe1fa" }}>
-						Su contraseña debe contener 8 carácteres como mínimo, al menos una letra mayúscula, una letra
-						minúscula y un carácter especial
-					</small>
-					<form>
+					{errorSmallMessage == false ? (
+						<small style={{ color: "#bbe1fa" }}>
+							Su contraseña debe contener 8 carácteres como mínimo, al menos una letra mayúscula, una
+							letra minúscula y un carácter especial
+						</small>
+					) : (
+						<p className="ml-4">
+							<i className="fas fa-exclamation" style={{ color: "#ffd23f" }}>
+								{" "}
+								Ambas contraseñas deben ser iguales
+							</i>
+						</p>
+					)}
+					<form onSubmit={e => actions.crearNuevaContraseña(e)}>
 						<div className="inputBox">
-							<input placeholder="Nueva contraseña" />
+							<input
+								placeholder="Nueva contraseña"
+								name="nuevaContraseña"
+								onChange={e => {
+									actions.onChangeNuevaContraseña(e);
+								}}
+							/>
 						</div>
 						<div className="inputBox">
-							<input placeholder="Vuelva a escribir la contraseña" />
+							<input
+								placeholder="Vuelva a escribir la contraseña"
+								name="confirmarNuevaContraseña"
+								onChange={e => {
+									actions.onChangeNuevaContraseña(e);
+								}}
+							/>
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
@@ -26,6 +81,7 @@ export const NuevaContraseña = () => {
 					</form>
 				</div>
 			</div>
+			{store.redirect == true && <Redirect to="/iniciosesion" />}
 		</div>
 	);
 };

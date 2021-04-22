@@ -23,13 +23,13 @@ export const Registro = () => {
 
 	useEffect(
 		() => {
-			if (store.datosRegistro.confim_password != store.datosRegistro.password) {
+			if (store.datosRegistro.confirmar_Contraseña != store.datosRegistro.contraseña) {
 				setColorInput("2px solid #ff0000");
-			} else if (store.datosRegistro.confim_password === store.datosRegistro.password) {
+			} else if (store.datosRegistro.confirmar_Contraseña === store.datosRegistro.contraseña) {
 				setColorInput("none");
 			}
 		},
-		[store.datosRegistro.confim_password, store.datosRegistro.password]
+		[store.datosRegistro.confirmar_Contraseña, store.datosRegistro.contraseña]
 	);
 	return (
 		<div className="containerLoginSignUp">
@@ -70,14 +70,14 @@ export const Registro = () => {
 						<div>
 							<input
 								type="text"
-								name="password"
+								name="contraseña"
 								placeholder="Contraseña"
 								onChange={e => actions.onChangeRegistro(e)}
 							/>
 							<input
 								type="password"
 								style={{ outline: colorInput }}
-								name="confim_password"
+								name="confirmar_Contraseña"
 								placeholder="Contraseña de confirmación"
 								onChange={e => actions.onChangeRegistro(e)}
 							/>

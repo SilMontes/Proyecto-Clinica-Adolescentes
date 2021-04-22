@@ -34,7 +34,7 @@ export const InicioSesion = () => {
 						/>
 						<input
 							type="password"
-							name="password"
+							name="contraseña"
 							placeholder="Contraseña"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
@@ -42,7 +42,12 @@ export const InicioSesion = () => {
 					</form>
 					<div className="formfooter">
 						<Link to="/emailcambiarcontraseña">
-							<span>¿Olvidó su contraseña</span>
+							<span
+								onClick={() => {
+									(store.erroresEmailContraseña = ""), (store.redirectCodigoConfirmacion = false);
+								}}>
+								¿Olvidó su contraseña
+							</span>
 						</Link>
 						<Link to="/registro">
 							<span>¿Aún no tiene una cuenta? ¡Registrese!</span>
