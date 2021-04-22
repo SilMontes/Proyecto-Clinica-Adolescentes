@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export const Footer = () => (
 	<div className="container-fluid">
@@ -16,11 +16,12 @@ export const Footer = () => (
 					<i className="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/PANICR/" />
 					<i className="fab fa-instagram" target="_blank" href="" />
 					<i className="fab fa-youtube" target="_blank" href="" />
+					<br />
+					<br />
+					<p className="text-center">©2021 Derechos Reservados.</p>
+					<p className="text-center">Hecho por 3m1h Lab Creativo.</p>
 				</div>
-
-				<div className="footer col-4">
-					<p className="todos text-right">Todos los derechos estan reservados</p>
-				</div>
+				<div className="footer col-4" />
 			</div>
 		</footer>
 	</div>

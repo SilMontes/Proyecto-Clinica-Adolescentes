@@ -7,20 +7,25 @@ export const Reporta = () => {
 			<div className="row">
 				<div>
 					<h1 className="reporta d-flex justify-content-center">Reportá</h1>
-
-					<p className="text-center">
-						Denuncie situaciones de Violencia, acoso u abuso sexuales al Servicio de Emergencia. Desde este
-						servicio, se da atención de todos aquellos incidentes de emergencia y consulta sobre violencia.
-						En este servicio Llámenos: 2295-3000
-					</p>
-
+					<div className="container">
+						<p className="text-center">
+							Denuncie situaciones de Violencia, Acoso o Abuso Sexual al Servicio de Emergencia. Desde
+							este servicio, se da atención a todos aquellos incidentes de emergencia y consulta sobre
+							violencia. En este servicio Llámenos: 2295-3000
+						</p>
+						<div className="text-center">
+							<h3>En este servicio llámenos: 2295-3000</h3>
+							<h3>Emergencias: 911</h3>
+							<h3>Niños y niñas: 1147</h3>
+							<h3>Madre adolescente: 800-226-2626</h3>
+						</div>
+					</div>
 					<div className="col-12  d-flex align-items-center justify-content-center">
 						<button type="button" className=" call btn rounded-pill">
 							Llámenos
 						</button>
 					</div>
 				</div>
-
 				<div className=" col-6 formulario form-group">
 					<form>
 						<label className="mensaje" htmlFor="comment">
