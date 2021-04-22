@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Icono from "../../img/Icono.png";
 
 export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
-				<span className=" clinic navbar-brand mb-0 h1">Clínica de Adolescentes</span>
+				<span className="tracking-in-expand  navbar-brand mb-0 h1">Clínica de Adolescentes</span>
+				<img className="heartbeat" src={Icono} alt="icono" />
 			</Link>
 
 			<div className="float-right d-flex flex-row ml-auto">

@@ -8,8 +8,8 @@ export const PaginaExpertos = () => {
 		<Container>
 			<div className="row justify-content-center mb-3">
 				<Form
-					className="col-10 col-lg-8 justify-content-center"
-					style={{ background: "#0f4c75", marginLeft: "0" }}>
+					className=" col-10 col-lg-8 justify-content-center"
+					style={{ background: "#0f4c75", marginLeft: "0", padding: "0" }}>
 					<Form.Row className="justify-content-center">
 						<Col xs="5" md="3">
 							<Form.Group className="pt-3">

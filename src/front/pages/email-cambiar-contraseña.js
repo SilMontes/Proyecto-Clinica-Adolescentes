@@ -1,8 +1,12 @@
+
 import React, { useContext, useEffect } from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
 import Swal from "sweetalert2";
 import { Context } from "../js/store/appContext";
 import { Redirect } from "react-router-dom";
+import "../styles/index.scss";
+
+
 export const EmailCambiarContraseña = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
@@ -23,7 +27,7 @@ export const EmailCambiarContraseña = () => {
 	);
 
 	return (
-		<div className="changepasswordcontainer container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
+		<div className="slide-top container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
 			<div className="formpassword container my-5 rounded p-4">
 				<div className="boxcambiarcontraseña">
 					<h4>Recuperación de contraseña</h4>

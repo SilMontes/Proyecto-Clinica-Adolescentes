@@ -3,6 +3,9 @@ import { Context } from "../js/store/appContext";
 import { Modal, Button, Alert } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
+import "../styles/index.scss";
+
+
 export const Registro = () => {
 	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);

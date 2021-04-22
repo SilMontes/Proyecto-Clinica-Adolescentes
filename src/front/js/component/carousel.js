@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/index.scss";
 
 export const Carousel = () => {
 	return (
@@ -24,49 +25,64 @@ export const Carousel = () => {
 					data-bs-slide-to="2"
 					aria-label="Slide 3"
 				/>
+				<button
+					type="button"
+					data-bs-target="#carouselExampleCaptions"
+					data-bs-slide-to="3"
+					aria-label="Slide 4"
+				/>
+				<button
+					type="button"
+					data-bs-target="#carouselExampleCaptions"
+					data-bs-slide-to="4"
+					aria-label="Slide 5"
+				/>
 			</div>
 			<div className="carousel-inner">
 				<div className="carousel-item active">
 					<img
-						src="https://images.unsplash.com/photo-1470955233021-2c79a52e5034?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+						src="https://www.pictoline.com/imgs/2019/08/09/1makoARZZum7KoQwUaTmAoEUCj3u7TilwwhDvA5B.png"
 						className="d-block w-100"
-						alt="..."
+						alt="Imagen ausente"
 					/>
-					<div className="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first slide.</p>
-					</div>
 				</div>
 				<div className="carousel-item">
 					<img
-						src="https://images.unsplash.com/photo-1470955233021-2c79a52e5034?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+						src="https://www.pictoline.com/imgs/2021/03/12/ss5rPBOBuWWAXFhG1UJUzmSOzNeA2gLGzXFVnsYb.png"
 						className="d-block w-100"
-						alt="..."
+						alt="Imagen ausente"
 					/>
-					<div className="carousel-caption d-none d-md-block">
-						<h5>Second slide label</h5>
-						<p>Some representative placeholder content for the second slide.</p>
-					</div>
 				</div>
 				<div className="carousel-item">
 					<img
-						src="https://lafuerzanoticias.files.wordpress.com/2018/10/mustafar-tall.jpg?w=1536&h=768&crop=1"
+						src="https://www.pictoline.com/imgs/2016/03/08/FEMINISMO_SITE.png"
 						className="d-block w-100"
-						alt="..."
+						alt="Imagen ausente"
 					/>
-					<div className="carousel-caption d-none d-md-block">
-						<h5>Third slide label</h5>
-						<p>Some representative placeholder content for the third slide.</p>
-					</div>
+				</div>
+				<div className="carousel-item">
+					<img
+						src="https://www.pictoline.com/imgs/2018/01/08/a-8.png"
+						className="d-block w-100"
+						alt="Imagen ausente"
+					/>
+				</div>
+				<div className="carousel-item">
+					<img
+						src="https://www.pictoline.com/imgs/2021/02/02/AmENrmNweGMWJ8H7bjBJ8LV7XdLoan6KC0vkNiNl.png"
+						className="d-block w-100"
+						alt="Imagen ausente"
+					/>
 				</div>
 			</div>
+
 			<button
 				className="carousel-control-prev"
 				type="button"
 				data-bs-target="#carouselExampleCaptions"
 				data-bs-slide="prev">
 				<span className="carousel-control-prev-icon" aria-hidden="true" />
-				<span className="visually-hidden">Previous</span>
+				<span className="visually-hidden">Anterior</span>
 			</button>
 			<button
 				className="carousel-control-next"
@@ -74,7 +90,7 @@ export const Carousel = () => {
 				data-bs-target="#carouselExampleCaptions"
 				data-bs-slide="next">
 				<span className="carousel-control-next-icon" aria-hidden="true" />
-				<span className="visually-hidden">Next</span>
+				<span className="visually-hidden">Siguiente</span>
 			</button>
 		</div>
 	);

@@ -3,6 +3,9 @@ import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesio
 import { Context } from "../js/store/appContext";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import "../styles/index.scss";
+
+
 export const NuevaContraseña = () => {
 	const { store, actions } = useContext(Context);
 	const [errorSmallMessage, setErrorSmallMessage] = useState(false);
