@@ -14,7 +14,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				password: ""
 			},
 			emailCambiarPassword: "",
-			codigoCambiarPassword: ""
+			codigoCambiarPassword: "",
+			redirect: false,
+			erroresRegistro: [],
+			token: sessionStorage.getItem("token") || ""
 		},
 		actions: {
 			//---------------------------- OBTENER ESPECIALISTAS ------------------------------------
@@ -39,7 +42,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { datosRegistro } = store;
 				datosRegistro[e.target.name] = e.target.value;
 				setStore({ datosRegistro });
-				console.log(store.datosRegistro);
 			},
 			/// SOLICITUD POST REGISTRO
 			onSubmitRegistro: async e => {
@@ -54,13 +56,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				const datosRespuesta = await respuesta.json();
 				if (respuesta.status == "200") {
-					return datosRespuesta;
+					setStore({ ...store, redirect: true });
 				} else if (respuesta.status == "400" || respuesta.status == "401") {
-					console.log(datosRespuesta);
-					//throw validacionErrores(datosRespuesta || ["Hubo un error registrandose"]);
+					setStore({ ...store, erroresRegistro: datosRespuesta });
 				} else {
-					//throw Error(respuesta.status);
-					console.error("Error ", respuesta.status);
+					console.error(respuesta.status);
 				}
 			},
 			/// Valor input INICIO SESION
@@ -83,21 +83,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				const datosSolicitud = await respuesta.json();
 				if (respuesta.status == "200") {
-					return datosSolicitud;
+					sessionStorage.setItem("token", responseData[1].token);
+					sessionStorage.setItem("id_usuario", responseData[1].id_usuario);
+					setStore({ ...store, token: responseData[1].token });
 				} else if (respuesta.status == "400" || respuesta.status == "401") {
-					console.log(datosSolicitud);
-					//throw validacionErrores(datosSolicitud || ["Hubo un error iniciando sesión"]);
+					setStore({ ...store, erroresInicioSesion: datosSolicitud });
 				} else {
-					//throw Error(respuesta.status);
-					console.error("Error ", respuesta.status);
+					console.log("Error inicio sesion ", respuesta.status);
 				}
 			}
 		}
 	};
 };
-const validacionErrores = listaErrers => {
-	return {
-		errores: listaErrers
-	};
-};
+
 export default getState;

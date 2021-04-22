@@ -24,10 +24,10 @@ export const Navbar = () => {
 				<Link className="menu" to="/derechos">
 					Derechos
 				</Link>
-				<Link className="menu" to="expertos">
+				<Link className="menu" to="/expertos">
 					Expertos
 				</Link>
-				<Link className="menu" to="reporta">
+				<Link className="menu" to="/reporta">
 					Reportar
 				</Link>
 			</div>

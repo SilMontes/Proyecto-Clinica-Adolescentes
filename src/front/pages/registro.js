@@ -1,13 +1,22 @@
-import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../js/store/appContext";
 import { Modal, Button, Alert } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+
 export const Registro = () => {
 	const { store, actions } = useContext(Context);
-	const [errores, setErrores] = useState([]);
-	const { history } = useHistory();
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	useEffect(
+		() => {
+			if (store.erroresRegistro.length > 0) {
+				handleShow();
+			}
+		},
+		[store.erroresRegistro]
+	);
 	return (
 		<div className="containerLoginSignUp">
 			<div className="mainLoginSignUp">
@@ -15,12 +24,9 @@ export const Registro = () => {
 					<div className="titleFormloginRegister">Crea una cuenta</div>
 					<form
 						className="loginregisterform"
-						onSubmit={e =>
-							actions
-								.onSubmitRegistro(e)
-								.then(data => history.push("/iniciosesion"))
-								.catch(error => setErrores(error.errores))
-						}>
+						onSubmit={e => {
+							actions.onSubmitRegistro(e);
+						}}>
 						<div>
 							<input
 								type="text"
@@ -60,17 +66,19 @@ export const Registro = () => {
 					</form>
 				</div>
 			</div>
-			{/*errores.length > 0 && setShow(true)*/}
-			<Modal show={show} onHide={handleClose} animation={false}>
+
+			<Modal show={show} onHide={() => handleClose} animation={false}>
 				<Modal.Header closeButton />
 				<Modal.Body>
 					<Alert variant="danger">
 						<ul>
-							{/*errores.map((error, index) => {
-								<div key={index}>
-									<li>{error.msg || error.message}</li>
-								</div>;
-							})*/}
+							{store.erroresRegistro.map((error, index) => {
+								return (
+									<div key={index}>
+										<li style={{ listStyleType: "none" }}>{error.msg || error}</li>
+									</div>
+								);
+							})}
 						</ul>
 					</Alert>
 				</Modal.Body>
@@ -80,6 +88,7 @@ export const Registro = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
+			{store.redirect == true && <Redirect to="/iniciosesion" />}
 		</div>
 	);
 };

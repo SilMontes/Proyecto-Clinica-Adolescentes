@@ -114,11 +114,11 @@ def create_user():
     mensajes_error=[]
 
     if not primer_nombre:
-        mensajes_error.append({"msg":"Por favor, ingrese su nombre completo"}), 400
+        mensajes_error.append({"msg":"Ingrese su nombre completo"}), 400
     if not apellidos:
-        mensajes_error.append({"msg":"Por favor, ingrese sus apellidos"}), 400
+        mensajes_error.append({"msg":"Ingrese sus apellidos"}), 400
     if not email:
-        mensajes_error.append({"msg":"Por favor, ingrese su email"}), 400
+        mensajes_error.append({"msg":"Ingrese su email"}), 400
     if not password:
         mensajes_error.append({"msg":"Por favor, cree una contraseña"}), 400
     if len(mensajes_error) >0:
@@ -127,7 +127,7 @@ def create_user():
     if not re.match('^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,8}$',email.lower()):
         mensajes_error.append({'msg':'Enter a valid email format'}),400
     elif not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[^\n\t]{8,20}$', password):
-        mensajes_error.append({'msg':'Su contraseña debe contener: una letra mayúscula, una minúcula, un caracter especial y una longitud mínima de 8 caracteres'}),400
+        mensajes_error.append({'msg':'Su contraseña debe contener al menos una letra mayúscula, una letra minúscula, un caracter especial y una longitud mínima de 8 caracteres'}),400
     
     if len(mensajes_error) >0:
         return jsonify(mensajes_error),400
@@ -135,7 +135,8 @@ def create_user():
     usuario_existente = User.query.filter_by(email=email).first()
     # asegurandose que el email sea único para cada usuario
     if usuario_existente:
-        return jsonify({"msg":"Por favor, elija un email diferente. El que ingresó ya está en uso"}), 400
+        mensajes_error.append({"msg":"Por favor, elija un email diferente. El que ingresó ya está en uso"})
+        return jsonify(mensajes_error),400
     
     #generando hash
     encrypted_password=generate_password_hash(password)
