@@ -6,7 +6,6 @@ import { Redirect } from "react-router-dom";
 import { Modal, Button, Alert } from "react-bootstrap";
 import "../styles/index.scss";
 
-
 export const InicioSesion = () => {
 	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);

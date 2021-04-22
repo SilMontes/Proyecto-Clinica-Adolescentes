@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Row, Col, Container, Modal } from "react-bootstrap";
 
@@ -7,7 +6,6 @@ import "../styles/orientacion.scss";
 import ReactPlayer from "react-player/youtube";
 
 export const Orientacion = () => {
-
 	let nameDepr = "DEPRESIÓN";
 	let urlDepr =
 		"https://images.unsplash.com/photo-1506084219759-6d8777e5958d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZGVwcmVzc2VkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
@@ -75,26 +73,25 @@ export const Orientacion = () => {
 				</Col>
 			</Row>
 			<Row>
-      <Col xs={4}>
-						<Articulo name={nameDepr} url={urlDepr} />
-					</Col>
-					<Col xs={4}>
-						<Articulo name={nameTrau} url={urlTrau} />
-					</Col>
-					<Col xs={4}>
-						<Articulo name={nameAnsi} url={urlAnsi} />
-					</Col>
-					<Col xs={4}>
-						<Articulo name={nameStre} url={urlStre} />
-					</Col>
-					<Col xs={4}>
-						<Articulo name={nameDuel} url={urlDuel} />
-					</Col>
-					<Col xs={4}>
-						<Articulo name={nameRelac} url={urlRelac} />
-					</Col>
-				</Row>
-			</div>
-    
+				<Col xs={4}>
+					<Articulo name={nameDepr} url={urlDepr} />
+				</Col>
+				<Col xs={4}>
+					<Articulo name={nameTrau} url={urlTrau} />
+				</Col>
+				<Col xs={4}>
+					<Articulo name={nameAnsi} url={urlAnsi} />
+				</Col>
+				<Col xs={4}>
+					<Articulo name={nameStre} url={urlStre} />
+				</Col>
+				<Col xs={4}>
+					<Articulo name={nameDuel} url={urlDuel} />
+				</Col>
+				<Col xs={4}>
+					<Articulo name={nameRelac} url={urlRelac} />
+				</Col>
+			</Row>
+		</div>
 	);
 };

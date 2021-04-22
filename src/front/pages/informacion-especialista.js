@@ -1,11 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../js/store/appContext";
 import "../styles/index.scss";
 import { useParams } from "react-router-dom";
+import WhatsAppWidget from "react-whatsapp-widget";
+import "react-whatsapp-widget/dist/index.css";
+import { Row, Col } from "react-bootstrap";
 
 export const InformacionEspecialista = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
+	const [mensaje, setMensaje] = useState("");
+	useEffect(() => {
+		sessionStorage.setItem("nombre", "Sil");
+		setMensaje(
+			"¡Hola " + sessionStorage.getItem("nombre", "Sil") + "! Me alegra que me escibas\n ¿Cómo puedo ayudarte?"
+		);
+	}, []);
+
 	return (
 		<div className=" expertos container">
 			{store.datosEspecialistas.length > 0 && (
@@ -39,14 +50,24 @@ export const InformacionEspecialista = () => {
 							</ul>
 						</div>
 					</div>
+					<div className="float">
+						<WhatsAppWidget
+							phoneNumber={store.datosEspecialistas[params.personaid].numero_telefonico}
+							sendButton="Enviar"
+							message={mensaje}
+							textReplyTime=""
+							companyName={store.datosEspecialistas[params.personaid].nombre}
+							className="whatsappIcono"
+						/>
+					</div>
 
-					<a
+					{/* <a
 						href={`https://api.whatsapp.com/send?phone=506${
-							store.datosEspecialistas[params.personaid].numero_telefonico
+							// store.datosEspecialistas[params.personaid].numero_telefonico
 						}`}
 						className="float">
 						<i className="fab fa-whatsapp" />
-					</a>
+					</a> */}
 				</>
 			)}
 		</div>
