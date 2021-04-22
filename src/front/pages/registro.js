@@ -8,7 +8,10 @@ export const Registro = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
+	const [colorInput, setColorInput] = useState("none");
+	useEffect(() => {
+		store.erroresRegistro = [];
+	}, []);
 	useEffect(
 		() => {
 			if (store.erroresRegistro.length > 0) {
@@ -16,6 +19,17 @@ export const Registro = () => {
 			}
 		},
 		[store.erroresRegistro]
+	);
+
+	useEffect(
+		() => {
+			if (store.datosRegistro.confim_password != store.datosRegistro.password) {
+				setColorInput("2px solid #ff0000");
+			} else if (store.datosRegistro.confim_password === store.datosRegistro.password) {
+				setColorInput("none");
+			}
+		},
+		[store.datosRegistro.confim_password, store.datosRegistro.password]
 	);
 	return (
 		<div className="containerLoginSignUp">
@@ -60,14 +74,28 @@ export const Registro = () => {
 								placeholder="Contraseña"
 								onChange={e => actions.onChangeRegistro(e)}
 							/>
-							<input type="password" name="confim_password" placeholder="Contraseña de confirmación" />
+							<input
+								type="password"
+								style={{ outline: colorInput }}
+								name="confim_password"
+								placeholder="Contraseña de confirmación"
+								onChange={e => actions.onChangeRegistro(e)}
+							/>
+							{colorInput === "2px solid #ff0000" && (
+								<label>
+									<i className="fas fa-exclamation" style={{ color: "#ffd23f" }}>
+										{" "}
+										Ambas contraseñas deben ser iguales
+									</i>
+								</label>
+							)}
 						</div>
 						<button type="submit">Ingresar</button>
 					</form>
 				</div>
 			</div>
 
-			<Modal show={show} onHide={() => handleClose} animation={false}>
+			<Modal show={show} onHide={handleClose} animation={false}>
 				<Modal.Header closeButton />
 				<Modal.Body>
 					<Alert variant="danger">

@@ -9,6 +9,9 @@ export const InicioSesion = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
+	useEffect(() => {
+		store.erroresInicioSesion = [];
+	}, []);
 	useEffect(
 		() => {
 			if (store.erroresInicioSesion.length > 0) {
@@ -26,13 +29,13 @@ export const InicioSesion = () => {
 						<input
 							type="text"
 							name="email"
-							placeholder="Ingrese su nombre de usuario"
+							placeholder="Dirrección email"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
 						<input
 							type="password"
 							name="password"
-							placeholder="Ingrese su contraseña"
+							placeholder="Contraseña"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
 						<button type="submit">Ingresar</button>
@@ -47,7 +50,7 @@ export const InicioSesion = () => {
 					</div>
 				</div>
 			</div>
-			<Modal show={show} onHide={() => handleClose} animation={false}>
+			<Modal show={show} onHide={handleClose} animation={false}>
 				<Modal.Header closeButton />
 				<Modal.Body>
 					<Alert variant="danger">
@@ -68,7 +71,7 @@ export const InicioSesion = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-			{store.token != null && store.token != "" && <Redirect to="/iniciosesion" />}
+			{store.token != null && store.token != "" && <Redirect to="/" />}
 		</div>
 	);
 };

@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Especialistas
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
-from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required ##TOKEN
 import datetime 
 import random
 import smtplib
@@ -110,6 +110,7 @@ def create_user():
     apellidos = request.json.get("apellidos", None)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
+    confim_password=request.json.get("confim_password", None)
     numero_telefonico=request.json.get('numero_telefonico',None)
     mensajes_error=[]
 
@@ -121,6 +122,9 @@ def create_user():
         mensajes_error.append({"msg":"Ingrese su email"}), 400
     if not password:
         mensajes_error.append({"msg":"Por favor, cree una contraseña"}), 400
+    if password != confim_password:
+        mensajes_error.append({"msg":"La contraseña y la contraseña de confirmación debe ser iguales"}), 400
+
     if len(mensajes_error) >0:
         return jsonify(mensajes_error),400
     # verificando el formato del email y la contraseña
@@ -160,7 +164,7 @@ def login():
     elif not email:
         errores_mensaje.append({'msg':'Por favor, ingrese su email'}),400
     elif not password:
-        errores_mensaje.append({'msg':'Asegurese de ingresar la contraseña correcta'}),400
+        errores_mensaje.append({'msg':'La contraseña es requerida'}),400
 
     if len(errores_mensaje)>0:
         return jsonify(errores_mensaje),400
@@ -200,9 +204,9 @@ def restore_password():
         body = request.get_json()
         email = body.get('email')
         usuario = User.query.filter_by(email=email).first()
-        usuario_info=usuario.serialize()
         if not usuario:
-            return jsonify({'msg':'Ninguno de nuestros usuarios está haciendo uso de dirección email especificida'}),400
+            return jsonify({'msg':'No encontrado'}),400
+        usuario_info=usuario.serialize()
         code=round(random.random()*10000)
         usuario.codigo_password=code
         header="Codigo de recuperacion"
@@ -212,7 +216,7 @@ def restore_password():
         print(mail)
         db.session.add(usuario)
         db.session.commit()
-        return jsonify('Hemos enviado un código de confiamción a su email'),200
+        return jsonify('Hemos enviado un código de confirmación a su email'),200
 #---------------------------------------------
 @api.route('/codigo_usuario/<string:email>',methods=['POST'])
 def user_verification(email):
