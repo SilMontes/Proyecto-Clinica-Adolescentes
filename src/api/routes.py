@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import os
 import re
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Especialistas
+from api.models import db, User, Especialistas,Testimonio,ComentarioEspecialista
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -39,7 +39,7 @@ def agregar_especialistas():
     'apellido':'López',
     'especialidad':'Dermatología',
     'provincia':'San José',
-    'ubicacion':'Consultorio Médico La Florida,
+    'ubicacion':'Consultorio Médico La Florida',
     'telefono':'60869050',
     'imagen':'https://image.freepik.com/vector-gratis/perfil-avatar-mujer-icono-redondo_24640-14042.jpg',
     'detalles':'Ser psicóloga no es solo mi trabajo, es parte de quien soy, siento mucha pasión y amor por lo que hago, y trato de brindar a los demás lo que la psicología me ha brindado a mi.'},

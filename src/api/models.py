@@ -22,9 +22,23 @@ class User(db.Model):
             "email": self.email,
             'primer_nombre':self.primer_nombre,
             'apellidos':self.apellidos,
-            'numero_telefonico':self.numero_telefonico
+            'numero_telefonico':self.numero_telefonico,
             'testimonios':list(map(lambda testimonio:testimonio.serialize(),self.testimonios))
             # do not serialize the password, its a security breach
+        }
+class Testimonio(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    usuario_id=db.Column(db.Integer, db.ForeignKey(User.id))
+    experiencia=db.Column(db.String(1000))
+
+    def __repr__(self):
+        return '<Testimonio %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "usuario_id": self.usuario_id,
+            "experiencia":self.experiencia
         }
 class Especialistas(db.Model):
     id=db.Column(db.Integer, primary_key=True)
@@ -36,7 +50,7 @@ class Especialistas(db.Model):
     numero_telefonico=db.Column(db.String(120), unique=False, nullable=False)
     detalles=db.Column(db.String(500))
     imagen=db.Column(db.String(1000))
-    comentarios=db.relationship('ComentarioEspecialista', lazy=True, backref='especialistas')
+    comentarios=db.relationship('ComentarioEspecialista', lazy=True)
     def __repr__(self):
         return '<Especialistas %r>' % self.id
 
@@ -53,25 +67,10 @@ class Especialistas(db.Model):
             'ubicación':self.ubicacion,
             'comentarios':list(map(lambda comentario:comentario.serialize(),self.comentarios))
         }
-class Testimonio(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    usuario_id=db.Column(db.Integer, db.ForeignKey(User.id))
-    experiencia=db.Column(db.String(1000))
-
-    def __repr__(self):
-        return '<Testimonio %r>' % self.id
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "usuario_id": self.usuario_id,
-            "experiencia":self.experiencia
-        }
-
 class ComentarioEspecialista(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     cliente_id=db.Column(db.Integer, db.ForeignKey(User.id))
-    experto_id=db.Column(db.Integer, db.ForeignKey(User.id))
+    experto_id=db.Column(db.Integer, db.ForeignKey(Especialistas.id))
     comentario=db.Column(db.String(1000))
     
     def __repr__(self):
@@ -84,3 +83,5 @@ class ComentarioEspecialista(db.Model):
             "experto_id":self.experto_id,
             "comentario":self.comentario
         }
+
+
