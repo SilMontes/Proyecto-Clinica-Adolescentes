@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Especialistas
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
-from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required ##TOKEN
 import datetime 
 import random
 import smtplib
@@ -109,25 +109,29 @@ def create_user():
     primer_nombre = request.json.get("primer_nombre", None)
     apellidos = request.json.get("apellidos", None)
     email = request.json.get("email", None)
-    password = request.json.get("password", None)
+    password = request.json.get("contraseña", None)
+    consfirmar_contraseña=request.json.get("confirmar_Contraseña", None)
     numero_telefonico=request.json.get('numero_telefonico',None)
     mensajes_error=[]
 
     if not primer_nombre:
-        mensajes_error.append({"msg":"Por favor, ingrese su nombre completo"}), 400
+        mensajes_error.append({"msg":"Ingrese su nombre completo"}), 400
     if not apellidos:
-        mensajes_error.append({"msg":"Por favor, ingrese sus apellidos"}), 400
+        mensajes_error.append({"msg":"Ingrese sus apellidos"}), 400
     if not email:
-        mensajes_error.append({"msg":"Por favor, ingrese su email"}), 400
+        mensajes_error.append({"msg":"Ingrese su email"}), 400
     if not password:
         mensajes_error.append({"msg":"Por favor, cree una contraseña"}), 400
+    if password != consfirmar_contraseña:
+        mensajes_error.append({"msg":"La contraseña y la contraseña de confirmación debe ser iguales"}), 400
+
     if len(mensajes_error) >0:
         return jsonify(mensajes_error),400
     # verificando el formato del email y la contraseña
     if not re.match('^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,8}$',email.lower()):
         mensajes_error.append({'msg':'Enter a valid email format'}),400
     elif not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[^\n\t]{8,20}$', password):
-        mensajes_error.append({'msg':'Su contraseña debe contener: una letra mayúscula, una minúcula, un caracter especial y una longitud mínima de 8 caracteres'}),400
+        mensajes_error.append({'msg':'Su contraseña debe contener al menos una letra mayúscula, una letra minúscula, un caracter especial y una longitud mínima de 8 caracteres'}),400
     
     if len(mensajes_error) >0:
         return jsonify(mensajes_error),400
@@ -135,7 +139,8 @@ def create_user():
     usuario_existente = User.query.filter_by(email=email).first()
     # asegurandose que el email sea único para cada usuario
     if usuario_existente:
-        return jsonify({"msg":"Por favor, elija un email diferente. El que ingresó ya está en uso"}), 400
+        mensajes_error.append({"msg":"Por favor, elija un email diferente. El que ingresó ya está en uso"})
+        return jsonify(mensajes_error),400
     
     #generando hash
     encrypted_password=generate_password_hash(password)
@@ -151,7 +156,7 @@ def create_user():
 @api.route('/iniciosesion', methods=['POST'])
 def login():
     email=request.json.get('email', None)
-    password=request.json.get('password', None)
+    password=request.json.get('contraseña', None)
 
     errores_mensaje=[]
     if not email and not password:
@@ -159,7 +164,7 @@ def login():
     elif not email:
         errores_mensaje.append({'msg':'Por favor, ingrese su email'}),400
     elif not password:
-        errores_mensaje.append({'msg':'Asegurese de ingresar la contraseña correcta'}),400
+        errores_mensaje.append({'msg':'La contraseña es requerida'}),400
 
     if len(errores_mensaje)>0:
         return jsonify(errores_mensaje),400
@@ -199,9 +204,9 @@ def restore_password():
         body = request.get_json()
         email = body.get('email')
         usuario = User.query.filter_by(email=email).first()
-        usuario_info=usuario.serialize()
         if not usuario:
-            return jsonify({'msg':'Ninguno de nuestros usuarios está haciendo uso de dirección email especificida'}),400
+            return jsonify({'msg':'Asegurese de digitar correctamente su correco electrónico.'}),400
+        usuario_info=usuario.serialize()
         code=round(random.random()*10000)
         usuario.codigo_password=code
         header="Codigo de recuperacion"
@@ -211,33 +216,39 @@ def restore_password():
         print(mail)
         db.session.add(usuario)
         db.session.commit()
-        return jsonify('Hemos enviado un código de confiamción a su email'),200
+        return jsonify('Hemos enviado un código de confirmación a su email'),200
 #---------------------------------------------
 @api.route('/codigo_usuario/<string:email>',methods=['POST'])
-def user_verification(email):
+def user_verificacion(email):
     body=request.get_json()
     codigo=body.get('codigo')
     # email=body.get('email')
     usuario=User.query.filter(User.email==email).first()
     print(usuario)
     if usuario==None:
-        return jsonify('Acción imposible de ejecutar'),404
+        return jsonify({'msg':'Acción imposible de ejecutar'}),404
     if codigo==usuario.codigo_password:
         return jsonify({"msg":"Código correcto","id":usuario.id}),200
     else:
         return jsonify({"msg":"Código incorrecto"}),404
 
-@api.route('/usuario/nuevacontrasena/<int:id>',methods=['PUT'])
+@api.route('/usuario/nuevacontraseña/<int:id>',methods=['PUT'])
 def pass_update(id):
     body=request.get_json()
-    password=body.get("password")
+    password=body.get("nuevaContraseña")
+    confirm_password=body.get("confirmarNuevaContraseña")
     usuario=User.query.get(id)
-    if user==None:
+    if usuario==None:
         return jsonify({"msg":"Ese usuario no existe"}),404
-    if not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[^\n\t]{8,20}$', password):
+    if password=='':
+        return jsonify({'msg':"Todos lo campos son requeridos"}),404
+    if password != confirm_password:
+        return jsonify({"msg":"Ambas contraseñas deben ser iguales"}),404
+
+    if not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[^\n\t]{8,20}$',  password):
         return jsonify({'msg':'Su contraseña debe contener: una letra mayúscula, una minúcula, un caracter especial y una longitud mínima de 8 caracteres'}),400
     
-    hashed_password = generate_password_hash(password)
+    hashed_password = generate_password_hash( password)
 
     usuario.password = hashed_password
     usuario.code=None

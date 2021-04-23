@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CardExpertos } from "../js/component/card-expertos";
+import { Context } from "../js/store/appContext";
 import { Form, Col, Container, InputGroup } from "react-bootstrap";
 export const PaginaExpertos = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<Container>
 			<div className="row justify-content-center mb-3">
@@ -34,15 +36,22 @@ export const PaginaExpertos = () => {
 					</Form.Row>
 				</Form>
 			</div>
-			<Container fluid className="m-0 row justify-content-center align-items-center">
-				<CardExpertos />
-				<CardExpertos />
-				<CardExpertos />
-				<CardExpertos />
-				<CardExpertos />
-				<CardExpertos />
-				<CardExpertos />
-			</Container>
+			{store.datosEspecialistas.length > 0 && (
+				<Container fluid className="m-0 row justify-content-center align-items-center">
+					{store.datosEspecialistas.map((persona, index) => {
+						return (
+							<CardExpertos
+								key={index}
+								id={persona.id - 1}
+								nombre={persona.nombre}
+								especialidad={persona.especialidad}
+								imagen={persona.imagen}
+								detalles={persona.detalles}
+							/>
+						);
+					})}
+				</Container>
+			)}
 		</Container>
 	);
 };
