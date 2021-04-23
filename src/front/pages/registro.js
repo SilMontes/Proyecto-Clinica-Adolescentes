@@ -5,7 +5,6 @@ import { Redirect } from "react-router-dom";
 
 import "../styles/index.scss";
 
-
 export const Registro = () => {
 	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);
