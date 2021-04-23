@@ -75,7 +75,24 @@ def agregar_especialistas():
             nuevoEspecialista=Especialistas(nombre=elemento['nombre'],apellido=elemento['apellido'],provincia=elemento['provincia'],especialidad=elemento['especialidad'],ubicacion=elemento['ubicacion'],numero_telefonico=elemento['telefono'],detalles=elemento['detalles'],imagen=elemento['imagen'])
             db.session.add(nuevoEspecialista)
         db.session.commit()
-
+#-----------------------------------------------------
+@api.before_app_first_request
+def agregar_usuarios():
+    usuarios=[
+        {"primer_nombre":"Kloe","apellidos":"Durand","numero_telefonico":"12345678","email": "kloe@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Emily","apellidos":"Moreau ","numero_telefonico":"12345678","email": "Emily@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Calista","apellidos":"Adams","numero_telefonico":"12345678","email": "kloe@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Jessica","apellidos":"Gagnon","numero_telefonico":"12345678","email": "Calista@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Priya","apellidos":"Rojas","numero_telefonico":"12345678","email": "Priya@gmail.com","password":"Test123@"},
+    ]
+    usuarios_existentes=User.query.all()
+    todos_usuarios=list(map(lambda usuario:usuario.serialize(),usuarios_existentes))
+    if todos_usuarios==[]:
+        for persona in usuarios:
+            nuevoUsuario=User(primer_nombre=persona['primer_nombre'],apellidos=persona['apellidos'],numero_telefonico=persona['numero_telefonico'],email=persona['email'],password=persona['password'],is_active=True)
+            db.session.add(nuevoUsuario)
+        db.session.commit()
+    
 #------------------------ OBTENER TODOS LOS ESPECIALISTAS ---------------------------------------------------------------------------
 @api.route('/especialistas',methods=['GET'])
 def obtener_especialistas():
