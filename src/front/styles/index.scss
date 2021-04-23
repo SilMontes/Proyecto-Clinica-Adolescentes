@@ -2,12 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+
+
 /*Kimberly*/ 
 $yellow:  #FFD23F;
 $blue: #1D3557 ;
 $light: #457B9D;
 $beige: #F1FAEE;
-
 
 .container, .colCarousel , .React.Fragment {
     margin-top: 40px;
@@ -17,13 +18,9 @@ $beige: #F1FAEE;
 position: relative;
 }
 
-p{
-    font-family: 'Nunito', sans-serif;
-}
+p{ font-family: 'Nunito', sans-serif; }
 
-Link{
-    font-family: 'Nunito', sans-serif;
-}
+Link{ font-family: 'Nunito', sans-serif;}
 
 /*Navbar, Kimberly */
 .menu{
@@ -31,8 +28,8 @@ Link{
     text-align: center;
     margin: 20px;
     color: $beige;
-
 }
+
 .tracking-in-expand{
 color: $yellow;
 margin-left: 7px;
@@ -106,6 +103,7 @@ margin-left: 7px;
             animation-timing-function: ease-out;
   }
 }
+
 @keyframes heartbeat {
   from {
     -webkit-transform: scale(1);
@@ -140,7 +138,6 @@ margin-left: 7px;
             animation-timing-function: ease-out;
   }
 }
-
 
 
 .linea{
@@ -500,7 +497,7 @@ $color_grey_dark_experto: #a2a2a2;
     border-radius: 6px;
     margin-left: 5px;
 }
-///------------------ botón regresar a inicio de sesión (Silvia)---
+///--- botón regresar a inicio de sesión (Silvia)---
 .btnIrInicioSesión{
     text-decoration: none;
     border:none;
@@ -552,7 +549,7 @@ $color_grey_dark_experto: #a2a2a2;
     background: transparent;
     text-align: center;
 }
-//expertos
+//expertos///*Silvia*/
 .filtradoBusquedaExpertos{
     justify-content: center;
 }
@@ -567,3 +564,121 @@ $color_grey_dark_experto: #a2a2a2;
     margin:0;
     left:0%;
 }
+
+.especialista-container {
+  max-width: 400px;
+  min-width:350px;
+  width:100%;
+  height: 300px;
+ font-family: Poppins, sans-serif;
+  color:black;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background: center no-repeat;
+}
+
+
+.especialista-container:hover{
+    background-color:rgba(255, 210, 63, 0.75) ;
+    box-shadow: 0px 18px 20px -9px rgba(0, 10, 30, 0.75);
+}
+.especialista-container:hover .detalles-experto {
+  opacity: 1;
+  background-color:rgba(255, 210, 63,0.75) ;
+  bottom: 100px;
+}
+
+.especialista-container:hover .nombre-especialidad{
+  margin-top:200px;
+  background-color:rgb(69,123,157) ;
+ font-family: 'Poppins', sans-serif;
+ color: $beige;
+
+}
+
+.nombre-especialidad {
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition:all 0.6s
+}
+
+.especialista-container h3 {
+  font-size:25px;
+  padding:5px;
+  font-weight: 400;
+  letter-spacing: 1px;
+font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  display:inline-block;
+}
+
+.especilidad-expertos {
+  width: 170px;
+  margin: 0 auto;
+  color:$blue;
+  font-style: italic;
+  line-height: 10px;
+}
+
+.detalles-experto {
+   box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 50px;
+  font-style: 16px;
+  z-index: 20;
+  opacity: 0;
+  transition: bottom 0.64s, opacity 0.63s cubic-bezier(0.33, 0.66, 0.66, 1);
+}
+
+@media (max-width:400px){
+  .detalles-experto{
+    display:none
+  }
+  .imagen-especialista-container:hover .nombre-especialidad,.nombre-especialidad{
+  margin-bottom:20px
+}
+.imagen-especialista-container{
+  height:300px
+}
+.imagen-especialista-container h3{
+  font-size:20px
+} 
+.especilidad-expertos{
+  font-size:20px
+}
+}
+
+
+///
+ .read-more-experto button{
+        color: white;
+        padding: 5px;
+        font-size: 15px;
+        background-color: $blue;
+        display: block;
+        position: relative;
+        border-radius: 20px;
+
+        &:after {
+          content: "\f061";
+          margin-left: -10px;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s;
+        }
+
+        &:hover:after {
+          margin-left: 5px;
+          opacity: 1;
+        }
+      }
+ 

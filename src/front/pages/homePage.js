@@ -41,16 +41,16 @@ export const HomePage = () => {
 			<h2>Conozca sobre las Especialidades</h2>
 			<Container>
 				<Row>
-					<Col sm={3}>
+					<Col className="card" sm={3}>
 						<CardHomePage name={namePsico} info={infoPsico} url={urlPsico} />
 					</Col>
-					<Col sm={3}>
+					<Col className="card" sm={3}>
 						<CardHomePage name={namePsiquiatria} info={infoPsiquiatria} url={urlPsiquiatria} />
 					</Col>
-					<Col sm={3}>
+					<Col className="card" sm={3}>
 						<CardHomePage name={nameMedicina} info={infoMedicina} url={urlMedicina} />
 					</Col>
-					<Col sm={3}>
+					<Col className="card" sm={3}>
 						<CardHomePage name={nameEducacion} info={infoEducacion} url={urlEducacion} />
 					</Col>
 				</Row>
