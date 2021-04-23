@@ -39,20 +39,6 @@ export const HomePage = () => {
 				</Row>
 			</div>
 			<h2>Conozca sobre las Especialidades</h2>
-<<<<<<< HEAD
-			<Container>
-				<Row>
-					<Col className="card" sm={3}>
-						<CardHomePage name={namePsico} info={infoPsico} url={urlPsico} />
-					</Col>
-					<Col className="card" sm={3}>
-						<CardHomePage name={namePsiquiatria} info={infoPsiquiatria} url={urlPsiquiatria} />
-					</Col>
-					<Col className="card" sm={3}>
-						<CardHomePage name={nameMedicina} info={infoMedicina} url={urlMedicina} />
-					</Col>
-					<Col className="card" sm={3}>
-=======
 
 			<CardGroup>
 				<Card sm={3}>
@@ -72,7 +58,6 @@ export const HomePage = () => {
 				</Card>
 				<Card sm={3}>
 					<Card.Body>
->>>>>>> e2ff7691e16dfa5b44c7717f4bf583165a40871e
 						<CardHomePage name={nameEducacion} info={infoEducacion} url={urlEducacion} />
 					</Card.Body>
 				</Card>
