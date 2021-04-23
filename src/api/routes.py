@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import os
 import re
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Especialistas
+from api.models import db, User, Especialistas,Testimonio,ComentarioEspecialista
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -19,48 +19,60 @@ api = Blueprint('api', __name__)
 @api.before_app_first_request
 def agregar_especialistas():
     especialistas=[
-    {'nombre':'Alejandro Villalobos',
+    {'nombre':'Alejandro',
+    'apellido':'Villalobos',
     'especialidad':'Psicología',
-    'ubicacion':'Consultorio Médico Corella, Alajuela',
+    'ubicacion':'Consultorio Médico Corella',
+    "provincia":' Alajuela',
     'telefono':'60869050',
     'imagen':'https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg',
     'detalles':'Como psicólogo quiero acompañarte tu proceso terapéutico y enseñarte una nueva filosofía de vida que nos permita sacarle el jugo a la vida y vivir más plena y significativamente en conjunto con los altibajos naturales de la vida.'},
-    {'nombre':'Adrián Gutiérrez',
+    {'nombre':'Adrián',
+    'apellido':'Gutiérrez',
     'especialidad':'Psicólogía',
-    'ubicacion':'Consultorio Médico Dra Melissa Alfaro, San José',
+    'ubicacion':'Consultorio Médico Dra Melissa Alfaro',
+    'provincia':'San José',
     'telefono':'60869050',
-    'imagen':'https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg',
+    'imagen':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaDXNpriR-N8OerqKMiYMqKGp_ncnbrdoJA&usqp=CAU',
     'detalles':'Amar lo que hago y hacer lo que amo, representa mi trabajo. Mi objetivo es acompañar a mis pacientes en la eliminación de la ansiedad, por medio del  autoconocimiento y la gestión de sus emociones.'},
-    {'nombre':'Vanessa López',
+    {'nombre':'Vanessa',
+    'apellido':'López',
     'especialidad':'Dermatología',
-    'ubicacion':'Consultorio Médico La Florida, San José',
+    'provincia':'San José',
+    'ubicacion':'Consultorio Médico La Florida',
     'telefono':'60869050',
-    'imagen':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIAsNyRHBPtTu4PIUiEtqG7gfXjfyqEtcfHzV2JYMtWdRiv4WH9id9VdMmDtaLO8F6EY&usqp=CAU',
+    'imagen':'https://image.freepik.com/vector-gratis/perfil-avatar-mujer-icono-redondo_24640-14042.jpg',
     'detalles':'Ser psicóloga no es solo mi trabajo, es parte de quien soy, siento mucha pasión y amor por lo que hago, y trato de brindar a los demás lo que la psicología me ha brindado a mi.'},
-    {'nombre':'Carmen Villalobos',
+    {'nombre':'Carmen',
+    'apellido':'Villalobos',
     'especialidad':'Psiquiatría',
     'ubicacion':'Laboratorios Jackson Naranjo',
+    "provincia":'Alajuela',
     'telefono':'60869050',
     'imagen':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIAsNyRHBPtTu4PIUiEtqG7gfXjfyqEtcfHzV2JYMtWdRiv4WH9id9VdMmDtaLO8F6EY&usqp=CAU',
     'detalles':'Mi objetivo es brindar una atención profesional seria basada en la evidencia científica sin dejar de lado la dimensión humana en la relación terapéutica.'},
-    {'nombre':'Adrián Solís',
+    {'nombre':'Adrián',
+    'apellido':'Solís',
     'especialidad':'Orientador',
     'ubicacion':'Consultorio Dra. Raquel Ríos Carranza',
+    'provincia':'Heredia',
     'telefono':'60869050',
-    'imagen':'https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg',
+    'imagen':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJQdMaIJtfdYVR0fJK7ok7lgdz23YYuB5vrsyhjIN3bSOGf2SaQfMijYZHAe1ygsXn49k&usqp=CAU',
     'detalles':'Como psicólogo quiero acompañarte tu proceso terapéutico y enseñarte una nueva filosofía de vida que nos permita sacarle el jugo a la vida y vivir más plena y significativamente en conjunto con los altibajos naturales de la vida.'},
-    {'nombre':'María Vásquez',
+    {'nombre':'María',
+    'apellido':'Vásquez',
     'especialidad':'orientadora',
-    'ubicacion':'Vitaliza Consultorios Médicos, Limón',
+    'ubicacion':'Vitaliza Consultorios Médicos',
+    'provincia':'Limón',
     'telefono':'60869050',
-    'imagen':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIAsNyRHBPtTu4PIUiEtqG7gfXjfyqEtcfHzV2JYMtWdRiv4WH9id9VdMmDtaLO8F6EY&usqp=CAU',
+    'imagen':'https://i.pinimg.com/originals/19/87/90/198790eb7e08830027c1ae1686496c72.png',
     'detalles':'Ser psicóloga no es solo mi trabajo, es parte de quien soy, siento mucha pasión y amor por lo que hago, y trato de brindar a los demás lo que la psicología me ha brindado a mi.'}
     ]
     grupo_especialistas=Especialistas.query.all()
     todos_especialistas=list(map(lambda persona:persona.serialize(),grupo_especialistas))
     if todos_especialistas == []:
         for elemento in especialistas:
-            nuevoEspecialista=Especialistas(nombre=elemento['nombre'],especialidad=elemento['especialidad'],ubicacion=elemento['ubicacion'],numero_telefonico=elemento['telefono'],detalles=elemento['detalles'],imagen=elemento['imagen'])
+            nuevoEspecialista=Especialistas(nombre=elemento['nombre'],apellido=elemento['apellido'],provincia=elemento['provincia'],especialidad=elemento['especialidad'],ubicacion=elemento['ubicacion'],numero_telefonico=elemento['telefono'],detalles=elemento['detalles'],imagen=elemento['imagen'])
             db.session.add(nuevoEspecialista)
         db.session.commit()
 
