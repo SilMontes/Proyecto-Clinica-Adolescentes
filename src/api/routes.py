@@ -81,18 +81,50 @@ def agregar_usuarios():
     usuarios=[
         {"primer_nombre":"Kloe","apellidos":"Durand","numero_telefonico":"12345678","email": "kloe@gmail.com","password":"Test123@"},
         {"primer_nombre":"Emily","apellidos":"Moreau ","numero_telefonico":"12345678","email": "Emily@gmail.com","password":"Test123@"},
-        {"primer_nombre":"Calista","apellidos":"Adams","numero_telefonico":"12345678","email": "kloe@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Luis","apellidos":"Adams","numero_telefonico":"12345678","email": "Jessica@gmail.com","password":"Test123@"},
         {"primer_nombre":"Jessica","apellidos":"Gagnon","numero_telefonico":"12345678","email": "Calista@gmail.com","password":"Test123@"},
-        {"primer_nombre":"Priya","apellidos":"Rojas","numero_telefonico":"12345678","email": "Priya@gmail.com","password":"Test123@"},
+        {"primer_nombre":"José","apellidos":"Rojas","numero_telefonico":"12345678","email": "Priya@gmail.com","password":"Test123@"},
     ]
     usuarios_existentes=User.query.all()
     todos_usuarios=list(map(lambda usuario:usuario.serialize(),usuarios_existentes))
     if todos_usuarios==[]:
         for persona in usuarios:
-            nuevoUsuario=User(primer_nombre=persona['primer_nombre'],apellidos=persona['apellidos'],numero_telefonico=persona['numero_telefonico'],email=persona['email'],password=persona['password'],is_active=True)
+            nuevoUsuario=User(primer_nombre=persona['primer_nombre'],apellidos=persona['apellidos'],numero_telefonico=persona['numero_telefonico'],email=persona['email'],password=generate_password_hash(persona['password']),is_active=True)
             db.session.add(nuevoUsuario)
         db.session.commit()
+@api.before_app_first_request
+def agregar_testimonio():
+    testimonios=[
+        {"usuario_id":"1",
+        "experiencia":"Cuando empecé a desarrollar ansiedad, me sentía excesivamente cohibida en los espacios públicos. Los pensamientos empezaban a correr por mi cabeza y me desorientaba si no podía calmarme. Pronto empecé a experimentar ataques de pánico en el día a día. Mi ansiedad hacía que me diera miedo estar con otros y a veces incluso estar sola, porque estar sola significaba estar a solas con mis pensamientos. Conforme crecí, con la ayuda de un terapeuta, aprendí a lidiar con ello. Todavía tengo malos días, pero ¡ahora sé cómo vivir con ello!",
+        "titulo":"Estar solo tampoco ayuda",
+        "multimedia":"https://image.freepik.com/vector-gratis/foto-perfil-personaje-dibujos-animados-avatar-mujer-joven_18591-55054.jpg"},
+        {"usuario_id":"2",
+        "experiencia":"Mi madre sufre desorden bipolar, ansiedad, depresión y alcoholismo. Cuando empecé la universidad empecé a tener ataques de pánico y de ansiedad, sobre todo después de las elecciones (estudio ciencias políticas), Como estaba familiarizada con las enfermedades mentales, pude darme cuenta de que la ansiedad que sufría no era terrible y recibí la ayuda que necesitaba. Quiero que la gente entienda que no debe haber prejuicios por sufrir de enfermedades mentales, así estas enfermedades podrían ser abordadas y tratadas",
+        "titulo":"No debería haber prejuicios",
+        "multimedia":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5qejyRY3t1rr57OxaHTG-6NWeXnfFs_IIfA&usqp=CAU"},
+        {"usuario_id":"3",
+        "experiencia":"Desarrollé un desorden de ansiedad cuando tenía 14 años. Empecé a sufrir ataques de ansiedad cuando estudiaba para los exámenes de mates. Fui haciendo terapia intermitentemente durante dos años, y hace poco empecé a tomar medicación para la ansiedad que me ha estado ayudando bastante. Me daba miedo tomar medicación porque no quería que me etiquetaran como una loca o que la gente me juzgara por ello. ¡Pero a quién le importa! Mi lucha todavía no ha terminado, pero estoy mucho mejor",
+        "titulo":"La terapia y la medicación pueden ayudar mucho",
+        "multimedia":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1PdCfzNscvmhXtdqwoVhwcvB1-4hIGcdqHA&usqp=CAU"},
+        {"usuario_id":"4",
+        "experiencia":"En 2005 me diagnosticaron una afección estomacal poco común llamada gastroparesis, lo que supone que mis músculos estomacales están básicamente paralizados. Empecé a experimentar fuertes ataques de ansiedad y tenía miedo de tener náuseas en público. Los sentimientos fueron creciendo hasta que dejé la universidad y mi trabajo y me aislé en casa. Finalmente, mi madre me arrastró a ver a un psicólogo que me hacía terapia de dos a tres veces a la semana durante algunos meses  además, un psiquiatra me recetó algunos medicamentos. Sólo han pasado unos meses y ya estoy haciendo cosas que nunca imaginé que haría. He vuelto a la universidad, me he vuelto a enamorar de la comida, Aún sufro ansiedad y todavía tengo algunos días difíciles, pero soy más feliz de lo que he sido nunca",
+        "titulo":"Puede hacer que lo dejes todo",
+        "multimedia":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4FGqhqoKBnA16ort-qgoSz6EgdD35mXdTGA&usqp=CAU"},
+        {"usuario_id":"5",
+        "experiencia":"Debido a mi desorden de bipolaridad que derivó en ansiedad, y tengo que vivir una vida muy estructurada. Tomo mi medicación por la mañana con el desayuno y no me lo puedo saltar ni un día, apenas bebo, y necesito de 8 a 10 horas de sueño cada noche. Solía pensar que me hacía una persona aburrida en comparación con mi anterior estilo de vida, caracterizado por una gran impulsividad, fiesta, bebiendo alcohol y tomando drogas, pero echando la vista atrás estoy significativamente más sana y feliz por los cambios que he hecho. Mis amigos y familia han sido geniales conmigo en cuanto a mi condición, ofreciéndome apoyo y cariño incondicionales y me siento enormemente afortunada por ello",
+        "titulo":"Quizás debas hacer cambios en tu vida para recuperarte",
+        "multimedia":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbZri1QlXqnGchWkz3rYOtcv_Pb0uWaiz8eA&usqp=CAU"},
+    ]
     
+    testimonios_agregados=Testimonio.query.all()
+    todos_testimonio=list(map(lambda testimonio:testimonio.serialize(),testimonios_agregados))
+    if todos_testimonio==[]:
+        for testimonio in testimonios:
+            nuevoTestimonio=Testimonio(usuario_id=testimonio['usuario_id'],experiencia=testimonio['experiencia'],titulo=testimonio['titulo'],multimedia=testimonio['multimedia'])
+            db.session.add(nuevoTestimonio)
+        db.session.commit()
+
 #------------------------ OBTENER TODOS LOS ESPECIALISTAS ---------------------------------------------------------------------------
 @api.route('/especialistas',methods=['GET'])
 def obtener_especialistas():
