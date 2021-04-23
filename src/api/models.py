@@ -30,6 +30,7 @@ class Testimonio(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     usuario_id=db.Column(db.Integer, db.ForeignKey(User.id))
     experiencia=db.Column(db.String(1000))
+    multimedia=db.Column(db.String(1000))
 
     def __repr__(self):
         return '<Testimonio %r>' % self.id
@@ -38,7 +39,8 @@ class Testimonio(db.Model):
         return {
             "id": self.id,
             "usuario_id": self.usuario_id,
-            "experiencia":self.experiencia
+            "experiencia":self.experiencia,
+            'multimedia':self.multimedia
         }
 class Especialistas(db.Model):
     id=db.Column(db.Integer, primary_key=True)
