@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Link } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "../styles/index.scss";
 
 export const Derechos = () => {
@@ -79,12 +79,23 @@ export const Derechos = () => {
 				<Card.Header>
 					<strong>ENLACES</strong>
 				</Card.Header>
+				<br />
 				<Card.Link a href="https://www.voicesofyouth.org/es/" target="_blank">
 					La Juventud Opina
 				</Card.Link>{" "}
 				<br />
 				<Card.Link href="https://pani.go.cr/" target="_blank">
 					Patronato Nacional de la Infancia Costa Rica
+				</Card.Link>{" "}
+				<br />
+				<Card.Link a href="https://www.apa.org/centrodeapoyo/sexual/" target="_blank">
+					Orientación sexual e identidad de género
+				</Card.Link>{" "}
+				<br />
+				<Card.Link
+					href="https://www.ministeriodesalud.go.cr/index.php/centro-de-informacion/derechos-humanos"
+					target="_blank">
+					Ministerio de Salud Costa Rica
 				</Card.Link>{" "}
 			</Card>
 			<br />

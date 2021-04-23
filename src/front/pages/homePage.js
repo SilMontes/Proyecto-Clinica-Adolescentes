@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, CardGroup, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CardHomePage } from "../js/component/cardHomePage";
 import { Carousel } from "../js/component/carousel";
@@ -14,7 +14,7 @@ export const HomePage = () => {
 
 	let namePsiquiatria = "PSIQUIATRÍA";
 	let infoPsiquiatria =
-		"Especialidad médica dedicada al estudio de los trastornos mentales de origen genético o neurológico con el objetivo de prevenir, evaluar, diagnosticar, tratar y rehabilitar a las personas con trastornos mentales";
+		"Especialidad médica dedicada al estudio de los trastornos mentales de origen genético o neurológico con el objetivo de prevenir, evaluar, diagnosticar, tratar y rehabilitar a las personas con trastornos mentales y asegurar la autonomía";
 	let urlPsiquiatria =
 		"https://images.unsplash.com/photo-1584515933487-779824d29309?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGF0aWVudCUyMGNhcmV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
 	let nameMedicina = "MEDICINA REPRODUCTIVA";
@@ -39,6 +39,7 @@ export const HomePage = () => {
 				</Row>
 			</div>
 			<h2>Conozca sobre las Especialidades</h2>
+<<<<<<< HEAD
 			<Container>
 				<Row>
 					<Col className="card" sm={3}>
@@ -51,10 +52,31 @@ export const HomePage = () => {
 						<CardHomePage name={nameMedicina} info={infoMedicina} url={urlMedicina} />
 					</Col>
 					<Col className="card" sm={3}>
+=======
+
+			<CardGroup>
+				<Card sm={3}>
+					<Card.Body>
+						<CardHomePage name={namePsico} info={infoPsico} url={urlPsico} />
+					</Card.Body>
+				</Card>
+				<Card sm={3}>
+					<Card.Body>
+						<CardHomePage name={namePsiquiatria} info={infoPsiquiatria} url={urlPsiquiatria} />
+					</Card.Body>
+				</Card>
+				<Card sm={3}>
+					<Card.Body>
+						<CardHomePage name={nameMedicina} info={infoMedicina} url={urlMedicina} />
+					</Card.Body>
+				</Card>
+				<Card sm={3}>
+					<Card.Body>
+>>>>>>> e2ff7691e16dfa5b44c7717f4bf583165a40871e
 						<CardHomePage name={nameEducacion} info={infoEducacion} url={urlEducacion} />
-					</Col>
-				</Row>
-			</Container>
+					</Card.Body>
+				</Card>
+			</CardGroup>
 		</div>
 	);
 };

@@ -42,7 +42,7 @@ class Especialistas(db.Model):
             "nombre": self.nombre,
             'especialidad':self.especialidad,
             'numero_telefonico':self.numero_telefonico,
-            'detalles':self.ubicacion,
+            'detalles':self.detalles,
             'imagen':self.imagen,
             'ubicación':self.ubicacion
         }
