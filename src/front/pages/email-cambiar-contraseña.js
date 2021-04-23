@@ -1,10 +1,31 @@
-import React from "react";
 
+import React, { useContext, useEffect } from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
+import Swal from "sweetalert2";
+import { Context } from "../js/store/appContext";
+import { Redirect } from "react-router-dom";
 import "../styles/index.scss";
 
 
 export const EmailCambiarContraseña = () => {
+	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		store.redirectCodigoConfirmacion = false;
+	}, []);
+	useEffect(
+		() => {
+			if (store.erroresEmailContraseña != "") {
+				Swal.fire({
+					text: store.erroresEmailContraseña.msg,
+					iconHtml: "❗",
+					timer: 2000,
+					confirmButtonText: "Entendido"
+				});
+			}
+		},
+		[store.erroresEmailContraseña]
+	);
+
 	return (
 		<div className="slide-top container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
 			<div className="formpassword container my-5 rounded p-4">
@@ -12,9 +33,15 @@ export const EmailCambiarContraseña = () => {
 					<h4>Recuperación de contraseña</h4>
 					<p>Por favor, provea la dirección email que utilizó al crear su cuenta.</p>
 
-					<form>
+					<form
+						onSubmit={e => {
+							actions.onSubmitEmail(e);
+						}}>
 						<div className="inputBox">
-							<input placeholder="Dirección email" />
+							<input
+								placeholder="Dirección email"
+								onChange={e => (store.emailContraseña = e.target.value)}
+							/>
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
@@ -25,6 +52,7 @@ export const EmailCambiarContraseña = () => {
 					</form>
 				</div>
 			</div>
+			{store.redirectCodigoConfirmacion === true && <Redirect to="/codigoconfirmacion" />}
 		</div>
 	);
 };

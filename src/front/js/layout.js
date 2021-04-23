@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { InicioSesion } from "../pages/inicio-sesion";
@@ -17,6 +16,7 @@ import { PaginaExpertos } from "../pages/paginaExpertos";
 import { Reporta } from "../pages/reporta";
 import { NuevaContraseña } from "../pages/nuevacontraseña";
 import { CodigoCambiarContraseña } from "../pages/codigo-cambiar-contraseña";
+import { Testimonios } from "../pages/testimonios";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -41,7 +41,7 @@ const Layout = () => {
 						<Route exact path="/reporta">
 							<Reporta />
 						</Route>
-						<Route exact path="/especialista">
+						<Route exact path="/especialista/:personaid">
 							<InformacionEspecialista />
 						</Route>
 						<Route exact path="/expertos">
@@ -61,6 +61,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/nuevacontraseña">
 							<NuevaContraseña />
+						</Route>
+						<Route exact path="/testimonios">
+							<Testimonios />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
