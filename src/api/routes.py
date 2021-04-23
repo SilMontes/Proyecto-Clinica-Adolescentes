@@ -132,17 +132,6 @@ def obtener_especialistas():
     lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
     return jsonify(lista_especialistas),200
 
-#-------------------- OBTENER ESPECIALISTA POR NOMBRE ----------------------
-@api.route('/especialista/<string:nombre>',methods=['GET'])
-def obtener_especialista_nombre(nombre):
-    especialistas = Especialistas.query.all()
-    lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
-    especialistas_encontrados=[]
-    for persona in lista_especialistas:
-        if nombre in persona['nombre']:
-            especialistas_encontrados.append(persona)
-    print(especialistas_encontrados)
-    return jsonify(especialistas_encontrados),200
 
 #----------------------  obtener todos los usuarios ----------------------------------------------------------------------------------------------------
 @api.route('/usuarios', methods=['GET'])
@@ -316,3 +305,15 @@ def pass_update(id):
     db.session.add(usuario)
     db.session.commit()
     return jsonify({"msg":"La contraseña se actualizó correctamente"}),200
+
+#------------------------------    OBTENER TESTIMONIOS --------
+@api.route('/testimonios',methods=['GET'])
+def obtener_testimonios():
+    usuarios=User.query.all()
+    lista_usuarios=list(map(lambda usuario:usuario.serialize(),usuarios))
+    lista_testimonios=[]
+    for elemento in lista_usuarios:
+        if elemento['testimonios'] != []:
+            for datos in elemento['testimonios']:
+                lista_testimonios.append({'experiencia':datos['experiencia'],'nombre':elemento['primer_nombre']})
+    return jsonify(lista_testimonios),200
