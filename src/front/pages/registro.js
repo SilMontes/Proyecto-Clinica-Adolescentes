@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../js/store/appContext";
 import { Modal, Button, Alert } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "../styles/index.scss";
 
 export const Registro = () => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
@@ -85,14 +86,18 @@ export const Registro = () => {
 							/>
 							{colorInput === "2px solid #ff0000" && (
 								<label>
-									<i className="fas fa-exclamation" style={{ color: "#ffd23f" }}>
+									<i
+										className="fas fa-exclamation"
+										style={{ color: "#ffd23f", fontSize: "18px", left: "10%" }}>
 										{" "}
 										Ambas contraseñas deben ser iguales
 									</i>
 								</label>
 							)}
 						</div>
-						<button type="submit">Ingresar</button>
+						<button type="submit" onClick={() => store.redirect == true && history.push("/iniciosesion")}>
+							Ingresar
+						</button>
 					</form>
 				</div>
 			</div>
@@ -118,7 +123,6 @@ export const Registro = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-			{store.redirect == true && <Redirect to="/iniciosesion" />}
 		</div>
 	);
 };
