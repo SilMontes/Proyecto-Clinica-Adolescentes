@@ -28,7 +28,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			erroresEmailContraseña: "",
 			erroresCodigoContraseña: "",
-			erroresNuevaContraseña: ""
+			erroresNuevaContraseña: "",
+			testimonios: [],
+			datosTestimonio: {
+				experiencia: "",
+				titulo: "",
+				multimedia: ""
+			}
 		},
 		actions: {
 			//---------------------------- OBTENER ESPECIALISTAS ------------------------------------
@@ -182,6 +188,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					console.error("Error reset Contraseña", response.status);
 				}
+			},
+			// GET TESTIMONIOS
+			obtenerTestimonios: async () => {
+				const store = getStore();
+				const respuesta = await fetch(process.env.BACKEND_URL + "/api/testimonios");
+				const datosRespuesta = await respuesta.json();
+
+				if (respuesta.status == "200") {
+					setStore({ ...store, testimonios: datosRespuesta });
+				} else {
+					console.error("Error al cargar testimonios", datosRespuesta.status);
+				}
+			},
+			onChangeTestimonio: e => {
+				e.preventDefault(e);
+				const store = getStore();
+				const { datosTestimonio } = store;
+				datosTestimonio[e.target.name] = e.target.value;
+				setStore({ datosTestimonio });
+				console.log(store.datosTestimonio);
 			}
 		}
 	};

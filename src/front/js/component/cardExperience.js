@@ -7,10 +7,9 @@ export const CardExperience = props => {
 	return (
 		<Col xs={12} md={6} lg={4} className="mt-3">
 			<Card className="shadow p-3">
-				<Card.Img
-					variant="top"
-					src="https://images.unsplash.com/photo-1510932742089-bef92acabb5b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmVsYXRpb25zaGlwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-				/>
+				<div className="row justify-content-center">
+					<Card.Img variant="top" src={props.imagen} style={{ width: "300px", height: "250px" }} />
+				</div>
 				<Card.Header>
 					<strong>{props.title}</strong>
 				</Card.Header>
@@ -47,5 +46,6 @@ export const CardExperience = props => {
 
 CardExperience.propTypes = {
 	title: propTypes.string,
-	body: propTypes.string
+	body: propTypes.string,
+	imagen: propTypes.string
 };
