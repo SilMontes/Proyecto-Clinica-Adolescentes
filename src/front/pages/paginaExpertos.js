@@ -43,7 +43,7 @@ export const PaginaExpertos = () => {
 							<CardExpertos
 								key={index}
 								id={persona.id - 1}
-								nombre={persona.nombre}
+								nombre={persona.nombre + persona.apellido}
 								especialidad={persona.especialidad}
 								imagen={persona.imagen}
 								detalles={persona.detalles}

@@ -96,6 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (respuesta.status == "200") {
 					sessionStorage.setItem("token", datosSolicitud[1].token);
 					sessionStorage.setItem("id_usuario", datosSolicitud[1].id_usuario);
+					sessionStorage.setItem("nombre", datosSolicitud[1].nombre);
 					setStore({ ...store, token: datosSolicitud[1].token });
 				} else if (respuesta.status == "400" || respuesta.status == "401") {
 					setStore({ ...store, erroresInicioSesion: datosSolicitud });

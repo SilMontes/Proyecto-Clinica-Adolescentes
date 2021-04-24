@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
 import { Context } from "../js/store/appContext";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../styles/index.scss";
 
 export const NuevaContraseña = () => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	const [errorSmallMessage, setErrorSmallMessage] = useState(false);
 	useEffect(() => {
 		store.redirect = false;
@@ -49,7 +50,9 @@ export const NuevaContraseña = () => {
 						</small>
 					) : (
 						<p className="ml-4">
-							<i className="fas fa-exclamation" style={{ color: "#ffd23f" }}>
+							<i
+								className="fas fa-exclamation"
+								style={{ color: "#ffd23f", fontSize: "18px", left: "10%" }}>
 								{" "}
 								Ambas contraseñas deben ser iguales
 							</i>
@@ -76,14 +79,16 @@ export const NuevaContraseña = () => {
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
-							<button className="btnCambiarContraseña px-3" type="submit">
+							<button
+								className="btnCambiarContraseña px-3"
+								type="submit"
+								onClick={() => store.redirect == true && history.push("/iniciosesion")}>
 								Enviar
 							</button>
 						</div>
 					</form>
 				</div>
 			</div>
-			{store.redirect == true && <Redirect to="/iniciosesion" />}
 		</div>
 	);
 };

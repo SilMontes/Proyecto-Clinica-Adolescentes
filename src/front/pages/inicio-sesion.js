@@ -2,11 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../js/store/appContext";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Modal, Button, Alert } from "react-bootstrap";
 import "../styles/index.scss";
 
 export const InicioSesion = () => {
+	const history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -41,7 +42,11 @@ export const InicioSesion = () => {
 							placeholder="Contraseña"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
-						<button type="submit">Ingresar</button>
+						<button
+							type="submit"
+							onClick={() => store.token != null && store.token != "" && history.push("/")}>
+							Ingresar
+						</button>
 					</form>
 					<div className="formfooter">
 						<Link to="/emailcambiarcontraseña">
@@ -79,7 +84,6 @@ export const InicioSesion = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-			{store.token != null && store.token != "" && <Redirect to="/" />}
 		</div>
 	);
 };

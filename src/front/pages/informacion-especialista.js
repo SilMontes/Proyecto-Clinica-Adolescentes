@@ -11,10 +11,10 @@ export const InformacionEspecialista = () => {
 	const params = useParams();
 	const [mensaje, setMensaje] = useState("");
 	useEffect(() => {
-		sessionStorage.setItem("nombre", "Sil");
-		setMensaje(
-			"¡Hola " + sessionStorage.getItem("nombre", "Sil") + "! Me alegra que me escibas\n ¿Cómo puedo ayudarte?"
-		);
+		const nombre = sessionStorage.getItem("nombre");
+		if (nombre != "" && nombre != null) {
+			setMensaje("¡Hola " + nombre + "! Me alegra que me escribas.\n¿Cómo puedo ayudarte?");
+		}
 	}, []);
 
 	return (
@@ -29,7 +29,11 @@ export const InformacionEspecialista = () => {
 							/>
 						</div>
 						<div className="col-md-6">
-							<h1 className="titulo">{store.datosEspecialistas[params.personaid].nombre}</h1>
+							<h1 className="titulo">
+								{store.datosEspecialistas[params.personaid].nombre +
+									" " +
+									store.datosEspecialistas[params.personaid].apellido}
+							</h1>
 						</div>
 					</div>
 
@@ -56,18 +60,14 @@ export const InformacionEspecialista = () => {
 							sendButton="Enviar"
 							message={mensaje}
 							textReplyTime=""
-							companyName={store.datosEspecialistas[params.personaid].nombre}
+							companyName={
+								store.datosEspecialistas[params.personaid].nombre +
+								" " +
+								store.datosEspecialistas[params.personaid].apellido
+							}
 							className="whatsappIcono"
 						/>
 					</div>
-
-					{/* <a
-						href={`https://api.whatsapp.com/send?phone=506${
-							// store.datosEspecialistas[params.personaid].numero_telefonico
-						}`}
-						className="float">
-						<i className="fab fa-whatsapp" />
-					</a> */}
 				</>
 			)}
 		</div>

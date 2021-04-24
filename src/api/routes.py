@@ -132,7 +132,7 @@ def obtener_especialistas():
     lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
     return jsonify(lista_especialistas),200
 
-
+#
 #----------------------  obtener todos los usuarios ----------------------------------------------------------------------------------------------------
 @api.route('/usuarios', methods=['GET'])
 def obtener_usuarios():
@@ -233,7 +233,7 @@ def login():
     #create token
     access_token = create_access_token(identity=usuario.id, expires_delta=expiracion)
 
-    return jsonify('Inicio de sesión exitoso', {'token':access_token, 'id_usuario':usuario.id}),200
+    return jsonify('Inicio de sesión exitoso', {'token':access_token, 'id_usuario':usuario.id,'nombre':usuario.primer_nombre}),200
 #---------- Recuperar Contraseña -----------------------------------
 def mail(asunto,mensaje,correo):
     email='emailproyecto2021@gmail.com'

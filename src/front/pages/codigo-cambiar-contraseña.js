@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { BotonIrInicioSesion } from "../js/component/boton-regresar-inicio-sesion";
 import { Context } from "../js/store/appContext";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 export const CodigoCambiarContraseña = () => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	useEffect(() => {
 		store.redirectNuevaContraseña = false;
 	}, []);
@@ -37,14 +38,18 @@ export const CodigoCambiarContraseña = () => {
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
-							<button className="btnCambiarContraseña px-3" type="submit">
+							<button
+								className="btnCambiarContraseña px-3"
+								type="submit"
+								onClick={() =>
+									store.redirectNuevaContraseña == true && history.push("/nuevacontraseña")
+								}>
 								Enviar
 							</button>
 						</div>
 					</form>
 				</div>
 			</div>
-			{store.redirectNuevaContraseña == true && <Redirect to="/nuevacontraseña" />}
 		</div>
 	);
 };
