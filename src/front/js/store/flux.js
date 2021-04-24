@@ -34,7 +34,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				experiencia: "",
 				titulo: "",
 				multimedia: ""
-			}
+			},
+			alertatestimonio: "",
+			errortestimonio: ""
 		},
 		actions: {
 			//---------------------------- OBTENER ESPECIALISTAS ------------------------------------
@@ -207,7 +209,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { datosTestimonio } = store;
 				datosTestimonio[e.target.name] = e.target.value;
 				setStore({ datosTestimonio });
-				console.log(store.datosTestimonio);
+			},
+			onSubmitNuevoTestimonio: async e => {
+				e.preventDefault(e);
+				setStore({ ...store, errortestimonio: "" });
+				setStore({ ...store, alertatestimonio: "" });
+				const store = getStore();
+				const actions = getActions();
+				const solicitudTestimonio = await fetch(process.env.BACKEND_URL + "/api/nuevotestimonio", {
+					method: "POST",
+					body: JSON.stringify(store.datosTestimonio),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					}
+				});
+				const datosSolicitudTestimonio = await solicitudTestimonio.json();
+				if (solicitudTestimonio.status == "200") {
+					actions.obtenerTestimonios();
+					setStore({ ...store, alertatestimonio: "por compartir tu testimonio" });
+				} else if (
+					solicitudTestimonio.status == "400" ||
+					solicitudTestimonio.status == "401" ||
+					solicitudTestimonio.status == "404"
+				) {
+					setStore({ ...store, errortestimonio: datosSolicitudTestimonio.msg });
+				} else console.error(solicitudTestimonio.status);
 			}
 		}
 	};
