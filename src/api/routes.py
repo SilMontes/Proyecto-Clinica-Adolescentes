@@ -315,5 +315,24 @@ def obtener_testimonios():
     for elemento in lista_usuarios:
         if elemento['testimonios'] != []:
             for datos in elemento['testimonios']:
-                lista_testimonios.append({'experiencia':datos['experiencia'],'nombre':elemento['primer_nombre']})
+                lista_testimonios.append({'experiencia':datos['experiencia'],'titulo':datos['titulo'],'imagen':datos['multimedia'],'nombre':elemento['primer_nombre']})
     return jsonify(lista_testimonios),200
+#-- NUEVO TESTIMONIO ------------------------
+@api.route('/nuevotestimonio',methods=['POST'])
+@jwt_required()
+def nuevo_testimonio():
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    if not usuario:
+        return jsonify({"msg":"No estás autorizado para realizar esta acción"}),401
+    nuevoTestimonio=request.get_json()
+    experiencia = nuevoTestimonio['experiencia']
+    titulo=nuevoTestimonio['titulo']
+    multimedia=nuevoTestimonio['multimedia']
+    if experiencia == '' or titulo == '':
+        return jsonify({'msg':"Los campos titulo y experiencia son requeridos"}),404
+    else:
+        nuevoRelato=Testimonio(usuario_id=usuario.id,experiencia=experiencia,titulo=titulo,multimedia=multimedia)
+        db.session.add(nuevoRelato)
+        db.session.commit()
+        return jsonify(nuevoRelato.serialize()), 200
