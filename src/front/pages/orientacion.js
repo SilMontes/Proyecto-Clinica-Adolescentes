@@ -6,24 +6,32 @@ import "../styles/orientacion.scss";
 import ReactPlayer from "react-player/youtube";
 
 export const Orientacion = () => {
-	let nameDepr = "DEPRESIÓN";
-	let urlDepr =
-		"https://images.unsplash.com/photo-1506084219759-6d8777e5958d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZGVwcmVzc2VkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
-	let nameTrau = "TRAUMA";
-	let urlTrau =
-		"https://images.unsplash.com/photo-1539541417736-3d44c90da315?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dHJhdW1hfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
-	let nameAnsi = "ANSIEDAD";
-	let urlAnsi =
-		"https://images.unsplash.com/photo-1595178156906-2396ef837b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW54aWV0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
-	let nameStre = "STRESS";
+	let namePro = "MÈTODOS DE PROTECCIÓN";
+	let urlPro =
+		"http://d1poh340f4imgl.cloudfront.net/upload/images/534x326/2014/08/18/ba9f44912b8d8f55ecf94dcb8a56b093_534x326.jpg";
+
+	let nameSana = "VIDA SANA";
+	let urlSana = "https://i.blogs.es/ab7714/vida-sana/1366_2000.jpg";
+
+	let nameOri = "ORIENTACIÓN SEXUAL";
+	let urlOri = "http://www.colegas.lgbt/wp-content/uploads/2017/04/orientacion-sexual.jpg";
+
+	let nameStre = "RESPETAR MI CUERPO";
 	let urlStre =
-		"https://images.unsplash.com/photo-1516534775068-ba3e7458af70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3RyZXNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
-	let nameDuel = "DUELO";
-	let urlDuel =
-		"https://images.unsplash.com/photo-1495558685573-aba7573d9c01?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGdyaWVmfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
-	let nameRelac = "RELACIONES";
-	let urlRelac =
-		"https://images.unsplash.com/photo-1510932742089-bef92acabb5b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmVsYXRpb25zaGlwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60";
+		"https://media1.popsugar-assets.com/files/thumbor/PKeWcdlaYv9QFAE_LCD1NycVqXU/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2016/08/31/604/n/1922564/32f9a8f8981e36ac_allwoman-4177-2/i/All-Woman-Project-IAmAllWoman-Campaign-Photos.jpg";
+
+	let namePlan = "APRENDE A PLANIFICAR";
+	let urlPlan = "https://blog.lactapp.es/wp-content/uploads/belly-3186730_1280-1038x576.jpg";
+
+	let nameRela = "ACLARA DUDAS SOBRE RELACIONES";
+	let urlRela =
+		"https://quierocuidarme.dkvsalud.es/sites/default/files/styles/vivelasalud_ficha_825x464/public/imagen/2017-03/shutterstock_304744727_0.jpg?h=a0bb56d3&itok=HZPM5zW6";
+
+	let nameTrans = "TRASNMICIONES SEXUALES";
+	let urlTrans = "https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2019/10/31/herpes-boca.jpeg";
+
+	let nameCons = "CONSECUENCIAS DE MIS ACTOS";
+	let urlCons = "https://d1lofqbqbj927c.cloudfront.net/monumental/2019/07/18104143/580558_625808.jpg";
 
 	useEffect(() => {
 		const script = document.createElement("script");
@@ -36,15 +44,16 @@ export const Orientacion = () => {
 	return (
 		<div className="orientacionArticulos">
 			<Row>
-				<Col xs={4}>
+				<Col lg={4}>
 					<button
-						className="btn btn-primary"
+						className="btn btn-outline-primary"
 						type="button"
 						data-bs-toggle="offcanvas"
 						data-bs-target="#offcanvasWithBothOptions"
 						aria-controls="offcanvasWithBothOptions">
-						Busqueda
+						<i className="fas fa-search">Busqueda</i>
 					</button>
+
 					<div
 						className="offcanvas offcanvas-start"
 						data-bs-scroll="true"
@@ -53,7 +62,7 @@ export const Orientacion = () => {
 						aria-labelledby="offcanvasWithBothOptionsLabel">
 						<div className="offcanvas-header">
 							<h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-								Realice su busqueda con los temas mostrados anteriormente
+								Realice su búsqueda con los temas mostrados anteriormente
 							</h5>
 							<button
 								type="button"
@@ -73,23 +82,29 @@ export const Orientacion = () => {
 				</Col>
 			</Row>
 			<Row>
-				<Col xs={4}>
-					<Articulo name={nameDepr} url={urlDepr} />
+				<Col lg={3}>
+					<Articulo name={namePro} url={urlPro} />
 				</Col>
-				<Col xs={4}>
-					<Articulo name={nameTrau} url={urlTrau} />
+				<Col lg={3}>
+					<Articulo name={nameSana} url={urlSana} />
 				</Col>
-				<Col xs={4}>
-					<Articulo name={nameAnsi} url={urlAnsi} />
+				<Col lg={3}>
+					<Articulo name={nameOri} url={urlOri} />
 				</Col>
-				<Col xs={4}>
+				<Col lg={3}>
 					<Articulo name={nameStre} url={urlStre} />
 				</Col>
-				<Col xs={4}>
-					<Articulo name={nameDuel} url={urlDuel} />
+				<Col lg={3}>
+					<Articulo name={namePlan} url={urlPlan} />
 				</Col>
-				<Col xs={4}>
-					<Articulo name={nameRelac} url={urlRelac} />
+				<Col lg={3}>
+					<Articulo name={nameRela} url={urlRela} />
+				</Col>
+				<Col lg={3}>
+					<Articulo name={nameTrans} url={urlTrans} />
+				</Col>
+				<Col lg={3}>
+					<Articulo name={nameCons} url={urlCons} />
 				</Col>
 			</Row>
 		</div>

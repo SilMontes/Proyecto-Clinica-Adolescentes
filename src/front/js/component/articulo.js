@@ -4,7 +4,7 @@ import "../../styles/index.scss";
 
 export const Articulo = props => {
 	return (
-		<div className="card w-75 mt-4 rounded-start shadow-lg p-3 mb-5 bg-body ">
+		<div className="cardori w-75 mt-4 rounded-start shadow-lg p-3 mb-5 bg-body ">
 			<img
 				// style={{ width: "100%", height: "12rem" }}
 				src={props.url}
