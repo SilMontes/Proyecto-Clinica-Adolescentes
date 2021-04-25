@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import os
 import re
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Especialistas,Testimonio,ComentarioEspecialista
+from api.models import db, User, Especialistas,Testimonio,ComentarioEspecialista,ExpertosFavoritos
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -336,3 +336,195 @@ def nuevo_testimonio():
         db.session.add(nuevoRelato)
         db.session.commit()
         return jsonify(nuevoRelato.serialize()), 200
+    
+#----------------- Modificar perfil-----------
+@api.route('/usuario/ajustes',methods=['PUT'])
+@jwt_required()
+def modificar_perfil():
+    usuario_activo=get_jwt_identity()
+    usuario=User.query.filter_by(id=usuario_activo).first()
+
+    mensajes_error=[]
+    if usuario is None:
+        mensajes_error.append({'msg':'No está autorizado para modificar este perfil'})
+        return jsonify(mensajes_error),401
+    solicitud_ajustes=request.get_json()
+    if solicitud_ajustes == {}:
+        mensajes_error.append({'msg':'Debe ingresar su nombre, apellidos y correo electrónico'})
+        return jsonify(mensajes_error),400
+
+    if 'primer_nombre' in solicitud_ajustes:
+        if solicitud_ajustes['primer_nombre']=='':
+            mensajes_error.append({"msg":"Debe especificar su nombre"})
+            return jsonify(mensajes_error),400
+        else:
+            usuario.primer_nombre = solicitud_ajustes['primer_nombre']
+
+    if 'apellidos' in solicitud_ajustes:
+        if solicitud_ajustes['apellidos']=='':
+            mensajes_error.append({"msg":"Debe especificar sus apellidos"})
+            return jsonify(mensajes_error),400
+        else:
+            usuario.apellidos = solicitud_ajustes['apellidos']
+    if 'numero_telefonico' in solicitud_ajustes:
+        usuario.numero_telefonico = solicitud_ajustes['numero_telefonico']
+
+    if 'email' in solicitud_ajustes:
+        if solicitud_ajustes['email']=='':
+            mensajes_error.append({"msg":"Debe especificar su dirección email"})
+            return jsonify(mensajes_error),400
+
+        else:
+            email_en_uso= User.query.filter_by(email=solicitud_ajustes['email']).first() 
+            if email_en_uso:  
+                if solicitud_ajustes['email'] == usuario.email: 
+                    usuario.email =  solicitud_ajustes['email']
+                else:
+                    mensajes_error.append({"msg":"Este email está siendo usuado. Por favor, elija otro."})
+                    return jsonify(mensajes_error),400
+
+            else:
+                if not re.match('^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,15}$',solicitud_ajustes['email'].lower()):
+                    mensajes_error.append({'msg':'Ingrese un formato valido para su dirección email'})
+                    return jsonify(mensajes_error),400
+
+                else:
+                    usuario.email = solicitud_ajustes['email']
+    if 'contraseña' in solicitud_ajustes:
+        if not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W])[^\n\t]{8,20}$', solicitud_ajustes['contraseña']):
+            mensajes_error.append({'msg':'Su contraseña debe contener: una letra mayúscula, una minúcula, un caracter especial y una longitud mínima de 8 caracteres'})
+            return jsonify(mensajes_error),400
+        else:
+            encrypted_password=generate_password_hash(solicitud_ajustes['contraseña'])
+            usuario.password = encrypted_password
+    db.session.commit()
+    return jsonify('Successfully Updated', usuario.serialize()), 200
+
+#------------ crear comentario ---------------------
+@api.route('/comentario/experto',methods=['POST'])
+@jwt_required()
+def comentar_sobre_experto():
+    usuario_activo=get_jwt_identity()
+    solicitud = request.get_json()
+    usuario=User.query.filter_by(id=usuario_activo).first()
+    if not usuario:
+        return jsonify({"msg":"No estás autorizado para realizar esta acción"}),401
+    nuevo_comentario=request.json.get("comentario", None)
+
+    if not nuevo_comentario:
+        return jsonify({"msg":"Por favor, escriba su comentario."}),400
+    else:
+        agregarComentario=ComentarioEspecialista(cliente_id=usuario.id,experto_id=solicitud['experto_id'],comentario=nuevo_comentario)
+        db.session.add(agregarComentario)
+        db.session.commit()
+        return jsonify(agregarComentario.serialize()), 200
+#------------ Eliminar Testimonio---------------
+@api.route('/eliminar/tetimonio/<int:testimonio_id>',methods=['DELETE'])
+@jwt_required()
+def eliminar_testimonio(testimonio_id):
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    elemento_eliminar=Testimonio.query.filter_by(usuario_id=usuario_activo,id=testimonio_id).first()
+
+    if elemento_eliminar is None:
+        return jsonify('Elemnto no encontrado'),404
+    else:
+        db.session.delete(elemento_eliminar)
+        db.session.commit()
+    return jsonify('Eliminado',elemento_eliminar.serialize()),200
+
+#-------------- Eliminar Comentario -------------
+@api.route('/eliminar/comentario/<int:comentario_id>',methods=['DELETE'])
+@jwt_required()
+def eliminar_comentario(comentario_id):
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    elemento_eliminar=ComentarioEspecialista.query.filter_by(cliente_id=usuario_activo,id=comentario_id).first()
+
+    if elemento_eliminar is None:
+        return jsonify('Elemnto no encontrado'),404
+    else:
+        db.session.delete(elemento_eliminar)
+        db.session.commit()
+    return jsonify('Eliminado',elemento_eliminar.serialize()),200
+
+#-------------- OBTENER COMENTARIOS DE USUARIO --------------------
+@api.route('/usuario/obtener_comentarios',methods=['GET'])
+@jwt_required()
+def obtener_comentarios_usuario():
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    
+    comentarios=ComentarioEspecialista.query.all()
+    lista_comentarios=list(map(lambda comentario:comentario.serialize(),comentarios))
+
+    comentarios_usuario=[]
+    for elemento in lista_comentarios:
+        if elemento['cliente_id'] == usuario.id:
+            print(elemento['cliente_id'],usuario.id)
+            comentarios_usuario.append(elemento)
+    return jsonify(comentarios_usuario),200
+
+#-------- obtener favoritos de persona----------------
+@api.route('/usuario/obtener_favoritos',methods=['GET'])
+@jwt_required()
+def obtener_favoritos_usuario():
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    
+    favoritos = ExpertosFavoritos.query.filter_by(cliente_id=usuario.id)
+    todos_favoritos = list(map(lambda favorito: favorito.serialize(), favoritos))
+
+    especialistas = Especialistas.query.all()
+    lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
+    
+    regresar_favoritos=[]
+    for favorito in todos_favoritos:
+        for persona in lista_especialistas:
+            if persona['id'] == favorito['experto_id']:
+                persona['favorito_id']=favorito['id']
+                regresar_favoritos.append(persona)
+
+    return jsonify(regresar_favoritos),200
+
+#------------ Agregar Experto Favorito
+@api.route('usuario/nuevo_favorito',methods=['POST'])
+@jwt_required()
+def agregar_nuevo_favorito():
+    usuario_activo = get_jwt_identity()
+    usuario = User.query.filter_by(id=usuario_activo).first()
+    if not usuario:
+        return jsonify({"msg":"No eres un suario registrado"}),401
+
+    nuevoFavorito = request.get_json()
+
+    if nuevoFavorito == '' or nuevoFavorito == {}:
+        return jsonify({'msg':'No podemos aceptar su solicitud'}),404
+    if nuevoFavorito['experto_id']=='':
+        return jsonify({"msg":"Especifica tu favorito"}),400
+
+    favoritos = ExpertosFavoritos.query.filter_by(cliente_id=usuario.id)
+    favoritos_existentes = list(map(lambda favorito: favorito.serialize(), favoritos))
+    
+    for elemento in favoritos_existentes:
+        if int(nuevoFavorito['experto_id'])==elemento['experto_id']:
+            return jsonify({'msg':'Este elemeto ya se encuantra entre sus favoritos'}),400
+    
+    nuevoFavoritoElemento=ExpertosFavoritos(cliente_id=usuario.id,experto_id=nuevoFavorito['experto_id'])
+    db.session.add(nuevoFavoritoElemento)
+    db.session.commit()
+    return jsonify(nuevoFavoritoElemento.serialize()), 200
+##-------- Eliminar favorito -----------------
+@api.route('eliminar/favorito/<int:favorito_id>',methods=['DELETE'])
+@jwt_required()
+def eliminar_favorito(favorito_id):
+    usuario_activo=get_jwt_identity()
+    elemento_eliminar=ExpertosFavoritos.query.filter_by(cliente_id=usuario_activo,id=favorito_id).first()
+
+    if elemento_eliminar is None:
+        return jsonify('Elemento no encintrado'),404
+    else:
+        db.session.delete(elemento_eliminar)
+        db.session.commit()
+    return jsonify('Successfuly deleted',elemento_eliminar.serialize()),200
+    

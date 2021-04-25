@@ -12,6 +12,7 @@ class User(db.Model):
     codigo_password=db.Column(db.Integer)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     testimonios = db.relationship('Testimonio', lazy=True, backref='user')
+    expertos_preferidos = db.relationship('ExpertosFavoritos', lazy=True, backref='user')
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -23,7 +24,8 @@ class User(db.Model):
             'primer_nombre':self.primer_nombre,
             'apellidos':self.apellidos,
             'numero_telefonico':self.numero_telefonico,
-            'testimonios':list(map(lambda testimonio:testimonio.serialize(),self.testimonios))
+            'testimonios':list(map(lambda testimonio:testimonio.serialize(),self.testimonios)),
+            'expertos_preferidos':list(map(lambda experto:experto.serialize(),self.expertos_preferidos))
             # do not serialize the password, its a security breach
         }
 class Testimonio(db.Model):
@@ -87,5 +89,16 @@ class ComentarioEspecialista(db.Model):
             "experto_id":self.experto_id,
             "comentario":self.comentario
         }
+class ExpertosFavoritos(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    cliente_id=db.Column(db.Integer, db.ForeignKey(User.id))
+    experto_id=db.Column(db.Integer, db.ForeignKey(Especialistas.id))
+    def __repr__(self):
+        return '<ExpertosFavoritos %r>' % self.id
 
-
+    def serialize(self):
+        return {
+            "id": self.id,
+            "cliente_id": self.cliente_id,
+            "experto_id":self.experto_id
+        }
