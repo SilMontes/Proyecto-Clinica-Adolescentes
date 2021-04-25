@@ -1,0 +1,16 @@
+.picture-profile{
+    width: 150px;
+    height: 150px;
+}
+.picture-profile img{
+    width: 100%;
+    height: auto;
+    border-radius:75px;
+}
+@supports(object-fit: cover){
+    .picture-profile img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}

@@ -36,7 +36,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				multimedia: ""
 			},
 			alertatestimonio: "",
-			errortestimonio: ""
+			errortestimonio: "",
+			datosCambiarContraseña: {
+				nueva: "",
+				actualContraseña: "",
+				confirmarContraseña: ""
+			},
+			datosAjustePerfil: {
+				primer_nombre: "",
+				apellidos: "",
+				email: "",
+				numero_telefonico: ""
+			}
 		},
 		actions: {
 			//---------------------------- OBTENER ESPECIALISTAS ------------------------------------
@@ -235,6 +246,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				) {
 					setStore({ ...store, errortestimonio: datosSolicitudTestimonio.msg });
 				} else console.error(solicitudTestimonio.status);
+			},
+			///------------ Cambiar contraseña ------------
+			onChangeCambiarContraseña: e => {
+				const store = getStore();
+				const { datosCambiarContraseña } = store;
+				datosCambiarContraseña[e.target.name] = e.target.value;
+				setStore({ datosCambiarContraseña });
+			},
+			onChangePerfil: e => {
+				const store = getStore();
+				const { datosAjustePerfil } = store;
+				datosAjustePerfil[e.target.name] = e.target.value;
+				setStore({ datosAjustePerfil });
 			}
 		}
 	};
