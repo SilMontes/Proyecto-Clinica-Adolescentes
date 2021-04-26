@@ -45,17 +45,17 @@ export const Testimonios = () => {
 				<Col xs={11} md={7} lg={4}>
 					<Row className="justify-content-center">
 						<button className="bubbly-button" onClick={() => setMostrarForm(true)}>
-							<span>¡Cuentanos tu experiencia!</span>{" "}
+							<span className="expe">¡Cuentanos tu experiencia!</span>{" "}
 						</button>
 					</Row>
 				</Col>
 			</div>
 			{mostrarForm && (
-				<div className="row justify-content-center">
+				<div className=" testimonio row justify-content-center">
 					<Col>
 						<Row className="justify-content-center">
 							<div>
-								<label>Elige un titulo</label>
+								<label className="field">Elige un titulo</label>
 								<input
 									placeholer="Titulo"
 									name="titulo"
@@ -63,7 +63,7 @@ export const Testimonios = () => {
 								/>
 							</div>
 							<div>
-								<label>Agrega una imagen</label>
+								<label className="field">Agrega una imagen</label>
 								<input
 									placeholer="Imagen"
 									name="multimedia"
@@ -71,7 +71,7 @@ export const Testimonios = () => {
 								/>
 							</div>
 							<div>
-								<label>Cuenta tu experincia</label>
+								<label className="field">Cuenta tu experincia</label>
 								<textarea
 									className="form-control"
 									rows="5"
@@ -81,8 +81,12 @@ export const Testimonios = () => {
 								/>
 							</div>
 							<div>
-								<button onClick={() => setMostrarForm(false)}>Cancelar</button>
-								<button onClick={e => actions.onSubmitNuevoTestimonio(e)}>Enviar</button>
+								<button className="testi btn" onClick={() => setMostrarForm(false)}>
+									Cancelar
+								</button>
+								<button className="testi btn" onClick={e => actions.onSubmitNuevoTestimonio(e)}>
+									Enviar
+								</button>
 							</div>
 						</Row>
 					</Col>

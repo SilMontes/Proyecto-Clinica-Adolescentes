@@ -106,6 +106,52 @@ export const Orientacion = () => {
 				<Col lg={3}>
 					<Articulo name={nameCons} url={urlCons} />
 				</Col>
+
+				<Col lg={6}>
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/9LF7GjEwc2A"
+						title="YouTube video player"
+						frameBorder="0"
+						allowFullScreen="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					/>
+					;
+				</Col>
+				<Col lg={6}>
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/k3QfxGfRaUE"
+						title="YouTube video player"
+						frameBorder="0"
+						allowFullScreen="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					/>
+					;
+				</Col>
+				<Col lg={6}>
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/8-LdgyEOjxQ"
+						title="YouTube video player"
+						frameBorder="0"
+						allowFullScreen="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					/>
+					;
+				</Col>
+				<Col lg={6}>
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/rbLIV7xFfSo"
+						title="YouTube video player"
+						frameBorder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowFullScreen
+					/>
+					;
+				</Col>
 			</Row>
 		</div>
 	);

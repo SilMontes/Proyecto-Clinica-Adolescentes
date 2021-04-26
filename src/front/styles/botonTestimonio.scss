@@ -1,5 +1,14 @@
-$fuschia: #1eb8f0;
-$button-bg: $fuschia;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/*Kimberly*/ 
+$yellow:  #FFD23F;
+$blue: #1D3557 ;
+$light: #457B9D;
+$beige: #F1FAEE;
+
+$button-bg: $light;
 $button-text-color: #fff;
 $baby-blue: #f8faff;
 
@@ -57,6 +66,47 @@ $baby-blue: #f8faff;
   }
 }
 
+.expe{
+    font-family: 'Poppins', sans-serif;
+}
 
+.testi{
+    margin: 10px;
+    color:$beige;
+border-radius: 20px;
+}
 
+.testi:hover{
+    color: $yellow;
+}
 
+.field{
+ font-family: 'Nunito', sans-serif;;
+
+}
+input {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+  border: none;
+  border-radius: 0; 
+  // border-bottom: solid $width/150 rgba(white, .5);
+  color: $blue;
+  font-size: 20px;
+  transition: .3s ease;
+  &:valid {
+    // border-bottom-color: rgba(white, .5);
+    ~label {
+      top: 0;
+      color: rgba($blue, .5);
+    }
+  }
+  &:focus {
+    outline: none;
+    // border-bottom-color: $secondary-color;
+    ~label {
+      top: 0;
+      color: wheat;
+    }
+}
+}
