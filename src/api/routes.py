@@ -130,9 +130,17 @@ def agregar_testimonio():
 #------------------------ OBTENER TODOS LOS ESPECIALISTAS ---------------------------------------------------------------------------
 @api.route('/especialistas',methods=['GET'])
 def obtener_especialistas():
-    fecha=time.strftime("%d/%m/%Y")
     especialistas = Especialistas.query.all()
     lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
+    
+    usuarios=User.query.all()
+    lista_usuarios=list(map(lambda usuario:usuario.serialize(),usuarios))
+    for elemento in lista_especialistas:
+        for comentario in elemento['comentarios']:
+            for persona in lista_usuarios:
+                if persona['id']==comentario['cliente_id']:
+                    comentario['nombre_cliente']=persona['primer_nombre']+' '+persona['apellidos']
+
     return jsonify(lista_especialistas),200
 
 #
@@ -318,7 +326,7 @@ def obtener_testimonios():
     for elemento in lista_usuarios:
         if elemento['testimonios'] != []:
             for datos in elemento['testimonios']:
-                lista_testimonios.append({'experiencia':datos['experiencia'],'titulo':datos['titulo'],'imagen':datos['multimedia'],'nombre':elemento['primer_nombre']})
+                lista_testimonios.append({'experiencia':datos['experiencia'],'titulo':datos['titulo'],'imagen':datos['multimedia'],'nombre':elemento['primer_nombre'],'fecha':datos['fecha']})
     return jsonify(lista_testimonios),200
 #-- NUEVO TESTIMONIO ------------------------
 @api.route('/nuevotestimonio',methods=['POST'])
@@ -326,16 +334,20 @@ def obtener_testimonios():
 def nuevo_testimonio():
     usuario_activo = get_jwt_identity()
     usuario = User.query.filter_by(id=usuario_activo).first()
+    fecha=time.strftime("%d/%m/%Y")
+
     if not usuario:
         return jsonify({"msg":"No estás autorizado para realizar esta acción"}),401
     nuevoTestimonio=request.get_json()
     experiencia = nuevoTestimonio['experiencia']
     titulo=nuevoTestimonio['titulo']
     multimedia=nuevoTestimonio['multimedia']
+    if multimedia=='':
+        multimedia="https://thumbs.dreamstime.com/b/icono-del-usuario-aislado-en-el-fondo-gris-124431291.jpg"
     if experiencia == '' or titulo == '':
         return jsonify({'msg':"Los campos titulo y experiencia son requeridos"}),404
     else:
-        nuevoRelato=Testimonio(usuario_id=usuario.id,experiencia=experiencia,titulo=titulo,multimedia=multimedia)
+        nuevoRelato=Testimonio(usuario_id=usuario.id,experiencia=experiencia,fecha=fecha,titulo=titulo,multimedia=multimedia)
         db.session.add(nuevoRelato)
         db.session.commit()
         return jsonify(nuevoRelato.serialize()), 200
@@ -432,6 +444,7 @@ def actualizar_contraseña():
 def comentar_sobre_experto():
     usuario_activo=get_jwt_identity()
     solicitud = request.get_json()
+    fecha=time.strftime("%d/%m/%Y")
     usuario=User.query.filter_by(id=usuario_activo).first()
     if not usuario:
         return jsonify({"msg":"No estás autorizado para realizar esta acción"}),401
@@ -440,7 +453,7 @@ def comentar_sobre_experto():
     if not nuevo_comentario:
         return jsonify({"msg":"Por favor, escriba su comentario."}),400
     else:
-        agregarComentario=ComentarioEspecialista(cliente_id=usuario.id,experto_id=solicitud['experto_id'],comentario=nuevo_comentario)
+        agregarComentario=ComentarioEspecialista(cliente_id=usuario.id,experto_id=solicitud['experto_id'],fecha=fecha,comentario=nuevo_comentario)
         db.session.add(agregarComentario)
         db.session.commit()
         return jsonify(agregarComentario.serialize()), 200
@@ -468,7 +481,7 @@ def eliminar_comentario(comentario_id):
     elemento_eliminar=ComentarioEspecialista.query.filter_by(cliente_id=usuario_activo,id=comentario_id).first()
 
     if elemento_eliminar is None:
-        return jsonify('Elemnto no encontrado'),404
+        return jsonify('Elemento no encontrado'),404
     else:
         db.session.delete(elemento_eliminar)
         db.session.commit()
@@ -483,12 +496,21 @@ def obtener_comentarios_usuario():
     
     comentarios=ComentarioEspecialista.query.all()
     lista_comentarios=list(map(lambda comentario:comentario.serialize(),comentarios))
+    
+    especialistas = Especialistas.query.all()
+    lista_especialistas = list(map(lambda especialista:especialista.serialize(),especialistas))
 
     comentarios_usuario=[]
     for elemento in lista_comentarios:
         if elemento['cliente_id'] == usuario.id:
-            print(elemento['cliente_id'],usuario.id)
             comentarios_usuario.append(elemento)
+    for elemento in comentarios_usuario:
+        for persona in lista_especialistas:
+            if elemento['experto_id']==persona['id']:
+                elemento['nombre_experto']=persona['nombre']+' '+persona['apellido']
+                elemento['imagen_experto']=persona['imagen']
+    
+
     return jsonify(comentarios_usuario),200
 
 #-------- obtener favoritos de persona----------------

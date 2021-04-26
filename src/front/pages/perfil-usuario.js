@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { Form, Button, Container, Col, Row, Modal, Alert } from "react-bootstrap";
 import { FormularioEditarperfil } from "../js/component/formulario-editar-perfil";
 import { Context } from "../js/store/appContext";
+import { ComentariosUsuario } from "../js/component/comentarios-usuario";
+import { TestimonioUsuario } from "../js/component/testimonio-usuario";
 import Swal from "sweetalert2";
 export const PerfilUsuario = () => {
 	const { store, actions } = useContext(Context);
@@ -118,11 +120,13 @@ export const PerfilUsuario = () => {
 					</Modal.Footer>
 				</Form>
 			</Modal>
+			<Row className="justify-content-center" />
 			<Row className="justify-content-center">
-				<h5>Mi testimonio</h5>
-			</Row>
-			<Row className="justify-content-center">
-				<h5>Comentarios a especialistas</h5>
+				{store.comentarioUsuario.length > 0 ? (
+					<ComentariosUsuario />
+				) : (
+					<div>Sus comentarios sobre los especialistas aparecerá aquí.</div>
+				)}
 			</Row>
 		</Container>
 	);

@@ -4,13 +4,56 @@ import "../styles/index.scss";
 import { useParams, Link } from "react-router-dom";
 import WhatsAppWidget from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
-import { Row, Col } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { Row, Col, Form } from "react-bootstrap";
 
 export const InformacionEspecialista = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const [mensaje, setMensaje] = useState("");
 	const [mostrarForm, setMostrarForm] = useState(false);
+	const [comentario, setComentario] = useState("");
+
+	async function solicitudAgregarComentario(e, expertoId) {
+		e.preventDefault(e);
+		const datosComentario = {
+			comentario: comentario,
+			experto_id: expertoId
+		};
+		let respuesta = await fetch(process.env.BACKEND_URL + "/api/comentario/experto", {
+			method: "POST",
+			body: JSON.stringify(datosComentario),
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + sessionStorage.getItem("token")
+			}
+		});
+		const datos = await respuesta.json();
+		if (respuesta.status == "200") {
+			actions.obtenerEspecialistas();
+			Swal.fire({
+				text: "Su comentario se ha añadido",
+				timer: 2000,
+				confirmButtonText: "Entendido"
+			});
+			setMostrarForm(false);
+			setComentario("");
+		} else if (respuesta.status == "400" || respuesta.status == "401") {
+			Swal.fire({
+				text: datos.msg,
+				timer: 2000,
+				confirmButtonText: "Entendido"
+			});
+		} else {
+			console.error("Error enviar comentario", respuesta.status);
+		}
+	}
+	useEffect(
+		() => {
+			console.log(comentario);
+		},
+		[comentario]
+	);
 	useEffect(() => {
 		const nombre = sessionStorage.getItem("nombre");
 		if (nombre != "" && nombre != null) {
@@ -73,19 +116,30 @@ export const InformacionEspecialista = () => {
 								<div className="row justify-content-center">
 									<Col>
 										<Row className="justify-content-center">
-											<div>
-												<label>Escribe tu comentario</label>
-												<textarea
-													className="form-control"
-													rows="5"
-													id="comment"
-													name="comentario"
-												/>
-											</div>
-											<div>
-												<button onClick={() => setMostrarForm(false)}>Cancelar</button>
-												<button>Enviar</button>
-											</div>
+											<Form
+												onSubmit={e =>
+													solicitudAgregarComentario(
+														e,
+														store.datosEspecialistas[params.personaid].id
+													)
+												}>
+												<div>
+													<label>Escribe tu comentario</label>
+													<textarea
+														className="form-control"
+														rows="5"
+														id="comment"
+														name="comentario"
+														onChange={e => {
+															setComentario(e.target.value), console.log(comentario);
+														}}
+													/>
+												</div>
+												<div>
+													<button onClick={() => setMostrarForm(false)}>Cancelar</button>
+													<button>Enviar</button>
+												</div>
+											</Form>
 										</Row>
 									</Col>
 								</div>
@@ -93,18 +147,21 @@ export const InformacionEspecialista = () => {
 						</div>
 
 						<div className="card-body">
-							<div style={{ border: "1px solid black", marginTop: "5px" }}>
-								<div style={{ background: "blue", colr: "white" }}>fecha</div>
-								<h5>Nombre</h5>
-								<div>
-									<p style={{ padding: "10px" }}>
-										Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en
-										demostraciones de tipografías o de borradores de diseño para probar el diseño
-										visual antes de insertar el texto final.
-										<span>{" " + "Hola"}</span>
-									</p>
-								</div>
-							</div>
+							{store.datosEspecialistas[params.personaid].comentarios.length > 0 ? (
+								store.datosEspecialistas[params.personaid].comentarios.map((dato, index) => {
+									return (
+										<div key={index} style={{ border: "1px solid black", marginTop: "5px" }}>
+											<div style={{ background: "blue", colr: "white" }}>{dato.fecha}</div>
+											<h5>{dato.nombre_cliente}</h5>
+											<div>
+												<p style={{ padding: "10px" }}>{dato.comentario}</p>
+											</div>
+										</div>
+									);
+								})
+							) : (
+								<p>Aún no hay comentarios</p>
+							)}
 						</div>
 					</div>
 					<div className="float">
