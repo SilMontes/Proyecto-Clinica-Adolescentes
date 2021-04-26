@@ -25,31 +25,28 @@ export function ComentariosUsuario() {
 		}
 	}
 	return (
-		<div className="general card  text-left border-light mb-3">
-			<div className="card-header">Comentarios que has añadido</div>
-			<div className="card-body">
-				{store.comentarioUsuario.map((comentario, index) => {
-					return (
-						<Card key={index}>
-							<Card.Header>
-								{comentario.fecha}
-								<i className="fas fa-trash" onClick={() => eliminarComentario(comentario.id)} />
-							</Card.Header>
+		<>
+			{store.comentarioUsuario.map((comentario, index) => {
+				return (
+					<Card key={index}>
+						<Card.Header>
+							{comentario.fecha}
+							<i className="fas fa-trash" onClick={() => eliminarComentario(comentario.id)} />
+						</Card.Header>
+						<Card.Body>
+							<Card.Title>Especialista: {comentario.nombre_experto}</Card.Title>
 							<Card.Body>
-								<Card.Title>Especialista: {comentario.nombre_experto}</Card.Title>
-								<Card.Body>
-									<Col xs={6} lg={6}>
-										{comentario.comentario}
-									</Col>
-									<Col xs={6} lg={6}>
-										<Card.Img style={{ width: "100px" }} src={comentario.imagen_experto} />
-									</Col>
-								</Card.Body>
+								<Col xs={6} lg={6}>
+									{comentario.comentario}
+								</Col>
+								<Col xs={6} lg={6}>
+									<Card.Img style={{ width: "100px" }} src={comentario.imagen_experto} />
+								</Col>
 							</Card.Body>
-						</Card>
-					);
-				})}
-			</div>
-		</div>
+						</Card.Body>
+					</Card>
+				);
+			})}
+		</>
 	);
 }

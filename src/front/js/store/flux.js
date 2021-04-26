@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			datosUsuarioActivo: [],
 			comentarioUsuario: [],
-			favoritos: [],
+			testimonioUsuario: [],
 			errorCambiarContraseña: "",
 			errorEditarPerfil: [],
 			correcto: false
@@ -256,7 +256,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const datosUsuario = await solicitudInformacionUsuario.json();
 				if (solicitudInformacionUsuario.status == "200") {
 					setStore({ ...store, datosUsuarioActivo: datosUsuario });
+					setStore({ ...store, testimonioUsuario: datosUsuario.testimonios });
 					console.log("obtenerInformacionusuario", store.datosUsuarioActivo);
+					console.log("test", store.testimonioUsuario);
 				} else {
 					console.error("Error obtener datos usuario: ", datosUsuario, solicitudInformacionUsuario.status);
 				}
@@ -279,24 +281,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error al obtener comentarios de usuario: ", solicitudComentarios.status);
 				}
 			},
-			//obtener favoritos
-			obtenerFavoritos: async () => {
-				const store = getStore();
-				const solicitudFavoritos = await fetch(process.env.BACKEND_URL + "/api/usuario/obtener_favoritos", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: "Bearer " + sessionStorage.getItem("token")
-					}
-				});
-				const favoritosUsuario = await solicitudFavoritos.json();
-				if (solicitudFavoritos.status == "200") {
-					setStore({ ...store, favoritos: favoritosUsuario });
-					console.log("obtenerFavoritos", store.favoritos);
-				} else {
-					console.error("Error al obtener comentarios de usuario: ", solicitudFavoritos.status);
-				}
-			},
+
 			///------------ Cambiar contraseña ------------
 			onChangeCambiarContraseña: e => {
 				const store = getStore();

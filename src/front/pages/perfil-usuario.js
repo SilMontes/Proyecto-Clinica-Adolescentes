@@ -12,7 +12,6 @@ export const PerfilUsuario = () => {
 		if (id_usuario != "" && id_usuario != null) {
 			actions.obtenerInformacionusuario();
 			actions.obtenerComentariosusuario();
-			actions.obtenerFavoritos();
 			store.correcto == false;
 		}
 	}, []);
@@ -120,13 +119,36 @@ export const PerfilUsuario = () => {
 					</Modal.Footer>
 				</Form>
 			</Modal>
-			<Row className="justify-content-center" />
 			<Row className="justify-content-center">
-				{store.comentarioUsuario.length > 0 ? (
-					<ComentariosUsuario />
+				{store.testimonioUsuario.length > 0 ? (
+					<div className="general card  text-left border-light mb-3">
+						<div className="card-header">Testimonio</div>
+						{store.testimonioUsuario.map((dato, index) => {
+							return (
+								<TestimonioUsuario
+									key={index}
+									fecha={dato.fecha}
+									titulo={dato.titulo}
+									experiencia={dato.experiencia}
+									multimedia={dato.multimedia}
+									testimonioId={dato.id}
+								/>
+							);
+						})}
+					</div>
 				) : (
 					<div>Sus comentarios sobre los especialistas aparecerá aquí.</div>
 				)}
+			</Row>
+			<Row className="justify-content-center">
+				<div className="general card  text-left border-light mb-3">
+					<div className="card-header">Comentarios a especialiestas</div>
+					{store.comentarioUsuario.length > 0 ? (
+						<ComentariosUsuario />
+					) : (
+						<div>Sus comentarios sobre los especialistas aparecerá aquí.</div>
+					)}
+				</div>
 			</Row>
 		</Container>
 	);
