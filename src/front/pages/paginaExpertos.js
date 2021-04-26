@@ -1,9 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CardExpertos } from "../js/component/card-expertos";
 import { Context } from "../js/store/appContext";
 import { Form, Col, Container, InputGroup } from "react-bootstrap";
 export const PaginaExpertos = () => {
 	const { store, actions } = useContext(Context);
+
+	const [listDatosE, setDatosE] = useState(store.datosEspecialistas);
+
+	const textFilterProvincia = event => {
+		let text = event.target.value;
+		if (text === "") {
+			setDatosE(store.datosEspecialistas);
+		} else {
+			const personaResult = store.datosEspecialistas.filter(function(persona) {
+				return persona.provincia === text;
+			});
+			setDatosE(personaResult);
+		}
+	};
+
+	const textFilterApellido = event => {
+		let text = event.target.value;
+		if (text === "") {
+			setDatosE(store.datosEspecialistas);
+		} else {
+			const personaResult = store.datosEspecialistas.filter(function(persona) {
+				return persona.apellido === text;
+			});
+			setDatosE(personaResult);
+		}
+	};
+
+	const textFilterEspecialidad = event => {
+		let text = event.target.value;
+		if (text === "") {
+			setDatosE(store.datosEspecialistas);
+		} else {
+			const personaResult = store.datosEspecialistas.filter(function(persona) {
+				return persona.especialidad === text;
+			});
+			setDatosE(personaResult);
+		}
+	};
+
 	return (
 		<Container>
 			<div className="row justify-content-center mb-3">
@@ -11,20 +50,14 @@ export const PaginaExpertos = () => {
 					className=" col-10 col-lg-8 justify-content-center"
 					style={{ background: "#0f4c75", marginLeft: "0", padding: "0" }}>
 					<Form.Row className="justify-content-center">
-						<Col xs="5" md="3">
-							<Form.Group className="pt-3">
-								<Form.Control as="select" defaultValue="Filtrar por...">
-									<option>Filtrar por...</option>
-									<option>Provincia</option>
-									<option>Nombre</option>
-									<option>Especialidad</option>
-								</Form.Control>
-							</Form.Group>
-						</Col>
 						<Col xs="7">
 							<Form.Group className="pt-3">
 								<InputGroup>
-									<Form.Control type="text" />
+									<Form.Control
+										defaultValue="Filtrar por apellido, provincia y especialidad "
+										type="text"
+										onChange={(textFilterApellido, textFilterProvincia, textFilterEspecialidad)}
+									/>
 									<InputGroup.Prepend style={{ width: "fit-content" }}>
 										<InputGroup.Text className="filtradoBusquedaBtn">
 											<i className="fas fa-search" />
@@ -36,14 +69,14 @@ export const PaginaExpertos = () => {
 					</Form.Row>
 				</Form>
 			</div>
-			{store.datosEspecialistas.length > 0 && (
+			{listDatosE.length > 0 ? (
 				<Container fluid className="m-0 row justify-content-center align-items-center">
-					{store.datosEspecialistas.map((persona, index) => {
+					{listDatosE.map((persona, index) => {
 						return (
 							<CardExpertos
 								key={index}
 								id={persona.id - 1}
-								nombre={persona.nombre + persona.apellido}
+								nombre={persona.nombre + " " + persona.apellido}
 								especialidad={persona.especialidad}
 								imagen={persona.imagen}
 								detalles={persona.detalles}
@@ -51,7 +84,7 @@ export const PaginaExpertos = () => {
 						);
 					})}
 				</Container>
-			)}
+			) : null}
 		</Container>
 	);
 };
