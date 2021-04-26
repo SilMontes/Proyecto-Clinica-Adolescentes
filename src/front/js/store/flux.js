@@ -42,12 +42,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				actualContraseña: "",
 				confirmarContraseña: ""
 			},
-			datosAjustePerfil: {
-				primer_nombre: "",
-				apellidos: "",
-				email: "",
-				numero_telefonico: ""
-			}
+			datosUsuarioActivo: [],
+			comentarioUsuario: [],
+			favoritos: [],
+			errorCambiarContraseña: "",
+			errorEditarPerfil: [],
+			correcto: false
 		},
 		actions: {
 			//---------------------------- OBTENER ESPECIALISTAS ------------------------------------
@@ -114,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const datosSolicitud = await respuesta.json();
 				if (respuesta.status == "200") {
 					sessionStorage.setItem("token", datosSolicitud[1].token);
-					sessionStorage.setItem("id_usuario", datosSolicitud[1].id_usuario);
+					sessionStorage.setItem("user_id", datosSolicitud[1].id_usuario);
 					sessionStorage.setItem("nombre", datosSolicitud[1].nombre);
 					setStore({ ...store, token: datosSolicitud[1].token });
 				} else if (respuesta.status == "400" || respuesta.status == "401") {
@@ -247,6 +247,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ ...store, errortestimonio: datosSolicitudTestimonio.msg });
 				} else console.error(solicitudTestimonio.status);
 			},
+			/// Informacion de usuario
+			obtenerInformacionusuario: async () => {
+				const store = getStore();
+				const solicitudInformacionUsuario = await fetch(
+					process.env.BACKEND_URL + "/api/usuario/" + sessionStorage.getItem("user_id")
+				);
+				const datosUsuario = await solicitudInformacionUsuario.json();
+				if (solicitudInformacionUsuario.status == "200") {
+					setStore({ ...store, datosUsuarioActivo: datosUsuario });
+					console.log("obtenerInformacionusuario", store.datosUsuarioActivo);
+				} else {
+					console.error("Error obtener datos usuario: ", datosUsuario, solicitudInformacionUsuario.status);
+				}
+			},
+			//OBTENER COMENTARIOS DE USUARIO----------------
+			obtenerComentariosusuario: async () => {
+				const store = getStore();
+				const solicitudComentarios = await fetch(process.env.BACKEND_URL + "/api/usuario/obtener_comentarios", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					}
+				});
+				const comentariosUsuario = await solicitudComentarios.json();
+				if (solicitudComentarios.status == "200") {
+					setStore({ ...store, comentarioUsuario: comentariosUsuario });
+					console.log("obtenerComentariosusuario", store.comentarioUsuario);
+				} else {
+					console.error("Error al obtener comentarios de usuario: ", solicitudComentarios.status);
+				}
+			},
+			//obtener favoritos
+			obtenerFavoritos: async () => {
+				const store = getStore();
+				const solicitudFavoritos = await fetch(process.env.BACKEND_URL + "/api/usuario/obtener_favoritos", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					}
+				});
+				const favoritosUsuario = await solicitudFavoritos.json();
+				if (solicitudFavoritos.status == "200") {
+					setStore({ ...store, favoritos: favoritosUsuario });
+					console.log("obtenerFavoritos", store.favoritos);
+				} else {
+					console.error("Error al obtener comentarios de usuario: ", solicitudFavoritos.status);
+				}
+			},
 			///------------ Cambiar contraseña ------------
 			onChangeCambiarContraseña: e => {
 				const store = getStore();
@@ -254,11 +304,70 @@ const getState = ({ getStore, getActions, setStore }) => {
 				datosCambiarContraseña[e.target.name] = e.target.value;
 				setStore({ datosCambiarContraseña });
 			},
+			onSubmitCambiarContraseña: async e => {
+				e.preventDefault(e);
+				const store = getStore();
+				setStore({ ...store, correcto: false });
+				setStore({ ...store, errorCambiarContraseña: "" });
+				const cambiarContraseñaSolicitud = await fetch(process.env.BACKEND_URL + "/api/actualizar_contraseña", {
+					method: "PUT",
+					body: JSON.stringify(store.datosCambiarContraseña),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					}
+				});
+				const nuevosDatos = await cambiarContraseñaSolicitud.json();
+				if (cambiarContraseñaSolicitud.status == "200") {
+					setStore({ ...store, correcto: true });
+					setStore({ ...store, errorCambiarContraseña: "" });
+				} else if (
+					cambiarContraseñaSolicitud.status == "400" ||
+					cambiarContraseñaSolicitud.status == "401" ||
+					cambiarContraseñaSolicitud.status == "404"
+				) {
+					setStore({ ...store, errorCambiarContraseña: nuevosDatos.msg });
+				} else {
+				}
+			},
+			// ------- MODIFICAR PERFIL -------------------
 			onChangePerfil: e => {
 				const store = getStore();
-				const { datosAjustePerfil } = store;
-				datosAjustePerfil[e.target.name] = e.target.value;
-				setStore({ datosAjustePerfil });
+				const { datosUsuarioActivo } = store;
+				datosUsuarioActivo[e.target.name] = e.target.value;
+				setStore({ datosUsuarioActivo });
+			},
+			onSubmitEditarPerfil: async e => {
+				e.preventDefault(e);
+				const store = getStore();
+				setStore({ ...store, correcto: false });
+				setStore({ ...store, errorEditarPerfil: [] });
+				const actions = getActions();
+				const datosAjustePerfil = {
+					primer_nombre: store.datosUsuarioActivo.primer_nombre,
+					apellidos: store.datosUsuarioActivo.apellidos,
+					email: store.datosUsuarioActivo.email,
+					numero_telefonico: store.datosUsuarioActivo.numero_telefonico
+				};
+				const solicitudEditarperfil = await fetch(process.env.BACKEND_URL + "/api/usuario/ajustes", {
+					method: "PUT",
+					body: JSON.stringify(datosAjustePerfil),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					}
+				});
+				const datos = await solicitudEditarperfil.json();
+				if (solicitudEditarperfil.status == "200") {
+					actions.obtenerInformacionusuario();
+					setStore({ ...store, correcto: true });
+					console.log("onSubmitEditarPerfil", store.correcto);
+				} else if (solicitudEditarperfil.status == "401" || solicitudEditarperfil.status == "400") {
+					setStore({ ...store, errorEditarPerfil: datos });
+					console.log("onSubmitEditarPerfilerr", store.errorEditarPerfil);
+				} else {
+					console.error("Error al editar perfil", solicitudEditarperfil.status);
+				}
 			}
 		}
 	};

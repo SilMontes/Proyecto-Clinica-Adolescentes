@@ -34,6 +34,8 @@ class Testimonio(db.Model):
     experiencia=db.Column(db.String(1000))
     titulo=db.Column(db.String(100))
     multimedia=db.Column(db.String(1000))
+    fecha=db.Column(db.String(40))
+
 
     def __repr__(self):
         return '<Testimonio %r>' % self.id
@@ -44,7 +46,9 @@ class Testimonio(db.Model):
             "usuario_id": self.usuario_id,
             "experiencia":self.experiencia,
             'multimedia':self.multimedia,
-            'titulo':self.titulo
+            'titulo':self.titulo,
+            'fecha':self.fecha
+
         }
 class Especialistas(db.Model):
     id=db.Column(db.Integer, primary_key=True)
@@ -78,7 +82,7 @@ class ComentarioEspecialista(db.Model):
     cliente_id=db.Column(db.Integer, db.ForeignKey(User.id))
     experto_id=db.Column(db.Integer, db.ForeignKey(Especialistas.id))
     comentario=db.Column(db.String(1000))
-    
+    fecha=db.Column(db.String(40))
     def __repr__(self):
         return '<ComentarioEspecialista %r>' % self.id
 
@@ -87,7 +91,8 @@ class ComentarioEspecialista(db.Model):
             "id": self.id,
             "cliente_id": self.cliente_id,
             "experto_id":self.experto_id,
-            "comentario":self.comentario
+            "comentario":self.comentario,
+            'fecha':self.fecha
         }
 class ExpertosFavoritos(db.Model):
     id=db.Column(db.Integer, primary_key=True)
