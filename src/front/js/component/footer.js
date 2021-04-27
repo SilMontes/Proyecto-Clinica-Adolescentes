@@ -9,24 +9,53 @@ export const Footer = () => (
 					<h6 className="til" style={{ marginBottom: "14px" }}>
 						Sobre Nosotros
 					</h6>
-					<p className="abajo" style={{ marginBottom: "0.75rem" }}>
-						Contáctenos
-					</p>
-					<p className="abajo" style={{ marginBottom: "0.75rem" }}>
-						Reportá
-					</p>
-					<p className="abajo" style={{ marginBottom: "0.75rem" }}>
-						Comunidad juventud
-					</p>
-					<p className="abajo" style={{ marginBottom: "0.75rem" }}>
-						Clínicas cercanas
-					</p>
+					<ul>
+						<li>
+							{" "}
+							<a
+								className="abajo"
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://api.whatsapp.com/send?phone=50689891147">
+								Contáctenos
+							</a>{" "}
+						</li>
+
+						<li>
+							<a className="abajo" href="src/front/pages/reporta.js" style={{ marginBottom: "0.75rem" }}>
+								Reportá
+							</a>
+						</li>
+						<li>
+							<a className="abajo" href="" style={{ marginBottom: "0.75rem" }}>
+								Comunidad juventud
+							</a>
+						</li>
+						<li>
+							{" "}
+							<a className="abajo" href="" style={{ marginBottom: "0.75rem" }}>
+								Clínicas cercanas
+							</a>
+						</li>
+					</ul>
 				</div>
 				<div className="footer col-4">
 					<h4 className=" titfoo text-center">Clinica de Adolescentes</h4>
-					<i className="fab fa-facebook-f" target="_blank" href="https://www.facebook.com/PANICR/" />
-					<i className="fab fa-instagram" target="_blank" href="" />
-					<i className="fab fa-youtube" target="_blank" href="" />
+					<a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/PANICR/">
+						<i className="fab fa-facebook-f" />
+					</a>
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.instagram.com/edsexualparatodxs/?hl=es-la">
+						<i className="fab fa-instagram" />{" "}
+					</a>
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.youtube.com/channel/UCdkUfbpaEoYqOMGq7k-iCwA">
+						<i className="fab fa-youtube" />{" "}
+					</a>
 					<br />
 					<br />
 					<p className="text-center" style={{ marginBottom: "0.75rem" }}>

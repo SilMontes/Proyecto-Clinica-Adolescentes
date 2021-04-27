@@ -21,9 +21,15 @@ export const Reporta = () => {
 						</div>
 					</div>
 					<div className="col-12  d-flex align-items-center justify-content-center">
-						<button type="button" className=" call btn rounded-pill">
-							Llámenos
-						</button>
+						<a
+							href="https://api.whatsapp.com/send?phone=50689891147"
+							target="_blank"
+							role="button"
+							rel="noopener noreferrer"
+							aria-pressed="true"
+							className=" call btn rounded-pill">
+							Envíanos un mensaje
+						</a>
 					</div>
 				</div>
 				<div className=" col-6 formulario form-group">
