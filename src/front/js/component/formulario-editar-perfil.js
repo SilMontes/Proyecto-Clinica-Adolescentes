@@ -26,7 +26,7 @@ export const FormularioEditarperfil = props => {
 					</Alert>
 				)}
 			</div>
-			<div className="general card text-left border-light mt-3 mb-2" style={{ background: "#F1FAEE" }}>
+			<div className="general card text-left border-light mb-2" style={{ background: "#F1FAEE" }}>
 				<Row className="justify-content-center">
 					<Col xs lg="2">
 						<div className="picture-profile">
@@ -84,9 +84,11 @@ export const FormularioEditarperfil = props => {
 				</Row>
 				<Row className="justify-content-center">
 					<Col xs lg="3" className="mb-2">
-						<span>Cambiar Contraseña </span>
+						<span>Cambiar Contraseña</span>
+					</Col>
+					<Col xs lg="1" className="mb-2" style={{ left: "-6%" }}>
 						<span onClick={props.cerrarFormulario}>
-							<i className="fas fa-key" style={{ left: "0%" }} />
+							<i className="fas fa-key" />
 						</span>
 					</Col>
 				</Row>
