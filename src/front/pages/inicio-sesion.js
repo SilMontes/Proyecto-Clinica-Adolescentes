@@ -33,7 +33,7 @@ export const InicioSesion = () => {
 						<input
 							type="text"
 							name="email"
-							placeholder="Dirrección email"
+							placeholder="Dirección email"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
 						<input

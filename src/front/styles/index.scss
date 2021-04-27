@@ -236,6 +236,9 @@ footer{
     margin: 0%;
 }
 
+ul{
+    list-style-type: none;
+}
 
 i{
     font-size: 27px;
@@ -342,6 +345,13 @@ $color_grey_experto: #e2e2e2;
 $color_grey_dark_experto: #a2a2a2;
 
 /////////// Estilos Login y registro (Silvia) /////////////////// 
+
+input{
+  margin: 8px 0;
+  border-color: $beige;
+}
+
+
 .containerLoginSignUp {
     display: flex;
     align-items: center;
