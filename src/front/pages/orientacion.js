@@ -46,12 +46,11 @@ export const Orientacion = () => {
 			<Row>
 				<Col lg={4}>
 					<button
-						className="btn btn-outline-primary"
-						type="button"
+						className=" search-button fas fa-search"
 						data-bs-toggle="offcanvas"
 						data-bs-target="#offcanvasWithBothOptions"
 						aria-controls="offcanvasWithBothOptions">
-						<i className="fas fa-search">Busqueda</i>
+						Búsqueda
 					</button>
 
 					<div
