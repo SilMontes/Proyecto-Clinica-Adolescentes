@@ -11,7 +11,7 @@ export const Reporta = () => {
 						<p className="text-center">
 							Denuncie situaciones de Violencia, Acoso o Abuso Sexual al Servicio de Emergencia. Desde
 							este servicio, se da atención a todos aquellos incidentes de emergencia y consulta sobre
-							violencia. En este servicio Llámenos: 2295-3000
+							violencia.
 						</p>
 						<div className="text-center">
 							<h3>En este servicio llámenos: 2295-3000</h3>

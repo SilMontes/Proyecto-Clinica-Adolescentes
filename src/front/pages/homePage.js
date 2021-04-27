@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, CardGroup, Card } from "react-bootstrap";
+import { Row, Col, CardGroup, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CardHomePage } from "../js/component/cardHomePage";
 import { Carousel } from "../js/component/carousel";
@@ -33,7 +33,7 @@ export const HomePage = () => {
 		<div>
 			<div className="colCarousel">
 				<Row>
-					<Col md={{ span: 6, offset: 3 }}>
+					<Col sm={6}>
 						<Carousel />
 					</Col>
 				</Row>
@@ -41,22 +41,22 @@ export const HomePage = () => {
 			<h2>Conozca sobre las Especialidades</h2>
 
 			<CardGroup>
-				<Card sm={3}>
+				<Card>
 					<Card.Body>
 						<CardHomePage name={namePsico} info={infoPsico} url={urlPsico} />
 					</Card.Body>
 				</Card>
-				<Card sm={3}>
+				<Card>
 					<Card.Body>
 						<CardHomePage name={namePsiquiatria} info={infoPsiquiatria} url={urlPsiquiatria} />
 					</Card.Body>
 				</Card>
-				<Card sm={3}>
+				<Card>
 					<Card.Body>
 						<CardHomePage name={nameMedicina} info={infoMedicina} url={urlMedicina} />
 					</Card.Body>
 				</Card>
-				<Card sm={3}>
+				<Card>
 					<Card.Body>
 						<CardHomePage name={nameEducacion} info={infoEducacion} url={urlEducacion} />
 					</Card.Body>
