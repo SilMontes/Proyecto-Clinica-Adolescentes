@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Icono from "../../img/Icono.png";
-
+import { Context } from "../store/appContext";
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
@@ -20,23 +21,32 @@ export const Navbar = () => {
 				</Link>
 			</div>
 			<div className=" menu col-12 mr-auto">
-				<Link className="menu" to="/orientacion">
-					Orientacion
-				</Link>
-				<Link className="menu" to="/derechos">
-					Derechos
-				</Link>
-				<Link className="menu" to="/expertos">
-					Expertos
-				</Link>
+				{store.token != "" &&
+					store.token != null && (
+						<>
+							<Link className="menu" to="/orientacion">
+								Orientacion
+							</Link>
+							<Link className="menu" to="/derechos">
+								Derechos
+							</Link>
+							<Link className="menu" to="/expertos">
+								Expertos
+							</Link>
 
-				<Link className="menu" to="/testimonios">
-					Testimonios
-				</Link>
+							<Link className="menu" to="/testimonios">
+								Testimonios
+							</Link>
 
-				<Link className="menu" to="/reporta">
-					Reportar
-				</Link>
+							<Link className="menu" to="/reporta">
+								Reportar
+							</Link>
+
+							<Link className="menu" to="/perfil">
+								Perfil
+							</Link>
+						</>
+					)}
 			</div>
 		</nav>
 	);

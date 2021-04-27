@@ -4,6 +4,7 @@ import { FormularioEditarperfil } from "../js/component/formulario-editar-perfil
 import { Context } from "../js/store/appContext";
 import { ComentariosUsuario } from "../js/component/comentarios-usuario";
 import { TestimonioUsuario } from "../js/component/testimonio-usuario";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 export const PerfilUsuario = () => {
 	const { store, actions } = useContext(Context);
@@ -132,9 +133,9 @@ export const PerfilUsuario = () => {
 					</Modal.Footer>
 				</Form>
 			</Modal>
-			<Row className="justify-content-center">
+			<Row className="justify-content-center mt-3">
 				{store.testimonioUsuario.length > 0 ? (
-					<div className="general card  text-left border-light mb-3">
+					<div className="general card  text-left border-light mt-3 mb-3">
 						<div className="card-header">Testimonio</div>
 						{store.testimonioUsuario.map((dato, index) => {
 							return (
@@ -150,16 +151,39 @@ export const PerfilUsuario = () => {
 						})}
 					</div>
 				) : (
-					<div>Sus comentarios sobre los especialistas aparecerá aquí.</div>
+					<div className="general card  text-left border-light mt-2 mb-3">
+						<div className="card-header">Testimonio</div>
+						<div className="m-2 ml-3">Su testimonio aparecerá aquí. </div>
+						<div className="ml-4">
+							<span>
+								<Link to="/testimonios">
+									{""}
+									¿Desea agregar uno?{" "}
+									<i className="fas fa-edit" style={{ color: "#457B9D", left: "0%" }} />
+								</Link>
+							</span>{" "}
+						</div>
+					</div>
 				)}
 			</Row>
 			<Row className="justify-content-center">
-				<div className="general card  text-left border-light mb-3">
+				<div className="general card  text-left border-light mt-0 mb-3">
 					<div className="card-header">Comentarios a especialiestas</div>
 					{store.comentarioUsuario.length > 0 ? (
 						<ComentariosUsuario />
 					) : (
-						<div>Sus comentarios sobre los especialistas aparecerá aquí.</div>
+						<>
+							<div className="m-3 ml-2">Sus comentarios sobre los especialistas aparecerá aquí. </div>
+							<div className="ml-4">
+								<span>
+									<Link to="/expertos">
+										{""}
+										¿Desea dejar su comentario?{" "}
+										<i className="fas fa-edit" style={{ color: "#457B9D", left: "0%" }} />
+									</Link>
+								</span>
+							</div>
+						</>
 					)}
 				</div>
 			</Row>
