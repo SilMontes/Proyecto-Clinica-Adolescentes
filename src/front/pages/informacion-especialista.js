@@ -18,7 +18,7 @@ export const InformacionEspecialista = () => {
 	}, []);
 
 	return (
-		<div className=" expertos container">
+		<div className=" expertos container-fluid">
 			{store.datosEspecialistas.length > 0 && (
 				<>
 					<div className="row">
