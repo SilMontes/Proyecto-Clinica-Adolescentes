@@ -9,6 +9,7 @@ export const Testimonios = () => {
 	const [mostrarForm, setMostrarForm] = useState(false);
 	useEffect(() => {
 		(store.alertatestimonio = ""), (store.errortestimonio = "");
+		actions.obtenerTestimonios();
 	}, []);
 	useEffect(
 		() => {

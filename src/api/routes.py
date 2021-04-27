@@ -509,6 +509,7 @@ def obtener_comentarios_usuario():
             if elemento['experto_id']==persona['id']:
                 elemento['nombre_experto']=persona['nombre']+' '+persona['apellido']
                 elemento['imagen_experto']=persona['imagen']
+                elemento['numero_telefonico']=persona['numero_telefonico']
     
 
     return jsonify(comentarios_usuario),200
