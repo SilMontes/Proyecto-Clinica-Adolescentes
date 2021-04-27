@@ -12,7 +12,7 @@ export const Navbar = () => {
 
 			<div className="float-right d-flex flex-row ml-auto">
 				<Link to="/iniciosesion">
-					<p className="enter">Iniciar Sección</p>
+					<p className="enter">Iniciar Sesión</p>
 				</Link>
 				<p className="linea"> - </p>
 				<Link to="/registro">

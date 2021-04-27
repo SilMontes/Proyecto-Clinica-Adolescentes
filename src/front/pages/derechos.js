@@ -80,7 +80,7 @@ export const Derechos = () => {
 					<strong>ENLACES</strong>
 				</Card.Header>
 				<br />
-				<Card.Link a href="https://www.voicesofyouth.org/es/" target="_blank">
+				<Card.Link href="https://www.voicesofyouth.org/es/" target="_blank">
 					La Juventud Opina
 				</Card.Link>{" "}
 				<br />
@@ -88,7 +88,7 @@ export const Derechos = () => {
 					Patronato Nacional de la Infancia Costa Rica
 				</Card.Link>{" "}
 				<br />
-				<Card.Link a href="https://www.apa.org/centrodeapoyo/sexual/" target="_blank">
+				<Card.Link href="https://www.apa.org/centrodeapoyo/sexual/" target="_blank">
 					Orientación sexual e identidad de género
 				</Card.Link>{" "}
 				<br />
