@@ -50,7 +50,7 @@ export const PerfilUsuario = () => {
 			<FormularioEditarperfil cerrarFormulario={handleShow} />
 			<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 				<Form onSubmit={e => actions.onSubmitCambiarContraseña(e)}>
-					<Modal.Header closeButton>
+					<Modal.Header style={{ backgroundColor: "#F1FAEE" }} closeButton>
 						<Modal.Title>Cambiar Contraseña</Modal.Title>
 					</Modal.Header>
 					<Modal.Body className="modal-settings">
@@ -64,52 +64,65 @@ export const PerfilUsuario = () => {
 							)}
 						</div>
 						<Row>
-							<Form.Label>Actual Contraseña</Form.Label>
-							<Form.Control
-								type="Password"
-								placeholder="Actual Contraseña"
-								name="actualContraseña"
-								onChange={e => {
-									actions.onChangeCambiarContraseña(e);
-								}}
-							/>
+							<Col sm={11}>
+								<Form.Label>Actual Contraseña</Form.Label>
+								<Form.Control
+									type="Password"
+									placeholder="Actual Contraseña"
+									name="actualContraseña"
+									onChange={e => {
+										actions.onChangeCambiarContraseña(e);
+									}}
+								/>
+							</Col>
 						</Row>
 						<Row>
-							<Form.Label>Nueva Contraseña</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Nueva Contraseña"
-								name="nueva"
-								onChange={e => {
-									actions.onChangeCambiarContraseña(e);
-								}}
-							/>
+							<Col sm={11}>
+								<Form.Label>Nueva Contraseña</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Nueva Contraseña"
+									name="nueva"
+									onChange={e => {
+										actions.onChangeCambiarContraseña(e);
+									}}
+								/>
+							</Col>
 						</Row>
 						<Row>
-							<Form.Label>Confirmar Contraseña</Form.Label>
-							<Form.Control
-								style={{ background: iputBackGround }}
-								type="Password"
-								placeholder="Contraseña de confirmación"
-								name="confirmarContraseña"
-								onChange={e => {
-									actions.onChangeCambiarContraseña(e);
-								}}
-							/>
-							{iputBackGround == "#ff6961" ? (
-								<Form.Text id="passwordHelpBlock" muted>
-									<i className="fas fa-exclamation-triangle" style={{ color: "red" }} />
-									Ambas contraseñas deben ser iguales
-								</Form.Text>
-							) : (
-								<Form.Text className="text-muted">
-									Su contraseña debe contener 8 carácteres como mínimo, al menos una letra mayúscula,
-									una letra minúscula y un carácter especial
-								</Form.Text>
-							)}
+							<Col sm={11}>
+								<Form.Label>Confirmar Contraseña</Form.Label>
+								<Form.Control
+									type="Password"
+									placeholder="Contraseña de confirmación"
+									name="confirmarContraseña"
+									onChange={e => {
+										actions.onChangeCambiarContraseña(e);
+									}}
+								/>
+								{iputBackGround == "#ff6961" ? (
+									<Form.Text id="passwordHelpBlock" muted>
+										<Row>
+											<Col sm={9}>
+												<div className="alert alert-danger">
+													Ambas contraseñas deben ser iguales
+												</div>
+											</Col>
+											<Col>
+												<i className="fas fa-exclamation-triangle" style={{ color: "red" }} />
+											</Col>
+										</Row>
+									</Form.Text>
+								) : (
+									<Form.Text className="text-muted">
+										Su contraseña debe contener 8 carácteres como mínimo, al menos una letra
+										mayúscula, una letra minúscula y un carácter especial
+									</Form.Text>
+								)}
+							</Col>
 						</Row>
 					</Modal.Body>
-					<Modal.Footer>
+					<Modal.Footer style={{ backgroundColor: "#F1FAEE" }}>
 						<Button className="button-modal-close" onClick={handleClose}>
 							Cerrar
 						</Button>

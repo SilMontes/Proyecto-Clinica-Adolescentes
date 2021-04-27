@@ -26,75 +26,80 @@ export const FormularioEditarperfil = props => {
 					</Alert>
 				)}
 			</div>
-			<Row className="justify-content-center">
-				<Col xs lg="2">
-					<div className="picture-profile">
-						<img src="https://www.pngitem.com/pimgs/m/361-3619018_imagen-de-perfil-gmail-hd-png-download.png" />
-					</div>
-				</Col>
-			</Row>
-			<Row className="justify-content-center">
-				<Col md={4} lg={4} className="mb-2">
-					<Form.Label className="ml-2">Primer Nombre</Form.Label>
-					<Form.Control
-						placeholder="Primer Nombre"
-						name="primer_nombre"
-						onChange={e => {
-							actions.onChangePerfil(e);
-						}}
-						defaultValue={store.datosUsuarioActivo.primer_nombre}
-					/>
-				</Col>
-				<Col md={4} lg={4} className="mb-2">
-					<Form.Label className="ml-2">Apellidos</Form.Label>
-					<Form.Control
-						placeholder="Apellidos"
-						name="apellidos"
-						onChange={e => {
-							actions.onChangePerfil(e);
-						}}
-						defaultValue={store.datosUsuarioActivo.apellidos}
-					/>
-				</Col>
-			</Row>
-			<Row className="justify-content-center">
-				<Col md={4} lg={4} className="mb-2">
-					<Form.Label className="ml-2">Número telefónico</Form.Label>
-					<Form.Control
-						placeholder="Número telefónico"
-						name="numero_telefonico"
-						onChange={e => {
-							actions.onChangePerfil(e);
-						}}
-						defaultValue={store.datosUsuarioActivo.numero_telefonico}
-					/>
-				</Col>
-				<Col md={4} lg={4} className="mb-2">
-					<Form.Label className="ml-2">Dirrección Email</Form.Label>
-					<Form.Control
-						placeholder="Dirrección Email"
-						name="email"
-						onChange={e => {
-							actions.onChangePerfil(e);
-						}}
-						defaultValue={store.datosUsuarioActivo.email}
-					/>
-				</Col>
-			</Row>
-			<Row className="justify-content-center">
-				<Col xs lg="2" className="mb-2">
-					<span onClick={props.cerrarFormulario}>
-						<i className="fas fa-key" /> Cambiar Contraseña
-					</span>
-				</Col>
-			</Row>
-			<Row className="justify-content-center">
-				<Col xs lg="2">
-					<Button className="button-form ml-3" type="submit">
-						Modificar
-					</Button>
-				</Col>
-			</Row>
+			<div className="general card text-left border-light mb-2" style={{ background: "#F1FAEE" }}>
+				<Row className="justify-content-center">
+					<Col xs lg="2">
+						<div className="picture-profile">
+							<img src="https://www.pngitem.com/pimgs/m/361-3619018_imagen-de-perfil-gmail-hd-png-download.png" />
+						</div>
+					</Col>
+				</Row>
+				<Row className="justify-content-center">
+					<Col md={4} lg={4} className="mb-2">
+						<Form.Label className="ml-2">Primer Nombre</Form.Label>
+						<Form.Control
+							placeholder="Primer Nombre"
+							name="primer_nombre"
+							onChange={e => {
+								actions.onChangePerfil(e);
+							}}
+							defaultValue={store.datosUsuarioActivo.primer_nombre}
+						/>
+					</Col>
+					<Col md={4} lg={4} className="mb-2">
+						<Form.Label className="ml-2">Apellidos</Form.Label>
+						<Form.Control
+							placeholder="Apellidos"
+							name="apellidos"
+							onChange={e => {
+								actions.onChangePerfil(e);
+							}}
+							defaultValue={store.datosUsuarioActivo.apellidos}
+						/>
+					</Col>
+				</Row>
+				<Row className="justify-content-center">
+					<Col md={4} lg={4} className="mb-2">
+						<Form.Label className="ml-2">Número telefónico</Form.Label>
+						<Form.Control
+							placeholder="Número telefónico"
+							name="numero_telefonico"
+							onChange={e => {
+								actions.onChangePerfil(e);
+							}}
+							defaultValue={store.datosUsuarioActivo.numero_telefonico}
+						/>
+					</Col>
+					<Col md={4} lg={4} className="mb-2">
+						<Form.Label className="ml-2">Dirrección Email</Form.Label>
+						<Form.Control
+							placeholder="Dirrección Email"
+							name="email"
+							onChange={e => {
+								actions.onChangePerfil(e);
+							}}
+							defaultValue={store.datosUsuarioActivo.email}
+						/>
+					</Col>
+				</Row>
+				<Row className="justify-content-center">
+					<Col xs lg="3" className="mb-2">
+						<span>Cambiar Contraseña</span>
+					</Col>
+					<Col xs lg="1" className="mb-2">
+						<span onClick={props.cerrarFormulario}>
+							<i className="fas fa-key" />
+						</span>
+					</Col>
+				</Row>
+				<Row className="justify-content-center">
+					<Col md={2}>
+						<Button className="button-form ml-3" type="submit">
+							Modificar
+						</Button>
+					</Col>
+				</Row>
+			</div>
 		</Form>
 	);
 };
