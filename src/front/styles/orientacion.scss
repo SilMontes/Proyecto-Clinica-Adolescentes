@@ -1,3 +1,49 @@
+$yellow:  #FFD23F;
+$blue: #1D3557 ;
+$light: #457B9D;
+$beige: #F1FAEE;
+
 .orientacionArticulos{
     margin-top: 20px;
+}
+
+.search-button{
+  border-radius: 20px;
+    width: 70px;
+    height: 70px;
+
+}
+
+.search-button{
+  border-radius: 40px;
+  width: 160px;
+  height: 50px;
+  background-color: $blue ;
+  color:$beige;
+  border: none;
+  font-size: 19px;
+  float: left;
+  -webkit-animation: scale-up-ver-center 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: scale-up-ver-center 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes .search-button {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+@keyframes scale-up-ver-center {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
 }
