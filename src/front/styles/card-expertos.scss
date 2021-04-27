@@ -1,12 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+/*Kimberly*/ 
+$yellow:  #FFD23F;
+$blue: #1D3557 ;
+$light: #457B9D;
+$beige: #F1FAEE;
+
+
 .imagen-especialista-container {
   max-width: 400px;
   min-width:350px;
   width:100%;
   height: 350px;
-
+ 
  font-family: Poppins, sans-serif;
   color:black;
-  border-radius: 0px;
+  border-radius: 20px;
   box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
   text-align: center;
   background: center no-repeat;
@@ -15,14 +27,18 @@
 
 .imagen-especialista-container:hover{
     box-shadow: 0px 18px 20px -9px rgba(0, 10, 30, 0.75);
+    
 }
 .imagen-especialista-container:hover .detalles-experto {
   opacity: 1;
   bottom: 100px;
+   background-color: rgba(255, 210, 63, 0.7);
 }
 
 .imagen-especialista-container:hover .nombre-especialidad{
   margin-top:270px;
+   background-color: rgba(255, 210, 63, 0.7);
+    color: $blue;
 }
 .nombre-especialidad {
   text-align: center;
@@ -31,6 +47,8 @@
   width: 100%;
   top: 0;
   left: 0;
+  background-color: $blue;
+  color: $beige;
   transition:all 0.6s
 }
 
@@ -42,12 +60,13 @@
   font-family: Poppins, sans-serif;
   margin-bottom: 0;
   display:inline-block;
+ 
 }
 
 .especilidad-expertos {
   width: 170px;
   margin: 0 auto;
-  color: red;
+  color: $blue;
   font-style: italic;
   line-height: 10px;
 }
@@ -92,7 +111,8 @@
         padding: 5px;
         font-size: 15px;
         border: none;
-        background-color: #1D3557;
+        background-color: $blue;
+        border-radius: 20px;
         display: block;
         position: relative;
         &:after {

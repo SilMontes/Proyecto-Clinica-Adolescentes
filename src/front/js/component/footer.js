@@ -1,11 +1,12 @@
 import React from "react";
+import "../../styles/index.scss";
 
 export const Footer = () => (
 	<div className="container-fluid" style={{ marginTop: "1.5rem", paddingRight: "0", paddingLeft: "0" }}>
 		<footer className="mt-auto py-3">
 			<div className="row d-flex justify-content-center">
 				<div className=" footer col-4">
-					<h6 className="abajo" style={{ marginBottom: "0.75rem" }}>
+					<h6 className="til" style={{ marginBottom: "14px" }}>
 						Sobre Nosotros
 					</h6>
 					<p className="abajo" style={{ marginBottom: "0.75rem" }}>
