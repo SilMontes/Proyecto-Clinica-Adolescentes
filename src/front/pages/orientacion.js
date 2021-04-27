@@ -27,7 +27,7 @@ export const Orientacion = () => {
 	let urlRela =
 		"https://quierocuidarme.dkvsalud.es/sites/default/files/styles/vivelasalud_ficha_825x464/public/imagen/2017-03/shutterstock_304744727_0.jpg?h=a0bb56d3&itok=HZPM5zW6";
 
-	let nameTrans = "TRASNMICIONES SEXUALES";
+	let nameTrans = "TRANSMISIONES SEXUALES";
 	let urlTrans = "https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2019/10/31/herpes-boca.jpeg";
 
 	let nameCons = "CONSECUENCIAS DE MIS ACTOS";

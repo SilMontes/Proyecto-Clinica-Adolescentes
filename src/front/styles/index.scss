@@ -273,17 +273,7 @@ background-color: $yellow;
 }
 
 /*especialistas*/
-.expertos{
-    display: flex;
-    flex-direction: row;
 
-}
-
-@media especialista and (max-width: 800px){
-  .flex-item-right, .flex-item-left {
-    flex: 100%;
-}
-}
 
 /*boton whatsapp*/
 
@@ -588,10 +578,6 @@ $color_grey_dark_experto: #a2a2a2;
     left:0%;
 }
 
-//------------
-.whatsappIcono{
-    margin:0px !important
-}
 
 /*Orientacion*/
 
