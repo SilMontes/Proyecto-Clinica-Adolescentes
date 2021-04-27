@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CardExpertos } from "../js/component/card-expertos";
 import { Context } from "../js/store/appContext";
 import { Form, Col, Container, InputGroup } from "react-bootstrap";
@@ -6,38 +6,38 @@ export const PaginaExpertos = () => {
 	const { store, actions } = useContext(Context);
 
 	const [listDatosE, setDatosE] = useState(store.datosEspecialistas);
+	useEffect(() => {
+		setDatosE(store.datosEspecialistas);
+	}, []);
 
-	const textFilterProvincia = event => {
+	const textFilter = event => {
 		let text = event.target.value;
 		if (text === "") {
 			setDatosE(store.datosEspecialistas);
 		} else {
 			const personaResult = store.datosEspecialistas.filter(function(persona) {
-				return persona.provincia === text;
-			});
-			setDatosE(personaResult);
-		}
-	};
+				const provincia = persona.provincia
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "");
+				const apellido = persona.apellido
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "");
+				const nombre = persona.especialidad
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "");
+				const especialidad = persona.nombre
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "");
+				const texto = text
+					.toLowerCase()
+					.normalize("NFD")
+					.replace(/[\u0300-\u036f]/g, "");
 
-	const textFilterApellido = event => {
-		let text = event.target.value;
-		if (text === "") {
-			setDatosE(store.datosEspecialistas);
-		} else {
-			const personaResult = store.datosEspecialistas.filter(function(persona) {
-				return persona.apellido === text;
-			});
-			setDatosE(personaResult);
-		}
-	};
-
-	const textFilterEspecialidad = event => {
-		let text = event.target.value;
-		if (text === "") {
-			setDatosE(store.datosEspecialistas);
-		} else {
-			const personaResult = store.datosEspecialistas.filter(function(persona) {
-				return persona.especialidad === text;
+				return provincia === texto || apellido === texto || nombre === texto || especialidad === texto;
 			});
 			setDatosE(personaResult);
 		}
@@ -54,9 +54,9 @@ export const PaginaExpertos = () => {
 							<Form.Group className="pt-3">
 								<InputGroup>
 									<Form.Control
-										defaultValue="Filtrar por apellido, provincia y especialidad "
+										placeholder="Filtrar por nombre, apellido, provincia o especialidad "
 										type="text"
-										onChange={(textFilterApellido, textFilterProvincia, textFilterEspecialidad)}
+										onChange={textFilter}
 									/>
 									<InputGroup.Prepend style={{ width: "fit-content" }}>
 										<InputGroup.Text className="filtradoBusquedaBtn">
