@@ -26,7 +26,9 @@ export const EmailCambiarContraseña = () => {
 	);
 
 	return (
-		<div className="slide-top container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
+		<div
+			className="slide-top container-fluid vh-100 d-flex align-items-center justify-content-center p-5"
+			style={{ marginTop: "50px" }}>
 			<div className="formpassword container my-5 rounded p-4">
 				<div className="boxcambiarcontraseña">
 					<h4>Recuperación de contraseña</h4>

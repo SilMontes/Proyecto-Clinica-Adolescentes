@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../js/store/appContext";
-import "../styles/index.scss";
+//import "../styles/index.scss";
 import { useParams, Link } from "react-router-dom";
 import WhatsAppWidget from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
 import Swal from "sweetalert2";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, Container } from "react-bootstrap";
 
 export const InformacionEspecialista = () => {
 	const { store, actions } = useContext(Context);
@@ -62,109 +62,157 @@ export const InformacionEspecialista = () => {
 	}, []);
 
 	return (
-		<div className=" expertos container-fluid">
+		<div className="container">
 			{store.datosEspecialistas.length > 0 && (
 				<>
-					<div className="row">
-						<div className="col-md-6">
-							<img
-								className="especialista rounded-circle float-right"
-								src={store.datosEspecialistas[params.personaid].imagen}
-							/>
+					<Row className=" justify-content-center">
+						<Col xs={12} md={6} lg={4} className="justify-content-center">
+							<div>
+								<img
+									className="especialista rounded-circle"
+									src={store.datosEspecialistas[params.personaid].imagen}
+								/>
+							</div>
+						</Col>
+						<Col xs={10} md={6} lg={4} className="row">
+							<div className="align-self-center">
+								<h1 className="titulo" style={{ position: "relative" }}>
+									{store.datosEspecialistas[params.personaid].nombre +
+										" " +
+										store.datosEspecialistas[params.personaid].apellido}
+								</h1>
+							</div>
+						</Col>
+					</Row>
+					<Row>
+						<div
+							className="general card  text-left border-light mt-4 mb-3"
+							style={{ maxWidth: "700px", borderRadius: "15px 50px ", border: "10px solid #FFD23F" }}>
+							<div className="card-header">Informacion General</div>
+							<div className="card-body">
+								<p className="card-text">{store.datosEspecialistas[params.personaid].detalles}</p>
+							</div>
 						</div>
-						<div className="col-md-6">
-							<h1 className="titulo">
-								{store.datosEspecialistas[params.personaid].nombre +
-									" " +
-									store.datosEspecialistas[params.personaid].apellido}
-							</h1>
+					</Row>
+					<Row>
+						<div
+							className="general card  mt-4 text-left border-light mb-3"
+							style={{ maxWidth: "700px", borderRadius: "15px 50px", border: "10px solid #FFD23F" }}>
+							<div className="card-header">
+								{"Ubicación" + " "}
+								<span>
+									<a
+										href={`https://www.google.com/maps/search/?api=1&query=${store
+											.datosEspecialistas[params.personaid].ubicación +
+											store.datosEspecialistas[params.personaid].provincia}`}>
+										<i className="fas fa-map-marker-alt" />
+									</a>
+								</span>
+							</div>
+							<div className="card-body">
+								<p className="card-text">
+									{store.datosEspecialistas[params.personaid].ubicación +
+										"; " +
+										store.datosEspecialistas[params.personaid].provincia}
+								</p>
+							</div>
 						</div>
-					</div>
+					</Row>
+					<Row>
+						<div
+							className="general text-left mt-4 card border-light mb-3"
+							style={{ maxWidth: "700px", borderRadius: "15px 50px", border: "10px solid #FFD23F" }}>
+							<div className="card-header">Comentarios de otros usuarios</div>
+							<div className="card-header">
+								<p onClick={() => setMostrarForm(true)}>
+									Dejar mi comentario sobre este especialista{" "}
+									<i className="fas fa-edit" style={{ fontSize: "20px" }} />
+								</p>
 
-					<div className="general card  text-left border-light mb-3">
-						<div className="card-header">Informacion General</div>
-						<div className="card-body">
-							<p className="card-text">{store.datosEspecialistas[params.personaid].detalles}</p>
-						</div>
-					</div>
-					<div className="general card  text-left border-light mb-3">
-						<div className="card-header">
-							{"Ubicación" + " "}
-							<span>
-								<a
-									href={`https://www.google.com/maps/search/?api=1&query=${store.datosEspecialistas[
-										params.personaid
-									].ubicación + store.datosEspecialistas[params.personaid].provincia}`}>
-									<i className="fas fa-map-marker-alt" />
-								</a>
-							</span>
-						</div>
-						<div className="card-body">
-							<p className="card-text">
-								{store.datosEspecialistas[params.personaid].ubicación +
-									"; " +
-									store.datosEspecialistas[params.personaid].provincia}
-							</p>
-						</div>
-					</div>
+								{mostrarForm && (
+									<div className="row justify-content-center">
+										<Col>
+											<Row className="justify-content-center">
+												<Form
+													onSubmit={e =>
+														solicitudAgregarComentario(
+															e,
+															store.datosEspecialistas[params.personaid].id
+														)
+													}>
+													<div>
+														<label>Escriba su comentario</label>
+														<textarea
+															className="form-control"
+															rows="5"
+															id="comment"
+															name="comentario"
+															onChange={e => {
+																setComentario(e.target.value), console.log(comentario);
+															}}
+														/>
+													</div>
+													<div className="align-items-center">
+														<button
+															style={{
+																background: "#9c9c9c",
+																color: "#0016b0",
+																border: "none",
+																margin: "5px",
+																padding: "10px",
+																borderRadius: "5px"
+															}}
+															onClick={() => setMostrarForm(false)}>
+															Cancelar
+														</button>
+														<button
+															style={{
+																background: "#1D3557",
+																color: "#FFD23F",
+																border: "none",
+																margin: "5px",
+																padding: "10px",
+																borderRadius: "5px"
+															}}>
+															Enviar
+														</button>
+													</div>
+												</Form>
+											</Row>
+										</Col>
+									</div>
+								)}
+							</div>
 
-					<div className="general text-left  card border-light mb-3">
-						<div className="card-header">Comentarios de otros usuarios</div>
-						<div className="card-header">
-							<p onClick={() => setMostrarForm(true)}>Dejar mi comentario sobre este especialista</p>
-							{mostrarForm && (
-								<div className="row justify-content-center">
-									<Col>
-										<Row className="justify-content-center">
-											<Form
-												onSubmit={e =>
-													solicitudAgregarComentario(
-														e,
-														store.datosEspecialistas[params.personaid].id
-													)
-												}>
-												<div>
-													<label>Escribe tu comentario</label>
-													<textarea
-														className="form-control"
-														rows="5"
-														id="comment"
-														name="comentario"
-														onChange={e => {
-															setComentario(e.target.value), console.log(comentario);
-														}}
-													/>
+							{store.datosEspecialistas[params.personaid].comentarios.length > 0 && (
+								<div className="card-body">
+									{store.datosEspecialistas[params.personaid].comentarios.map((dato, index) => {
+										return (
+											<div
+												key={index}
+												style={{
+													border: "2px solid #FFD23F",
+													padding: "10px",
+													marginTop: "5px"
+												}}>
+												<div className="text-muted float-right">
+													<i className="fas fa-calendar-alt" style={{ color: "#2271b3" }} />{" "}
+													{dato.fecha}
 												</div>
 												<div>
-													<button onClick={() => setMostrarForm(false)}>Cancelar</button>
-													<button>Enviar</button>
+													<h6>Autor: {dato.nombre_cliente}</h6>
+													<div className="text-muted">
+														<p style={{ padding: "5px" }}>{dato.comentario}</p>
+													</div>
 												</div>
-											</Form>
-										</Row>
-									</Col>
+											</div>
+										);
+									})}
 								</div>
 							)}
 						</div>
-
-						<div className="card-body">
-							{store.datosEspecialistas[params.personaid].comentarios.length > 0 ? (
-								store.datosEspecialistas[params.personaid].comentarios.map((dato, index) => {
-									return (
-										<div key={index} style={{ border: "1px solid black", marginTop: "5px" }}>
-											<div style={{ background: "blue", colr: "white" }}>{dato.fecha}</div>
-											<h5>{dato.nombre_cliente}</h5>
-											<div>
-												<p style={{ padding: "10px" }}>{dato.comentario}</p>
-											</div>
-										</div>
-									);
-								})
-							) : (
-								<p>Aún no hay comentarios</p>
-							)}
-						</div>
-					</div>
-					<div className="float">
+					</Row>
+					<div style={{ position: "fixed", bottom: "20px", right: "20px" }}>
 						<WhatsAppWidget
 							phoneNumber={store.datosEspecialistas[params.personaid].numero_telefonico}
 							sendButton="Enviar"

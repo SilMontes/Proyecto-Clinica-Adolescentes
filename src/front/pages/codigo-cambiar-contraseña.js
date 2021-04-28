@@ -23,7 +23,9 @@ export const CodigoCambiarContraseña = () => {
 		[store.erroresCodigoContraseña]
 	);
 	return (
-		<div className="changepasswordcontainer container-fluid vh-100 d-flex align-items-center justify-content-center p-5">
+		<div
+			className="changepasswordcontainer container-fluid vh-100 d-flex align-items-center justify-content-center p-5"
+			style={{ marginTop: "50px" }}>
 			<div className="formpassword container my-5 rounded p-4">
 				<div className="boxcambiarcontraseña">
 					<h4>Código de confimación</h4>

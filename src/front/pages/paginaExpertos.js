@@ -50,17 +50,18 @@ export const PaginaExpertos = () => {
 					className=" col-10 col-lg-8 justify-content-center"
 					style={{ background: "#0f4c75", marginLeft: "0", padding: "0" }}>
 					<Form.Row className="justify-content-center">
-						<Col xs="7">
+						<Col xs="10" lg="8">
 							<Form.Group className="pt-3">
 								<InputGroup>
 									<Form.Control
 										placeholder="Filtrar por nombre, apellido, provincia o especialidad "
 										type="text"
 										onChange={textFilter}
+										style={{ margin: "0px" }}
 									/>
 									<InputGroup.Prepend style={{ width: "fit-content" }}>
 										<InputGroup.Text className="filtradoBusquedaBtn">
-											<i className="fas fa-search" />
+											<i className="fas fa-search" style={{ left: "32%" }} />
 										</InputGroup.Text>
 									</InputGroup.Prepend>
 								</InputGroup>

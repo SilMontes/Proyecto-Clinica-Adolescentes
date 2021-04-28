@@ -42,19 +42,22 @@ export const Footer = () => (
 				<div className="footer col-4">
 					<h4 className=" titfoo text-center">Clinica de Adolescentes</h4>
 					<a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/PANICR/">
-						<i className="fab fa-facebook-f" />
+						<i className="fab fa-facebook-f" style={{ left: "32%", marginRight: "5px" }} />
+						{"  "}
 					</a>
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.instagram.com/edsexualparatodxs/?hl=es-la">
-						<i className="fab fa-instagram" />{" "}
+						<i className="fab fa-instagram" style={{ left: "32%", marginRight: "5px" }} />
+						{"  "}
 					</a>
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.youtube.com/channel/UCdkUfbpaEoYqOMGq7k-iCwA">
-						<i className="fab fa-youtube" />{" "}
+						<i className="fab fa-youtube" style={{ left: "32%" }} />
+						{"  "}
 					</a>
 					<br />
 					<br />

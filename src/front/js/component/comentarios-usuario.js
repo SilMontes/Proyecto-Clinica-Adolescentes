@@ -43,7 +43,7 @@ export function ComentariosUsuario() {
 			{store.comentarioUsuario.map((comentario, index) => {
 				return (
 					<div
-						className="row w-100 mt-2"
+						className="row w-100 mt-2 p-2"
 						style={{ border: "1px solid #cdcdcd", marginRight: "0px", marginLeft: "0px" }}
 						key={index}>
 						<div className="col-12 col-sm-6 col-md-3 px-0">
@@ -51,6 +51,7 @@ export function ComentariosUsuario() {
 								src={comentario.imagen_experto}
 								alt="Mike Anamendolla"
 								className="rounded-circle mx-auto d-block img-fluid"
+								style={{ maxHeight: "150px" }}
 							/>
 						</div>
 						<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
@@ -60,7 +61,7 @@ export function ComentariosUsuario() {
 										<i className="fas fa-info-circle" style={{ left: "0%" }} />
 									</Link>
 								</span>
-
+								{"  "}
 								<span>
 									<i
 										className="fas fa-trash-alt"

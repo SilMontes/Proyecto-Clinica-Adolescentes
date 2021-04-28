@@ -45,7 +45,8 @@ export function TestimonioUsuario(props) {
 					border: "4px solid #1d3557",
 					borderRadius: "50px 20px",
 					marginRight: "0px",
-					marginLeft: "0px"
+					marginLeft: "0px",
+					padding: "10px"
 				}}>
 				<div className="col-12 col-sm-12 col-md-3 px-0">
 					<img
@@ -58,9 +59,10 @@ export function TestimonioUsuario(props) {
 				<div className="col-12 col-sm-12 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
 						<span>
-							<i className="far fa-calendar-alt" style={{ left: "0%", color: "#0082fd" }} />
-							Publicado: {props.fecha}
+							<i className="far fa-calendar-alt" style={{ left: "0%", color: "#0082fd" }} /> Publicado:{" "}
+							{props.fecha}
 						</span>
+						{"  "}
 
 						<span>
 							<i
