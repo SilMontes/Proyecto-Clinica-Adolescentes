@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import "../../styles/card-expertos.scss";
+import { Context } from "../store/appContext";
 import propTypes from "prop-types";
+import Swal from "sweetalert2";
 export const CardExpertos = props => {
+	const { store, actions } = useContext(Context);
+	function alerta() {
+		Swal.fire({
+			text: "Debe registrarse para ver esa información",
+			timer: 3000,
+			confirmButtonText: "Ok"
+		});
+	}
 	return (
 		<React.Fragment>
 			<Col xs={12} md={6} lg={4} className="mt-3">
@@ -18,9 +28,19 @@ export const CardExpertos = props => {
 					</div>
 					<div className="detalles-experto">
 						{props.detalles}
-						<Link to={`/especialista/${props.id}`} className="read-more-experto row justify-content-center">
-							<button className="col-6">Más información</button>
-						</Link>
+						{store.token != "" && store.token != null ? (
+							<Link to={`/especialista/${props.id}`} className="read-more-experto justify-content-center">
+								<button className="col-4" style={{ maxWidth: "none" }}>
+									Más información
+								</button>
+							</Link>
+						) : (
+							<Row className="justify-content-center">
+								<button className="read-more-experto col-5" onClick={alerta}>
+									Más información
+								</button>
+							</Row>
+						)}
 					</div>
 				</div>
 			</Col>

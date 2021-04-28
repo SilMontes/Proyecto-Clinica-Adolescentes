@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Icono from "../../img/Icono.png";
 import { Context } from "../store/appContext";
+import { Modal, Button } from "react-bootstrap";
+import ModalHeader from "react-bootstrap/esm/ModalHeader";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const [smShow, setSmShow] = useState(false);
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
@@ -14,7 +17,7 @@ export const Navbar = () => {
 			<div className="float-right d-flex flex-row ml-auto">
 				{store.token != "" && store.token != null ? (
 					<Link to="/">
-						<p className="enter" onClick={() => actions.cerrarSesion()}>
+						<p className="linea" style={{ color: "#FFD23F" }} onClick={() => setSmShow(true)}>
 							Cerrar Sesión
 						</p>
 					</Link>
@@ -55,6 +58,23 @@ export const Navbar = () => {
 						</Link>
 					)}
 			</div>
+			<Modal
+				size="sm"
+				show={smShow}
+				onHide={() => setSmShow(false)}
+				aria-labelledby="example-modal-sizes-title-sm">
+				<Modal.Header />
+				<Modal.Footer>
+					<Button
+						id="btnCerrarSesion"
+						onClick={() => {
+							actions.cerrarSesion();
+							setSmShow(false);
+						}}>
+						Cerrar Sesión
+					</Button>
+				</Modal.Footer>
+			</Modal>
 		</nav>
 	);
 };

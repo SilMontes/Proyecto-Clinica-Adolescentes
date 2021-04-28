@@ -40,15 +40,30 @@ export const Testimonios = () => {
 		},
 		[store.errortestimonio, store.alertatestimonio]
 	);
+	function alerta() {
+		Swal.fire({
+			text: "Debe registrarse para realizar esa acción",
+			timer: 3000,
+			confirmButtonText: "Ok"
+		});
+	}
 	return (
 		<Container fluid className="m-0 row justify-content-center align-items-center">
 			<div className="row justify-content-center">
 				<Col xs={11} md={7} lg={4}>
-					<Row className="justify-content-center">
-						<button className="bubbly-button" onClick={() => setMostrarForm(true)}>
-							<span className="expe">¡Cuentanos tu experiencia!</span>{" "}
-						</button>
-					</Row>
+					{store.token != "" && store.token != null ? (
+						<Row className="justify-content-center">
+							<button className="bubbly-button" onClick={() => setMostrarForm(true)}>
+								<span className="expe">¡Cuentanos tu experiencia!</span>{" "}
+							</button>
+						</Row>
+					) : (
+						<Row className="justify-content-center">
+							<button className="bubbly-button" onClick={alerta}>
+								<span className="expe">¡Cuentanos tu experiencia!</span>{" "}
+							</button>
+						</Row>
+					)}
 				</Col>
 			</div>
 			{mostrarForm && (
