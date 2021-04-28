@@ -9,7 +9,7 @@ export const CardExpertos = props => {
 	const { store, actions } = useContext(Context);
 	function alerta() {
 		Swal.fire({
-			text: "Debe registrarse para ver esa información",
+			text: "Debe iniciar sesión para ver esa información",
 			timer: 3000,
 			confirmButtonText: "Ok"
 		});

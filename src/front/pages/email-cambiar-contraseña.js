@@ -10,7 +10,16 @@ export const EmailCambiarContraseña = () => {
 	const history = useHistory();
 	useEffect(() => {
 		store.redirectCodigoConfirmacion = false;
+		store.erroresEmailContraseña = "";
 	}, []);
+	useEffect(
+		() => {
+			if (store.redirectCodigoConfirmacion === true) {
+				history.push("/codigoconfirmacion");
+			}
+		},
+		[store.redirectCodigoConfirmacion]
+	);
 	useEffect(
 		() => {
 			if (store.erroresEmailContraseña != "") {
@@ -45,12 +54,7 @@ export const EmailCambiarContraseña = () => {
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
-							<button
-								className="btnCambiarContraseña px-3"
-								type="submit"
-								onClick={() =>
-									store.redirectCodigoConfirmacion === true && history.push("/codigoconfirmacion")
-								}>
+							<button className="btnCambiarContraseña px-3" type="submit">
 								Enviar
 							</button>
 						</div>

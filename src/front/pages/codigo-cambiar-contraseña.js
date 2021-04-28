@@ -8,7 +8,16 @@ export const CodigoCambiarContraseña = () => {
 	const history = useHistory();
 	useEffect(() => {
 		store.redirectNuevaContraseña = false;
+		store.erroresCodigoContraseña = "";
 	}, []);
+	useEffect(
+		() => {
+			if (store.redirectNuevaContraseña == true) {
+				history.push("/nuevacontraseña");
+			}
+		},
+		[store.redirectNuevaContraseña]
+	);
 	useEffect(
 		() => {
 			if (store.erroresCodigoContraseña != "") {
@@ -39,12 +48,7 @@ export const CodigoCambiarContraseña = () => {
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
-							<button
-								className="btnCambiarContraseña px-3"
-								type="submit"
-								onClick={() =>
-									store.redirectNuevaContraseña == true && history.push("/nuevacontraseña")
-								}>
+							<button className="btnCambiarContraseña px-3" type="submit">
 								Enviar
 							</button>
 						</div>
