@@ -101,13 +101,13 @@ export const InformacionEspecialista = () => {
 							className="general card  mt-4 text-left border-light mb-3"
 							style={{ maxWidth: "700px", borderRadius: "15px 50px", border: "10px solid #FFD23F" }}>
 							<div className="card-header">
-								{"Ubicación" + " "}
+								{"Ver ubicación" + " "}
 								<span>
 									<a
 										href={`https://www.google.com/maps/search/?api=1&query=${store
 											.datosEspecialistas[params.personaid].ubicación +
 											store.datosEspecialistas[params.personaid].provincia}`}>
-										<i className="fas fa-map-marker-alt" />
+										<i className="fas fa-map-marker-alt" style={{ color: "#ff0000" }} />
 									</a>
 								</span>
 							</div>
