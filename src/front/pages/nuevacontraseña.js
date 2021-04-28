@@ -11,7 +11,16 @@ export const NuevaContraseña = () => {
 	const [errorSmallMessage, setErrorSmallMessage] = useState(false);
 	useEffect(() => {
 		store.redirect = false;
+		store.erroresNuevaContraseña = "";
 	}, []);
+	useEffect(
+		() => {
+			if (store.redirect === true) {
+				history.push("/iniciosesion");
+			}
+		},
+		[store.redirect]
+	);
 	useEffect(
 		() => {
 			if (store.nuevaContraseñaDatos.nuevaContraseña != store.nuevaContraseñaDatos.confirmarNuevaContraseña) {
@@ -73,6 +82,7 @@ export const NuevaContraseña = () => {
 							<input
 								placeholder="Vuelva a escribir la contraseña"
 								name="confirmarNuevaContraseña"
+								type="password"
 								onChange={e => {
 									actions.onChangeNuevaContraseña(e);
 								}}
@@ -80,10 +90,7 @@ export const NuevaContraseña = () => {
 						</div>
 						<div className="form-row justify-content-center">
 							<BotonIrInicioSesion />
-							<button
-								className="btnCambiarContraseña px-3"
-								type="submit"
-								onClick={() => store.redirect == true && history.push("/iniciosesion")}>
+							<button className="btnCambiarContraseña px-3" type="submit">
 								Enviar
 							</button>
 						</div>

@@ -18,6 +18,14 @@ export const InicioSesion = () => {
 	}, []);
 	useEffect(
 		() => {
+			if (store.token != null && store.token != "") {
+				history.push("/");
+			}
+		},
+		[store.token]
+	);
+	useEffect(
+		() => {
 			if (store.erroresInicioSesion.length > 0) {
 				handleShow();
 			}
@@ -42,11 +50,7 @@ export const InicioSesion = () => {
 							placeholder="Contraseña"
 							onChange={e => actions.onChangeInicioSesion(e)}
 						/>
-						<button
-							type="submit"
-							onClick={() => store.token != null && store.token != "" && history.push("/")}>
-							Ingresar
-						</button>
+						<button type="submit">Ingresar</button>
 					</form>
 					<div className="formfooter">
 						<Link to="/emailcambiarcontraseña">

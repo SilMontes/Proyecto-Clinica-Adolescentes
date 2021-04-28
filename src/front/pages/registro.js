@@ -14,6 +14,7 @@ export const Registro = () => {
 	const [colorInput, setColorInput] = useState("none");
 	useEffect(() => {
 		store.erroresRegistro = [];
+		store.redirect = false;
 	}, []);
 	useEffect(
 		() => {
@@ -23,7 +24,14 @@ export const Registro = () => {
 		},
 		[store.erroresRegistro]
 	);
-
+	useEffect(
+		() => {
+			if (store.redirect === true) {
+				history.push("/iniciosesion");
+			}
+		},
+		[store.redirect]
+	);
 	useEffect(
 		() => {
 			if (store.datosRegistro.confirmar_Contraseña != store.datosRegistro.contraseña) {
@@ -95,9 +103,7 @@ export const Registro = () => {
 								</label>
 							)}
 						</div>
-						<button type="submit" onClick={() => store.redirect == true && history.push("/iniciosesion")}>
-							Ingresar
-						</button>
+						<button type="submit">Ingresar</button>
 					</form>
 				</div>
 			</div>

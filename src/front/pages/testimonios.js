@@ -42,7 +42,7 @@ export const Testimonios = () => {
 	);
 	function alerta() {
 		Swal.fire({
-			text: "Debe registrarse para realizar esa acción",
+			text: "Debe iniciar sesión para realizar esa acción",
 			timer: 3000,
 			confirmButtonText: "Ok"
 		});
