@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../js/store/appContext";
 //import "../styles/index.scss";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Redirect } from "react-router-dom";
 import WhatsAppWidget from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
 import Swal from "sweetalert2";
@@ -13,7 +13,9 @@ export const InformacionEspecialista = () => {
 	const [mensaje, setMensaje] = useState("");
 	const [mostrarForm, setMostrarForm] = useState(false);
 	const [comentario, setComentario] = useState("");
-
+	useEffect(() => {
+		actions.obtenerEspecialistas();
+	}, []);
 	async function solicitudAgregarComentario(e, expertoId) {
 		e.preventDefault(e);
 		const datosComentario = {
@@ -228,6 +230,7 @@ export const InformacionEspecialista = () => {
 					</div>
 				</>
 			)}
+			{store.token == "" || store.token == null ? <Redirect to="/expertos" /> : null}
 		</div>
 	);
 };

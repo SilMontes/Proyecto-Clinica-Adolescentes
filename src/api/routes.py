@@ -80,11 +80,11 @@ def agregar_especialistas():
 @api.before_app_first_request
 def agregar_usuarios():
     usuarios=[
-        {"primer_nombre":"Kloe","apellidos":"Durand","numero_telefonico":"12345678","email": "kloe@gmail.com","password":"Test123@"},
-        {"primer_nombre":"Emily","apellidos":"Moreau ","numero_telefonico":"12345678","email": "Emily@gmail.com","password":"Test123@"},
-        {"primer_nombre":"Luis","apellidos":"Adams","numero_telefonico":"12345678","email": "Jessica@gmail.com","password":"Test123@"},
-        {"primer_nombre":"Jessica","apellidos":"Gagnon","numero_telefonico":"12345678","email": "Calista@gmail.com","password":"Test123@"},
-        {"primer_nombre":"José","apellidos":"Rojas","numero_telefonico":"12345678","email": "Priya@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Kloe","apellidos":"Durand","numero_telefonico":"82345678","email": "kloe@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Emily","apellidos":"Moreau ","numero_telefonico":"72345678","email": "Emily@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Luis","apellidos":"Adams","numero_telefonico":"62345678","email": "Jessica@gmail.com","password":"Test123@"},
+        {"primer_nombre":"Jessica","apellidos":"Gagnon","numero_telefonico":"72345678","email": "Calista@gmail.com","password":"Test123@"},
+        {"primer_nombre":"José","apellidos":"Rojas","numero_telefonico":"62345678","email": "Priya@gmail.com","password":"Test123@"},
     ]
     usuarios_existentes=User.query.all()
     todos_usuarios=list(map(lambda usuario:usuario.serialize(),usuarios_existentes))

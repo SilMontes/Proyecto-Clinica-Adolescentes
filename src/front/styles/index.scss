@@ -602,5 +602,17 @@ input{
     justify-content: center;
     
 }
+#btnCerrarSesion{
+    background-color: #FFD23F;
+    color: $blue;
+    border:none;
+    font-weight: bolder;
+}
 
+#btnCerrarSesion:hover{
+    background-color: #9c9c9c;
+    color: $blue;
+    border:none;
+    font-weight: bolder;
+}
 

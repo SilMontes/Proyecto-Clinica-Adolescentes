@@ -4,7 +4,7 @@ import { FormularioEditarperfil } from "../js/component/formulario-editar-perfil
 import { Context } from "../js/store/appContext";
 import { ComentariosUsuario } from "../js/component/comentarios-usuario";
 import { TestimonioUsuario } from "../js/component/testimonio-usuario";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 export const PerfilUsuario = () => {
 	const { store, actions } = useContext(Context);
@@ -13,7 +13,7 @@ export const PerfilUsuario = () => {
 		if (id_usuario != "" && id_usuario != null) {
 			actions.obtenerInformacionusuario();
 			actions.obtenerComentariosusuario();
-			store.correcto == false;
+			store.correcto = false;
 		}
 	}, []);
 
@@ -187,6 +187,7 @@ export const PerfilUsuario = () => {
 					)}
 				</div>
 			</Row>
+			{store.token == "" || store.token == null ? <Redirect to="/iniciosesion" /> : null}
 		</Container>
 	);
 };
