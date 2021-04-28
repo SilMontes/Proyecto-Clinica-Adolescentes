@@ -16,7 +16,6 @@ export const EmailCambiarContraseña = () => {
 			if (store.erroresEmailContraseña != "") {
 				Swal.fire({
 					text: store.erroresEmailContraseña.msg,
-					iconHtml: "❗",
 					timer: 2000,
 					confirmButtonText: "Entendido"
 				});

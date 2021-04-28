@@ -79,7 +79,12 @@ export const Testimonios = () => {
 								/>
 							</div>
 							<div>
-								<label className="field">Agrega una imagen</label>
+								<label className="field">
+									Agrega una imagen{" "}
+									<span className="text-muted">
+										* Si completa este campo, añadiremos una imagen predeterminada
+									</span>
+								</label>
 								<input
 									placeholer="Imagen"
 									name="multimedia"

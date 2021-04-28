@@ -14,7 +14,6 @@ export const CodigoCambiarContraseña = () => {
 			if (store.erroresCodigoContraseña != "") {
 				Swal.fire({
 					text: store.erroresCodigoContraseña,
-					iconHtml: "❌",
 					timer: 2000,
 					confirmButtonText: "Entendido"
 				});

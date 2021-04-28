@@ -29,7 +29,6 @@ export const NuevaContraseña = () => {
 			if (store.erroresNuevaContraseña != "") {
 				Swal.fire({
 					text: store.erroresNuevaContraseña,
-					iconHtml: "❗",
 					timer: 3000,
 					confirmButtonText: "Entendido"
 				});

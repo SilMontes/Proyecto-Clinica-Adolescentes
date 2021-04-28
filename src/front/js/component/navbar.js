@@ -16,11 +16,12 @@ export const Navbar = () => {
 
 			<div className="float-right d-flex flex-row ml-auto">
 				{store.token != "" && store.token != null ? (
-					<Link to="/">
-						<p className="linea" style={{ color: "#FFD23F" }} onClick={() => setSmShow(true)}>
-							Cerrar Sesión
-						</p>
-					</Link>
+					<p
+						className="linea"
+						style={{ color: "#FFD23F", cursor: "pointer" }}
+						onClick={() => setSmShow(true)}>
+						Cerrar Sesión
+					</p>
 				) : (
 					<>
 						<Link to="/iniciosesion">
@@ -65,14 +66,16 @@ export const Navbar = () => {
 				aria-labelledby="example-modal-sizes-title-sm">
 				<Modal.Header />
 				<Modal.Footer>
-					<Button
-						id="btnCerrarSesion"
-						onClick={() => {
-							actions.cerrarSesion();
-							setSmShow(false);
-						}}>
-						Cerrar Sesión
-					</Button>
+					<Link to="/">
+						<Button
+							id="btnCerrarSesion"
+							onClick={() => {
+								actions.cerrarSesion();
+								setSmShow(false);
+							}}>
+							Cerrar Sesión
+						</Button>
+					</Link>
 				</Modal.Footer>
 			</Modal>
 		</nav>
