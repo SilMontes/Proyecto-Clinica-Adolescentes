@@ -101,12 +101,12 @@ export function TestimonioUsuario(props) {
 					</Modal.Body>
 					<Modal.Footer>
 						<Button
-							style={{ background: "#646b63", color: "white", fontSize: "25px" }}
+							style={{ background: "#1D3557", color: "white", fontSize: "15px" }}
 							onClick={() => setSmShow(false)}>
 							Cerrar
 						</Button>
 						<Button
-							style={{ background: "#de1f21 ", color: "white", fontSize: "25px" }}
+							style={{ background: "#1D3557 ", color: "white", fontSize: "15px" }}
 							onClick={() => {
 								setSmShow(false);
 								setEnviar(true);
