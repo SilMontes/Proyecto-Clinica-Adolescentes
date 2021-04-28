@@ -73,6 +73,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				datosRegistro[e.target.name] = e.target.value;
 				setStore({ datosRegistro });
 			},
+			cerrarSesion: () => {
+				const store = getStore();
+				sessionStorage.removeItem("token");
+				sessionStorage.removeItem("nombre");
+				sessionStorage.removeItem("user_id");
+				setStore({ ...store, token: "" });
+			},
 			/// SOLICITUD POST REGISTRO
 			onSubmitRegistro: async e => {
 				e.preventDefault(e);
