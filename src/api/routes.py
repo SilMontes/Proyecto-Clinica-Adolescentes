@@ -255,7 +255,7 @@ def mail(asunto,mensaje,correo):
 
     server.ehlo()
     server.starttls()
-    server.login('emailproyecto2021@gmail.com','39K+@Came11i40')
+    server.login('','')
     server.sendmail(email,correo,message)
     server.quit
 #-----------------------------
